@@ -1,0 +1,44 @@
+URL tests
+~~~~~~~~~
+
+This repository contains a number of test data for URL parsing,
+resolution, and canonicalization as performed by Web browsers,
+developed in 2011 along with Perl Web::URL module.
+
+* Spec
+
+- spec.txt
+
+* Tests
+
+- data/*.dat - URL canonicalization tests (See data/README for more info)
+- data/generated/*.dat - IDN in URL canonicalization tests
+
+- browsers/*.html - Test harnesses for testing your browser
+
+* Test results of browsers
+
+- URL canonicalization tests (about 5000)
+-- <http://suika.fam.cx/gate/test-results/list/url-canon-20110731/all>
+- Query character encoding tests (28)
+-- <http://suika.fam.cx/gate/test-results/list/url-canon-20110731-charsets/all>
+- IDN canonicalization tests (about 14000)
+-- <http://suika.fam.cx/gate/test-results/list/url-canon-20110731-idn/all>
+
+* Development
+
+Latest version of the test suite is available at
+<https://github.com/wakaba/tests-web-url>.
+
+This test suite has first been developed in another repository
+<https://github.com/wakaba/perl-weburl> in 2011 and then split into
+different repositories.
+
+* Author
+
+Wakaba <w@suika.fam.cx>.
+
+* License
+
+You are granted a license to use, reproduce and create derivative
+works of these test data.
