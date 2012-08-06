@@ -1,0 +1,6 @@
+AddCharset utf-8 .html
+
+Options +ExecCGI
+AddHandler cgi-script .cgi
+
+## License: Public Domain.

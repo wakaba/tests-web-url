@@ -1,0 +1,894 @@
+#data
+mailto:
+#canon mailto:
+#scheme mailto
+#path
+
+#data
+mailto:foo
+#canon mailto:foo
+#scheme mailto
+#path foo
+
+#data
+MailTo:foo
+#canon mailto:foo
+#scheme mailto
+#path foo
+
+#data escaped
+mailto: foo\u0020
+#canon mailto:%20foo
+#scheme mailto
+#path %20foo
+
+#data escaped
+mailto:foo\u000F
+#canon mailto:foo%0F
+#scheme mailto
+#path foo%0F
+
+#data escaped
+mailto:addr1    \u0020
+#canon mailto:addr1
+#scheme mailto
+#path addr1
+
+#data
+mailto:foo@example
+#scheme mailto
+#path foo@example
+
+#data escaped
+mailto:foo@exa\u0000mple
+#canon mailto:foo@exa%00mple
+#scheme mailto
+#path foo@exa%00mple
+
+#data escaped
+mailto:foo@exa\u0001mple
+#canon mailto:foo@exa%01mple
+#scheme mailto
+#path foo@exa%01mple
+
+#data escaped
+mailto:foo@exa\u0008mple
+#canon mailto:foo@exa%08mple
+#scheme mailto
+#path foo@exa%08mple
+
+#data escaped
+mailto:foo@exa\u0009mple
+#canon mailto:foo@example
+#scheme mailto
+#path foo@example
+
+#data escaped
+mailto:foo@exa\u000Ample
+#canon mailto:foo@example
+#scheme mailto
+#path foo@example
+
+#data escaped
+mailto:foo@exa\u000Bmple
+#canon mailto:foo@exa%0Bmple
+#scheme mailto
+#path foo@exa%0Bmple
+
+#data escaped
+mailto:foo@exa\u000Cmple
+#canon mailto:foo@exa%0Cmple
+#scheme mailto
+#path foo@exa%0Cmple
+
+#data escaped
+mailto:foo@exa\u000Dmple
+#canon mailto:foo@example
+#scheme mailto
+#path foo@example
+
+#data escaped
+mailto:foo@exa\u000Emple
+#canon mailto:foo@exa%0Emple
+#scheme mailto
+#path foo@exa%0Emple
+
+#data escaped
+mailto:foo@exa\u000Fmple
+#canon mailto:foo@exa%0Fmple
+#scheme mailto
+#path foo@exa%0Fmple
+
+#data escaped
+mailto:foo@exa\u0020mple
+#canon mailto:foo@exa%20mple
+#scheme mailto
+#path foo@exa%20mple
+
+#data escaped
+mailto:foo@exa\u0021mple
+#canon mailto:foo@exa!mple
+#scheme mailto
+#path foo@exa!mple
+
+#data escaped
+mailto:foo@exa\u0022mple
+#canon mailto:foo@exa%22mple
+#scheme mailto
+#path foo@exa%22mple
+
+#data escaped
+mailto:foo@exa\u0024mple
+#canon mailto:foo@exa$mple
+#scheme mailto
+#path foo@exa$mple
+
+#data escaped
+mailto:foo@exa\u0025mple
+#canon mailto:foo@exa%mple
+#scheme mailto
+#path foo@exa%mple
+
+#data escaped
+mailto:foo@exa\u0026mple
+#canon mailto:foo@exa&mple
+#scheme mailto
+#path foo@exa&mple
+
+#data escaped
+mailto:foo@exa\u0027mple
+#canon mailto:foo@exa'mple
+#scheme mailto
+#path foo@exa'mple
+
+#data escaped
+mailto:foo@exa\u0028mple
+#canon mailto:foo@exa(mple
+#scheme mailto
+#path foo@exa(mple
+
+#data escaped
+mailto:foo@exa\u0029mple
+#canon mailto:foo@exa)mple
+#scheme mailto
+#path foo@exa)mple
+
+#data escaped
+mailto:foo@exa\u002Ample
+#canon mailto:foo@exa*mple
+#scheme mailto
+#path foo@exa*mple
+
+#data escaped
+mailto:foo@exa\u002Bmple
+#canon mailto:foo@exa+mple
+#scheme mailto
+#path foo@exa+mple
+
+#data escaped
+mailto:foo@exa\u002Cmple
+#canon mailto:foo@exa,mple
+#scheme mailto
+#path foo@exa,mple
+
+#data escaped
+mailto:foo@exa\u002Dmple
+#canon mailto:foo@exa-mple
+#scheme mailto
+#path foo@exa-mple
+
+#data escaped
+mailto:foo@exa\u002Fmple
+#canon mailto:foo@exa/mple
+#scheme mailto
+#path foo@exa/mple
+
+#data escaped
+mailto:foo@exa\u0030mple
+#canon mailto:foo@exa0mple
+#scheme mailto
+#path foo@exa0mple
+
+#data escaped
+mailto:foo@exa\u003Ample
+#canon mailto:foo@exa:mple
+#scheme mailto
+#path foo@exa:mple
+
+#data escaped
+mailto:foo@exa\u003Bmple
+#canon mailto:foo@exa;mple
+#scheme mailto
+#path foo@exa;mple
+
+#data escaped
+mailto:foo@exa\u003Cmple
+#canon mailto:foo@exa%3Cmple
+#scheme mailto
+#path foo@exa%3Cmple
+
+#data escaped
+mailto:foo@exa\u003Dmple
+#canon mailto:foo@exa=mple
+#scheme mailto
+#path foo@exa=mple
+
+#data escaped
+mailto:foo@exa\u003Emple
+#canon mailto:foo@exa%3Emple
+#scheme mailto
+#path foo@exa%3Emple
+
+#data escaped
+mailto:foo@exa\u0040mple
+#canon mailto:foo@exa@mple
+#scheme mailto
+#path foo@exa@mple
+
+#data escaped
+mailto:foo@exa\u0041mple
+#canon mailto:foo@exaAmple
+#scheme mailto
+#path foo@exaAmple
+
+#data escaped
+mailto:foo@exa\u005Bmple
+#canon mailto:foo@exa[mple
+#scheme mailto
+#path foo@exa[mple
+
+#data escaped
+mailto:foo@exa\u005Cmple
+#canon mailto:foo@exa%5Cmple
+#scheme mailto
+#path foo@exa%5Cmple
+
+#data escaped
+mailto:foo@exa\u005Dmple
+#canon mailto:foo@exa]mple
+#scheme mailto
+#path foo@exa]mple
+
+#data escaped
+mailto:foo@exa\u005Emple
+#canon mailto:foo@exa%5Emple
+#scheme mailto
+#path foo@exa%5Emple
+
+#data escaped
+mailto:foo@exa\u005Fmple
+#canon mailto:foo@exa_mple
+#scheme mailto
+#path foo@exa_mple
+
+#data escaped
+mailto:foo@exa\u0060mple
+#canon mailto:foo@exa%60mple
+#scheme mailto
+#path foo@exa%60mple
+
+#data escaped
+mailto:foo@exa\u0061mple
+#canon mailto:foo@exaample
+#scheme mailto
+#path foo@exaample
+
+#data escaped
+mailto:foo@exa\u007Bmple
+#canon mailto:foo@exa%7Bmple
+#scheme mailto
+#path foo@exa%7Bmple
+
+#data escaped
+mailto:foo@exa\u007Cmple
+#canon mailto:foo@exa%7Cmple
+#scheme mailto
+#path foo@exa%7Cmple
+
+#data escaped
+mailto:foo@exa\u007Dmple
+#canon mailto:foo@exa%7Dmple
+#scheme mailto
+#path foo@exa%7Dmple
+
+#data escaped
+mailto:foo@exa\u007Emple
+#canon mailto:foo@exa~mple
+#scheme mailto
+#path foo@exa~mple
+
+#data escaped
+mailto:foo@exa\u007Fmple
+#canon mailto:foo@exa%7Fmple
+#scheme mailto
+#path foo@exa%7Fmple
+
+#data escaped
+mailto:foo@exa\u0080mple
+#canon mailto:foo@exa%C2%80mple
+#scheme mailto
+#path foo@exa%C2%80mple
+
+#data escaped
+mailto:foo@exa\u0085mple
+#canon mailto:foo@exa%C2%85mple
+#scheme mailto
+#path foo@exa%C2%85mple
+
+#data escaped
+mailto:foo@exa\u00A0mple
+#canon mailto:foo@exa%C2%A0mple
+#scheme mailto
+#path foo@exa%C2%A0mple
+
+#data escaped
+mailto:foo@exa\u00FFmple
+#canon mailto:foo@exa%C3%BFmple
+#scheme mailto
+#path foo@exa%C3%BFmple
+
+#data
+mailto:foo@example%00
+#scheme mailto
+#path foo@example%00
+
+#data
+mailto:foo@example%0D
+#scheme mailto
+#path foo@example%0D
+
+#data
+mailto:foo@example%20
+#scheme mailto
+#path foo@example%20
+
+#data
+mailto:foo@example%22
+#scheme mailto
+#path foo@example%22
+
+#data
+mailto:foo@example%23
+#scheme mailto
+#path foo@example%23
+
+#data
+mailto:foo@example%24
+#scheme mailto
+#path foo@example%24
+
+#data
+mailto:foo@example%30
+#canon
+mailto:foo@example0
+#scheme mailto
+#path foo@example0
+
+#data
+mailto:foo@example%31
+#canon
+mailto:foo@example1
+#scheme mailto
+#path foo@example1
+
+#data
+mailto:foo@example%39
+#canon
+mailto:foo@example9
+#scheme mailto
+#path foo@example9
+
+#data
+mailto:foo@example%3F
+#scheme mailto
+#path foo@example%3F
+
+#data
+mailto:foo@example%40
+#scheme mailto
+#path foo@example%40
+
+#data
+mailto:foo@example%41
+#canon
+mailto:foo@exampleA
+#scheme mailto
+#path foo@exampleA
+
+#data
+mailto:foo@example%5a
+#canon
+mailto:foo@exampleZ
+#scheme mailto
+#path foo@exampleZ
+
+#data
+mailto:foo@example%5f
+#canon
+mailto:foo@example_
+#scheme mailto
+#path foo@example_
+
+#data
+mailto:foo@example%65
+#canon
+mailto:foo@examplee
+#scheme mailto
+#path foo@examplee
+
+#data
+mailto:foo@example%7d
+#scheme mailto
+#path foo@example%7d
+
+#data
+mailto:foo@example%7E
+#canon
+mailto:foo@example~
+#scheme mailto
+#path foo@example~
+
+#data
+mailto:foo@example%7f
+#scheme mailto
+#path foo@example%7f
+
+#data
+mailto:foo@example%Cd
+#scheme mailto
+#path foo@example%Cd
+
+#data
+mailto:foo@example%ff
+#scheme mailto
+#path foo@example%ff
+
+#data
+mailto:foo@example.com
+#scheme mailto
+#path foo@example.com
+
+#data
+mailto:foo@example.com.
+#scheme mailto
+#path foo@example.com.
+
+#data
+mailto:foo@example..com
+#scheme mailto
+#path foo@example..com
+
+#data
+mailto:foo@example.COM
+#scheme mailto
+#path foo@example.COM
+
+#data
+mailto:fo..o@example.com
+#scheme mailto
+#path fo..o@example.com
+
+#data
+mailto:foo@example#bar
+#canon
+mailto:foo@example#bar
+#scheme mailto
+#path foo@example#bar
+
+#data
+mailto:foo@example#bar#baz
+#canon
+mailto:foo@example#bar#baz
+#scheme mailto
+#path foo@example#bar#baz
+
+#data
+mailto:%22not%40me%22@example.org
+#scheme mailto
+#path
+%22not%40me%22@example.org
+
+#data
+mailto:"not%40me"@example.org
+#canon
+mailto:%22not%40me%22@example.org
+#scheme mailto
+#path
+%22not%40me%22@example.org
+
+#data
+mailto:%22%5C%5C%5C%22it's%5C%20ugly%5C%5C%5C%22%22@example.org
+#scheme mailto
+#path
+%22%5C%5C%5C%22it's%5C%20ugly%5C%5C%5C%22%22@example.org
+
+#data
+mailto:addr1, addr2
+#canon
+mailto:addr1,%20addr2
+#scheme mailto
+#path addr1,%20addr2
+
+#data
+mailto:foo@bar.test,bar@baz.test
+#canon
+mailto:foo@bar.test,bar@baz.test
+#scheme mailto
+#path
+foo@bar.test,bar@baz.test
+
+#data escaped
+mailto:\U00010300
+#canon mailto:%F0%90%8C%80
+#scheme mailto
+#path %F0%90%8C%80
+
+#data
+mailto://hoge.foo
+#canon
+mailto://hoge.foo
+#scheme mailto
+#path
+//hoge.foo
+
+#data
+mailto://hoge.foo/
+#canon
+mailto://hoge.foo/
+#scheme mailto
+#path
+//hoge.foo/
+
+#data
+mailto:/foo/bar
+#canon
+mailto:/foo/bar
+#scheme mailto
+#path
+/foo/bar
+
+#data
+mailto:/foo/../bar
+#canon
+mailto:/foo/../bar
+#scheme mailto
+#path
+/foo/../bar
+
+#data
+mailto:?
+#scheme mailto
+#path
+#query
+
+#data
+mailto:infobot@example.com?subject=current-issue
+#scheme mailto
+#path 
+infobot@example.com
+#query
+subject=current-issue
+
+#data
+mailto:infobot@example.com?Subject=current-issue
+#scheme mailto
+#path 
+infobot@example.com
+#query
+Subject=current-issue
+
+#data
+mailto:list@example.org?In-Reply-To=%3C3469A91.D10AF4C@example.com%3E
+#scheme mailto
+#path
+list@example.org
+#query
+In-Reply-To=%3C3469A91.D10AF4C@example.com%3E
+
+#data
+mailto:joe@example.com?cc=bob@example.com?body=hello
+#scheme mailto
+#path
+joe@example.com
+#query
+cc=bob@example.com?body=hello
+
+#data
+mailto:majordomo@example.com?body=subscribe%20bamboo-l
+#scheme mailto
+#path 
+majordomo@example.com
+#query
+body=subscribe%20bamboo-l
+
+#data
+mailto:unlikely%3Faddress@example.com?blat=foop
+#scheme mailto
+#path
+unlikely%3Faddress@example.com
+#query
+blat=foop
+
+#data
+mailto:?to=foo@bar
+#scheme mailto
+#path
+#query
+to=foo@bar
+
+#data
+mailto:?to=foo@bar&to=hoge@foo
+#scheme mailto
+#path
+#query
+to=foo@bar&to=hoge@foo
+
+#data
+mailto:foo?bar@baz?subject=hoge
+#scheme mailto
+#path foo
+#query
+bar@baz?subject=hoge
+
+#data
+mailto:user@example.org?subject=caf%C3%A9
+#scheme mailto
+#path
+user@example.org
+#query
+subject=caf%C3%A9
+
+#data
+mailto:user@example.org?subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D
+#scheme
+mailto
+#path 
+user@example.org
+#query
+subject=%3D%3Futf-8%3FQ%3Fcaf%3DC3%3DA9%3F%3D
+
+#data
+mailto:user@example.org?subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
+#scheme mailto
+#path 
+user@example.org
+#query
+subject=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
+
+#data
+mailto:user@example.org?subject==?iso-8859-1?Q?caf%E9?=
+#scheme mailto
+#path 
+user@example.org
+#query
+subject==?iso-8859-1?Q?caf%E9?=
+
+#data
+mailto:user@example.org?body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
+#scheme mailto
+#path 
+user@example.org
+#query
+body=%3D%3Fiso-8859-1%3FQ%3Fcaf%3DE9%3F%3D
+
+#data
+mailto:user@example.org?subject=caf%C3%A9&body=caf%C3%A9
+#scheme mailto
+#path
+user@example.org
+#query
+subject=caf%C3%A9&body=caf%C3%A9
+
+#data escaped
+mailto:user@example.org?subject=\u4E00
+#canon
+mailto:user@example.org?subject=%E4%B8%80
+#scheme mailto
+#path 
+user@example.org
+#query escaped
+subject=%E4%B8%80
+
+#data escaped
+mailto:user@example.org?\u4E00=a
+#canon
+mailto:user@example.org?%E4%B8%80=a
+#scheme mailto
+#path 
+user@example.org
+#query escaped
+%E4%B8%80=a
+
+#data
+mailto:user@example.org?subject=%1B(BACXY%1B(Babx
+#scheme mailto
+#path 
+user@example.org
+#query
+subject=%1B(BACXY%1B(Babx
+
+#data
+mailto:user@example.org?subject=%81@%81A%9A%C1
+#scheme mailto
+#path 
+user@example.org
+#query
+subject=%81@%81A%9A%C1
+
+#data
+mailto:user@example.org?subject=%A1%A1%DB%DA%A3%DFab
+#scheme mailto
+#path 
+user@example.org
+#query
+subject=%A1%A1%DB%DA%A3%DFab
+
+#data
+mailto:user@%E7%B4%8D%E8%B1%86.example.org?subject=Test&body=NATTO
+#scheme
+mailto
+#path 
+user@%E7%B4%8D%E8%B1%86.example.org
+#query
+subject=Test&body=NATTO
+
+#data
+mailto:%E7%B4%8D%E8%B1%86@example.org?subject=Test&body=NATTO
+#scheme
+mailto
+#path 
+%E7%B4%8D%E8%B1%86@example.org
+#query
+subject=Test&body=NATTO
+
+#data
+mailto:user@xn--99zt52a.example.org?subject=Test&body=NATTO
+#scheme
+mailto
+#path 
+user@xn--99zt52a.example.org
+#query
+subject=Test&body=NATTO
+
+#data escaped
+mailto:user@\u4E00.example.org?subject=Test&body=NATTO
+#canon
+mailto:user@%E4%B8%80.example.org?subject=Test&body=NATTO
+#scheme
+mailto
+#path escaped
+user@%E4%B8%80.example.org
+#query
+subject=Test&body=NATTO
+
+#data escaped
+mailto:\u4E00@example.org?subject=Test&body=NATTO
+#canon
+mailto:%E4%B8%80@example.org?subject=Test&body=NATTO
+#scheme
+mailto
+#path escaped
+%E4%B8%80@example.org
+#query
+subject=Test&body=NATTO
+
+#data
+mailto:#
+#canon
+mailto:#
+#scheme mailto
+#path
+| #
+
+#data
+mailto:#foo
+#canon
+mailto:#foo
+#scheme mailto
+#path
+| #foo
+
+#data
+mailto:foo#bar@baz?subject=hoge
+#canon
+mailto:foo#bar@baz?subject=hoge
+#scheme mailto
+#path 
+foo#bar@baz
+#query
+subject=hoge
+
+#data
+mailto:foo@bar?body=hoge#foo
+#canon
+mailto:foo@bar?body=hoge#foo
+#scheme mailto
+#path foo@bar
+#query
+body=hoge#foo
+
+#data
+mailto:foo@bar?body=hoge#foo#bar
+#canon
+mailto:foo@bar?body=hoge#foo#bar
+#scheme mailto
+#path foo@bar
+#query
+body=hoge#foo#bar
+
+#data
+mailto:foo@bar?body=hoge#foo&subject=foo
+#canon
+mailto:foo@bar?body=hoge#foo&subject=foo
+#scheme mailto
+#path foo@bar
+#query
+body=hoge#foo&subject=foo
+
+#data
+//foo@bar
+#base
+mailto:hoge@foobar
+#invalid 1
+
+#data
+/foo/bar
+#base
+mailto:hoge@foobar
+#invalid 1
+
+#data
+/foo/bar
+#base
+mailTO:hoge@foobar
+#invalid 1
+
+#data
+./foo/bar
+#base mailto:foo@bar
+#invalid 1
+
+#data
+foo
+#base mailto:foo@bar
+#invalid 1
+
+#data
+?to=hoge@foo.bar
+#base
+mailto:foo@bar
+#invalid 1
+
+#data
+| #hoge
+#base
+mailto:foo@bar
+#invalid 1
+
+#data
+#base
+mailto:foo@bar
+#canon
+mailto:foo@bar
+#scheme mailto
+#path
+foo@bar
+
+#data
+#base
+mailTo:foo@bar
+#canon
+mailto:foo@bar
+#scheme mailto
+#path
+foo@bar
+
+#data escaped
+mail\u000Dto://hoge/foo@bar#baz
+#base
+http://foo/bar
+#canon
+mailto://hoge/foo@bar#baz
+#scheme mailto
+#path
+//hoge/foo@bar#baz

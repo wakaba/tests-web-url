@@ -1,0 +1,123 @@
+#data
+http://foo.bar:80/
+#canon http://foo.bar/
+#scheme http
+#host foo.bar
+#path /
+
+#data
+http://foo.bar:080/
+#canon http://foo.bar/
+#scheme http
+#host foo.bar
+#path /
+
+#data
+http://foo.bar:100/
+#canon http://foo.bar:100/
+#scheme http
+#host foo.bar
+#port 100
+#path /
+
+#data
+http://foo.bar:0100/
+#canon http://foo.bar:100/
+#scheme http
+#host foo.bar
+#port 100
+#path /
+
+#data
+http://foo.bar:65535/
+#canon http://foo.bar:65535/
+#scheme http
+#host foo.bar
+#port 65535
+#path /
+
+#data
+http://foo.bar:0000065535/
+#canon http://foo.bar:65535/
+#scheme http
+#host foo.bar
+#port 65535
+#path /
+
+#data
+http://foo.bar:65536/
+#invalid 1
+
+#data
+http://foo.bar:/
+#canon http://foo.bar/
+#scheme http
+#host foo.bar
+#path /
+
+#data
+http://foo.bar:0/
+#canon http://foo.bar:0/
+#scheme http
+#host foo.bar
+#port 0
+#path /
+
+#data
+http://foo.bar:000/
+#canon http://foo.bar:0/
+#scheme http
+#host foo.bar
+#port 0
+#path /
+
+#data
+http://foo.bar:0x10/
+#invalid 1
+
+#data
+http://foo.bar:100.0/
+#invalid 1
+
+#data
+http://foo.bar:abc/
+#invalid 1
+
+#data
+http://foo.bar:http/
+#invalid 1
+
+#data
+http://foo.bar:%38%30/
+#invalid 1
+
+#data
+http://foo.bar:%30/
+#invalid 1
+
+#data escaped
+http://foo.bar:\uFF18\uFF10/
+#invalid 1
+
+#data escaped
+http://foo.bar:\uFF18\uFF11/
+#invalid 1
+
+#data
+http://suika.fam.cx:80/
+#canon http://suika.fam.cx/
+#scheme http
+#host suika.fam.cx
+#path /
+
+#data
+http://suika.fam.cx:%380/
+#invalid 1
+
+#data
+http://suika.fam.cx:8%30/
+#invalid 1
+
+#data
+http://suika.fam.cx:%38%30/
+#invalid 1

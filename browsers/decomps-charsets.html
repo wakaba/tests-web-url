@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<style>
+  iframe {
+    width: 1px;
+    height: 1px;
+  }
+</style>
+
+<p id=result class=FAIL>FAIL (noscript)</p>
+
+<pre id=result-tap style="white-space:pre-wrap"></pre>
+
+<script src="http://suika.fam.cx/www/js/sami/script/sami-core.js"></script>
+<script src="http://suika.fam.cx/www/js/sami/script/sami-test.js"></script>
+
+<button id=submit-button type=button>Submit result</button>
+
+<nav>
+  <table>
+    <tr>
+      <th><code>decomps.dat</code>
+      <td>
+        <a href="decomps.html">Normal mode</a>
+      <td>
+        <a href="decomps.html?compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-charsets.dat</code>
+      <td>
+        <a href="decomps-charsets.html?decomps-charsets.dat">Normal mode</a>
+      <td>
+        <a href="decomps-charsets.html?decomps-charsets.dat;compat">Compat mode</a>
+  </table>
+  <a href="http://suika.fam.cx/gate/test-results/list/test1/all">Results</a>
+</nav>
+
+<script>
+  var r = document.getElementById ('result');
+  var tap = document.getElementById ('result-tap');
+  var tm = new SAMI.Test.Manager (r, new SAMI.StringContainer.Element (tap));
+  var button = document.getElementById ('submit-button');
+
+  var isHierarchicalScheme = {
+    http: true,
+    https: true,
+    ftp: true,
+    ldap: true,
+    file: true
+  };
+  var schemeDefaultPort = {
+    http: 80,
+    https: 443,
+    ftp: 21
+  };
+
+  var fileName = decodeURIComponent
+      ((location.search || '').replace (/^\?/, '').replace (/;.*/, ''));
+  if (!/\.dat$/.test(fileName)) fileName = 'decomps-charsets.dat';
+
+  var compatMode = location.search.match (/compat/);
+  var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
+  var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
+  var isIE = compatMode && document.all;
+  var isOpera = compatMode && window.opera;
+  var illegalURLs = 0;
+  if (isOpera) {
+    var a = document.createElement ('a');
+    a.href = 'http://\uFFFF/';
+    illegalURLs = parseInt (a.href.replace (/^opera:illegal-url-/, ''));
+    illegalURLs++;
+  }
+
+  if (isWebKit || isGecko) {
+    delete isHierarchicalScheme.ldap;
+  }
+
+  var names = [];
+  var labels = [];
+  var classes = [];
+  var results = [];
+  SAMI.Test.executeTestsByURL ('../data/' + fileName + '?' + Math.random (), {
+    data: {isPrefixed: true},
+    path: {isPrefixed: true}
+  }, function (test) {
+    var originalURL = test.getField ('data');
+    var baseURL = test.getFieldValue ('base');
+    if (baseURL == null) baseURL = originalURL;
+    var charset = test.getFieldValue ('charset');
+
+    getURL (originalURL, baseURL, charset, function (u) {
+
+    var actual;
+    try {
+      actual = {
+        url: u.href,
+        scheme: u.protocol,
+        host: u.hostname,
+        port: u.port,
+        path: u.pathname,
+        query: u.search,
+        fragment: u.hash
+      };
+      actual.hostport = u.host;
+    } catch (e) {
+      actual = {
+        url: null,
+        scheme: null,
+        host: null,
+        port: null,
+        path: null,
+        query: null,
+        fragment: null
+      };
+      actual.hostport = null;
+    }
+    var expected = {
+      url: test.getFieldValue ('canon'),
+      scheme: test.getFieldValue ('scheme'),
+      host: test.getFieldValue ('host'),
+      port: test.getFieldValue ('port'),
+      path: test.getFieldValue ('path'),
+      query: test.getFieldValue ('query'),
+      fragment: test.getFieldValue ('fragment')
+    };
+    if (expected.url == null) expected.url = originalURL;
+    var schemeNormalized = (expected.scheme || '').toLowerCase ();
+    if (isHierarchicalScheme[schemeNormalized]) {
+      expected.host = expected.host || '';
+      expected.port = expected.port || '';
+      expected.path = expected.path || '';
+      expected.query = expected.query == null ? '' : '?' + expected.query;
+      expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+    } else {
+      expected.host = '';
+      expected.port = '';
+      if (isWebKit || isIE) {
+        expected.path = expected.path || '';
+      } else {
+        expected.path = '';
+      }
+      expected.query = '';
+      expected.hostport = '';
+    }
+    expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
+    expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
+
+    if (isWebKit) {
+      if (expected.port == '') expected.port = "0";
+      if (expected.scheme == '') expected.scheme = ':';
+    }
+    if (isGecko || isWebKit || isIE) {
+      if (expected.query == '?') expected.query = '';
+      if (expected.fragment == '#') expected.fragment = '';
+    }
+    if (isIE || isOpera) {
+      if (expected.port == '') expected.port = schemeDefaultPort[schemeNormalized] || '';
+      if (!isOpera) expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      expected.path = expected.path.replace (/^\//, '');
+    }
+    
+    if (test.getFieldValue ('invalid')) {
+      expected = {
+        url: '',
+        scheme: '',
+        host: '',
+        port: '',
+        hostport: '',
+        path: '',
+        query: '',
+        fragment: ''
+      };
+
+      if (isWebKit) {
+        expected.url = test.getFieldValue ('invalid-canon');
+        expected.scheme = ':';
+        expected.port = '0';
+      }
+      if (isOpera) {
+        expected.url = 'opera:illegal-url-' + ++illegalURLs;
+        expected.scheme = 'opera:';
+        expected.host = undefined;
+        expected.port = '0';
+        expected.path = 'illegal-url-' + illegalURLs;
+        ++illegalURLs;
+      }
+    }
+    
+    var name = originalURL + ' + ' + baseURL;
+    if (charset) name += ' + ' + charset;
+    tm.is (actual.url, expected.url, name + ' canonical');
+    tm.is (actual.scheme, expected.scheme, name + ' scheme');
+    tm.is (actual.host, expected.host, name + ' host');
+    tm.is (actual.port, expected.port, name + ' port');
+    tm.is (actual.hostport, expected.hostport, name + ' hostport');
+    tm.is (actual.path, expected.path, name + ' path');
+    tm.is (actual.query, expected.query, name + ' query');
+    tm.is (actual.fragment, expected.fragment, name + ' fragment');
+
+      names.push (percentEncode (name));
+      labels.push (originalURL + "\n" + baseURL + (charset ? "\n" + charset : ''));
+      classes.push (actual.url == expected.url ? 'PASS' : 'FAIL');
+      results.push (actual.url);
+    });
+  }, function () {
+    // XXX
+
+    var doneButton = document.createElement ('button');
+    doneButton.innerHTML = 'Done';
+    doneButton.onclick = function () {
+      tm.done ();
+
+      var data = 'env-name=' + encodeURIComponent (navigator.userAgent);
+      for (var i = 0; i < names.length; i++) {
+        data += '&test-name=' + percentEncode (names[i]);
+        data += '&test-label=' + percentEncode (labels[i]);
+        data += '&test-class=' + percentEncode (classes[i]);
+        data += '&test-result=' + percentEncode (results[i]);
+      }
+      button.value = data;
+      doneButton.parentNode.removeChild (doneButton);
+    };
+    document.body.insertBefore (doneButton, document.body.firstChild);
+  }, function (e) {
+    tm.abort (e.type + ' - ' + e.text);
+  }, {
+    async: {
+      n: 30,
+      delay: 500
+    }
+  });
+
+  function getURL (url, baseURL, charset, onload) {
+    var iframe = document.createElement ('iframe');
+    var code = function () {
+      var el = iframe.contentWindow.document.getElementsByTagName ('a')[0];
+      onload (el);
+      iframe.onload = null;
+      iframe.onreadystate = null;
+      iframe.parentNode.removeChild (iframe);
+    };
+    iframe.onload = code;
+    iframe.onreadystatechange = function () {
+      if (iframe.contentWindow.document.readyState == 'complete') {
+        code ();
+      }
+    };
+    iframe.src = 'urltest-proxy.cgi?c=' + encodeURIComponent (charset) + '&u=' + encodeURIComponent (url) + '&b=' + encodeURIComponent (baseURL);
+    document.body.appendChild (iframe);
+  } // getURL
+
+  function percentEncode (s) {
+    try {
+      return encodeURIComponent (s);
+    } catch (e) {
+      s = s.replace (/[\uD800-\uDFFF]/g, function (c) {
+        return "\\u" + c.charCodeAt (0).toString (16).toUpperCase ();
+      });
+      return encodeURIComponent (s);
+    }
+  }
+
+  var testsetName = 'test1';
+  button.onclick = function () {
+    if (!button.value) return;
+    var url = 'http://suika.fam.cx/gate/test-results/list/' + testsetName;
+    var xhr = new XMLHttpRequest ();
+    xhr.open ('POST', url, true);
+    xhr.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        button.appendChild (document.createTextNode (' (Done: ' + xhr.status + ')'));
+      }
+    };
+    xhr.send (button.value);
+  };
+</script>
+<!-- License: Public Domain. -->

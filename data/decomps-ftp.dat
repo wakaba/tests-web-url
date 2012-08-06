@@ -1,0 +1,457 @@
+#data
+ftp://foo/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:0/
+#canon ftp://foo:0/
+#scheme ftp
+#host foo
+#port 0
+#path /
+
+#data
+ftp://foo:21/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:021/
+#canon ftp://foo/
+#scheme ftp
+#host foo
+#path /
+
+#data
+ftp://foo:80/
+#canon ftp://foo:80/
+#scheme ftp
+#host foo
+#port 80
+#path /
+
+#data
+ftp://foo:080/
+#canon ftp://foo:80/
+#scheme ftp
+#host foo
+#port 80
+#path /
+
+#data
+ftp://ftp.is.co.za/rfc/rfc1808.txt
+#scheme ftp
+#host ftp.is.co.za
+#path /rfc/rfc1808.txt
+
+#data
+ftp://user@example.com:/pub/ruby;type=i
+#canon
+ftp://user@example.com/pub/ruby;type=i
+#scheme ftp
+#user user
+#host example.com
+#path 
+/pub/ruby;type=i
+
+#data
+ftp://myname@host.dom/%2Fetc/motd
+#scheme ftp
+#user myname
+#host host.dom
+#path
+/%2Fetc/motd
+
+#data
+ftp://foo:@hoge/
+#canon
+ftp://foo@hoge/
+#scheme ftp
+#user foo
+#host hoge
+#path /
+
+#data
+ftp://foo@
+#canon
+ftp://foo@/
+#scheme ftp
+#user foo
+#host
+#path /
+
+#data escaped
+ftp://\u4e00.jp/
+#canon
+ftp://xn--4gq.jp/
+#scheme ftp
+#host 
+xn--4gq.jp
+#path /
+
+#data escaped
+ftp://\u4e00\u3002j%70/
+#canon
+ftp://xn--4gq.jp/
+#scheme ftp
+#host
+xn--4gq.jp
+#path /
+
+#data
+ftp://localhost/hoge
+#scheme ftp
+#host localhost
+#path /hoge
+
+#data
+ftp://foo/bar/baz
+#scheme ftp
+#host foo
+#path /bar/baz
+
+#data
+ftp://foo/b%61r/baz
+#canon
+ftp://foo/bar/baz
+#scheme ftp
+#host foo
+#path /bar/baz
+
+#data
+ftp://foo/b%2cr/baz
+#canon
+ftp://foo/b%2cr/baz
+#scheme ftp
+#host foo
+#path /b%2cr/baz
+
+#data escaped
+ftp://foo/ba\u4e00/hoge
+#canon
+ftp://foo/ba%E4%B8%80/hoge
+#scheme ftp
+#host foo
+#path 
+/ba%E4%B8%80/hoge
+
+#data
+ftp://foo//bar//baz
+#scheme ftp
+#host foo
+#path //bar//baz
+
+#data
+ftp://foo/bar/../baz
+#canon
+ftp://foo/baz
+#scheme ftp
+#host foo
+#path /baz
+
+#data
+ftp:///foo/bar
+#canon
+ftp:///foo/bar
+#scheme ftp
+#host 
+#path /foo/bar
+
+#data
+ftp://hoge\bar\baz
+#canon
+ftp://hoge/bar/baz
+#scheme ftp
+#host hoge
+#path /bar/baz
+
+#data
+ftp://foo;type=i
+#canon
+ftp://foo%3Btype%3Di/
+#scheme ftp
+#host
+foo%3Btype%3Di
+#path /
+
+#data
+ftp://foo;type=A
+#canon
+ftp://foo%3Btype%3Da/
+#scheme ftp
+#host
+foo%3Btype%3Da
+#path /
+
+#data
+ftp://foo;type=%61
+#canon
+ftp://foo%3Btype%3Da/
+#scheme ftp
+#host
+foo%3Btype%3Da
+#path /
+
+#data
+ftp://foo/bar;type=hoge
+#scheme ftp
+#host foo
+#path 
+/bar;type=hoge
+
+#data
+ftp://foo/bar/;type=d
+#scheme ftp
+#host foo
+#path 
+/bar/;type=d
+
+#data
+ftp://foo/bar/;type=D
+#scheme ftp
+#host foo
+#path 
+/bar/;type=D
+
+#data
+ftp://foo/bar/;type=%64
+#canon
+ftp://foo/bar/;type=d
+#scheme ftp
+#host foo
+#path 
+/bar/;type=d
+
+#data
+ftp://foo/bar/baz;type=a/hoge/../..
+#canon
+ftp://foo/bar/
+#scheme ftp
+#host foo
+#path /bar/
+
+#data
+ftp://foo/bar?type=d
+#scheme ftp
+#host foo
+#path /bar
+#query type=d
+
+#data
+ftp://foo/bar?type=D
+#scheme ftp
+#host foo
+#path /bar
+#query type=D
+
+#data
+ftp://foo/bar?type=%64
+#scheme ftp
+#host foo
+#path /bar
+#query type=%64
+
+#data
+ftp://foo/bar#baz
+#scheme ftp
+#host foo
+#path /bar
+#fragment baz
+
+#data
+hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://foo/bar/hoge
+#scheme ftp
+#host foo
+#path /bar/hoge
+
+#data
+./hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://foo/bar/hoge
+#scheme ftp
+#host foo
+#path /bar/hoge
+
+#data
+/hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://foo/hoge
+#scheme ftp
+#host foo
+#path /hoge
+
+#data
+//hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://hoge/
+#scheme ftp
+#host hoge
+#path /
+
+#data
+?hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://foo/bar/baz?hoge
+#scheme ftp
+#host foo
+#path /bar/baz
+#query hoge
+
+#data
+| #hoge
+#base
+ftp://foo/bar/baz
+#canon
+ftp://foo/bar/baz#hoge
+#scheme ftp
+#host foo
+#path /bar/baz
+#fragment hoge
+
+#data
+?hoge
+#base
+ftp://foo/bar/baz;type=i
+#canon
+ftp://foo/bar/baz;type=i?hoge
+#scheme ftp
+#host foo
+#path 
+/bar/baz;type=i
+#query hoge
+
+#data
+| #hoge
+#base
+ftp://foo/bar/baz;type=i
+#canon
+ftp://foo/bar/baz;type=i#hoge
+#scheme ftp
+#host foo
+#path 
+/bar/baz;type=i
+#fragment hoge
+
+#data
+hoge;type=a
+#base
+ftp://foo/bar/baz;type=i
+#canon
+ftp://foo/bar/hoge;type=a
+#scheme ftp
+#host foo
+#path 
+/bar/hoge;type=a
+
+#data
+ftp:hoge
+#base
+http://foo/bar/baz
+#canon
+ftp:hoge
+#scheme ftp
+#path hoge
+
+#data
+ftp:/hoge
+#base
+http://foo/bar/baz
+#canon
+ftp:/hoge
+#scheme ftp
+#path /hoge
+
+#data
+ftp://hoge
+#base
+http://foo/bar/baz
+#canon
+ftp://hoge/
+#scheme ftp
+#host hoge
+#path /
+
+#data
+ftp:///hoge
+#base
+http://foo/bar/baz
+#canon
+ftp:///hoge
+#scheme ftp
+#host 
+#path /hoge
+
+#data
+ftp:?hoge
+#base
+http://foo/bar/baz
+#canon 
+ftp:?hoge
+#scheme ftp
+#path 
+#query hoge
+
+#data
+ftp:#hoge
+#base
+http://foo/bar/baz
+#canon
+ftp:#hoge
+#scheme ftp
+#path 
+#fragment hoge
+
+#data
+ftp:
+#base
+http://foo/
+#canon
+ftp:
+#scheme ftp
+#path
+
+#data
+ftp:foobar
+#base
+ftp://hoge/abc/def
+#canon
+ftp://hoge/abc/foobar
+#scheme ftp
+#host hoge
+#path /abc/foobar
+
+#data
+ftp:foobar?a#b
+#base
+ftp://hoge/abc/def
+#canon
+ftp://hoge/abc/foobar?a#b
+#scheme ftp
+#host hoge
+#path /abc/foobar
+#query a
+#fragment b

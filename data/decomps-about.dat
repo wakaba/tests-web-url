@@ -1,0 +1,598 @@
+#data
+about:
+#base
+http://test/
+#canon
+about:
+#scheme about
+#path
+
+#data
+about:blank
+#base
+http://test/
+#canon
+about:blank
+#scheme about
+#path blank
+
+#data
+about:srcdoc
+#base
+http://test/
+#canon
+about:srcdoc
+#scheme about
+#path srcdoc
+
+#data
+about:legacy-compat
+#base
+http://test/
+#canon
+about:legacy-compat
+#scheme about
+#path legacy-compat
+
+#data
+about:mozilla
+#base
+http://test/
+#canon
+about:mozilla
+#scheme about
+#path mozilla
+
+#data
+about:hoge
+#base
+http://test/
+#canon
+about:hoge
+#scheme about
+#path hoge
+
+#data
+about:hoge/../
+#base
+http://test/
+#canon
+about:hoge/../
+#scheme about
+#path 
+hoge/../
+
+#data
+about:foo?bar
+#base
+http://test/
+#canon
+about:foo?bar
+#scheme about
+#path
+foo?bar
+
+#data
+about:<script>alert(1)</script>
+#base
+http://test/
+#canon
+about:<script>alert(1)</script>
+#scheme about
+#path
+<script>alert(1)</script>
+
+#data escaped
+about:foo \u4e00 b
+#base
+http://test/
+#canon
+about:foo %E4%B8%80 b
+#scheme about
+#path
+foo %E4%B8%80 b
+
+#data
+about:blank?hoge
+#base
+http://test/
+#canon
+about:blank?hoge
+#scheme about
+#path 
+blank?hoge
+
+#data
+about:blank#foo
+#base
+http://test/
+#canon
+about:blank#foo
+#scheme about
+#path 
+blank#foo
+
+#data
+about:http://foo/
+#base
+http://test/
+#canon
+about:http://foo/
+#scheme about
+#path
+http://foo/
+
+#data
+about:http://foo
+#base
+http://test/
+#canon
+about:http://foo
+#scheme about
+#path
+http://foo
+
+#data
+about:DesktopItemNavigationFailure
+#base
+http://test/
+#canon
+about:DesktopItemNavigationFailure
+#scheme about
+#path DesktopItemNavigationFailure
+
+#data
+about://antenna/
+#base
+http://test/
+#canon
+about://antenna/
+#scheme about
+#path
+//antenna/
+
+#data
+about://namazu/?name=value
+#base
+http://test/
+#canon
+about://namazu/?name=value
+#scheme about
+#path
+//namazu/?name=value
+
+#data escaped
+about://weather/\u4e00
+#canon
+about://weather/%E4%B8%80
+#scheme about
+#path
+//weather/%E4%B8%80
+
+#data
+hoge
+#base
+about://weather/foo
+#invalid 1
+
+#data
+//hoge
+#base
+about://weather/foo
+#invalid 1
+
+#data
+/hoge
+#base
+about://weather/foo
+#invalid 1
+
+#data
+?hoge
+#base
+about://weather/foo
+#invalid 1
+
+#data
+| #hoge
+#base
+about://weather/foo
+#invalid 1
+
+#data
+hoge
+#base
+about:weather/foo
+#invalid 1
+
+#data
+hoge
+#base
+about:weather/foo
+#invalid 1
+
+#data
+/hoge
+#base
+about:weather/foo
+#invalid 1
+
+#data
+?hoge
+#base
+about:weather/foo
+#invalid 1
+
+#data
+| #hoge
+#base
+about:weather/foo
+#invalid 1
+
+#data
+opera:
+#base http://test/
+#scheme opera
+#path
+
+#data
+opera:blank
+#base http://test/
+#scheme opera
+#path blank
+
+#data
+opera:mozilla
+#base http://test/
+#scheme opera
+#path mozilla
+
+#data
+opera:blank
+#base http://test/
+#scheme opera
+#path blank
+
+#data
+opera:illegal-url-2
+#base http://test/
+#scheme opera
+#path illegal-url-2
+
+#data
+opera:/help/mail.html
+#scheme opera
+#path /help/mail.html
+
+#data
+opera://foo
+#canon
+opera://foo/
+#base http://test/
+#scheme opera
+#host foo
+#path /
+
+#data
+opera:blank?hoge
+#base http://test/
+#scheme opera
+#path blank
+#query hoge
+
+#data
+opera:blank#foo
+#base http://test/
+#scheme opera
+#path 
+blank
+#fragment foo
+
+#data
+view-source:
+#base http://test/
+#scheme view-source
+#path
+
+#data
+view-source:foo
+#base http://test/
+#scheme view-source
+#path foo
+
+#data
+view-source:http://foo
+#base http://test/
+#scheme view-source
+#path
+http://foo
+
+#data
+view-source:http://foo?bar#baz
+#base http://test/
+#scheme view-source
+#path
+http://foo
+#query bar
+#fragment baz
+
+#data
+view-source://foo
+#base http://test/
+#canon
+view-source://foo/
+#scheme view-source
+#host foo
+#path /
+
+#data
+view-source:http://[12:45::555]/
+#base http://foo/
+#canon
+view-source:http://[12:45::555]/
+#scheme view-source
+#path
+http://[12:45::555]/
+
+#data
+view-source:view-source:http://foo
+#baes http://foo/
+#scheme view-source
+#path
+view-source:http://foo
+
+#data
+view-source:telnet://foo/
+#scheme view-source
+#path
+telnet://foo/
+
+#data
+baz
+#base
+view-source:http://foo/bar
+#invalid 1
+
+#data
+| #baz
+#base
+view-source:http://foo/bar
+#invalid 1
+
+#data
+chrome:
+#base http://test/
+#scheme chrome
+#path 
+
+#data
+chrome:foobar
+#base http://test/
+#scheme chrome
+#path foobar
+
+#data
+chrome://hoge/foo/bar
+#base http://test/
+#scheme chrome
+#host hoge
+#path /foo/bar
+
+#data
+chrome://downloads/
+#base http://test/
+#scheme chrome
+#host downloads
+#path /
+
+#data
+/hoge
+#base chrome://hoge/foo/bar
+#canon
+chrome://hoge/hoge
+#scheme chrome
+#host hoge
+#path /hoge
+
+#data
+hoge
+#base chrome://hoge/foo/bar
+#canon
+chrome://hoge/foo/hoge
+#scheme chrome
+#host hoge
+#path /foo/hoge
+
+#data
+| #hoge
+#base chrome://hoge/foo/bar
+#canon
+chrome://hoge/foo/bar#hoge
+#scheme chrome
+#host hoge
+#path /foo/bar
+#fragment hoge
+
+#data
+/hoge
+#base chrome:foobar
+#invalid 1
+
+#data
+hoge
+#base chrome:foobar
+#invalid 1
+
+#data
+| #/hoge
+#base chrome:foobar
+#invalid 1
+
+#data
+wysiwyg:
+#base http://test/
+#scheme wysiwyg
+#path 
+
+#data
+wysiwyg:foobar
+#base http://test/
+#scheme wysiwyg
+#path foobar
+
+#data
+wysiwyg://hoge/foo/bar
+#base http://test/
+#scheme wysiwyg
+#host hoge
+#path /foo/bar
+
+#data
+/hoge
+#base wysiwyg://hoge/foo/bar
+#canon
+wysiwyg://hoge/hoge
+#scheme wysiwyg
+#host hoge
+#path /hoge
+
+#data
+hoge
+#base wysiwyg://hoge/foo/bar
+#canon
+wysiwyg://hoge/foo/hoge
+#scheme wysiwyg
+#host hoge
+#path /foo/hoge
+
+#data
+| #hoge
+#base wysiwyg://hoge/foo/bar
+#canon
+wysiwyg://hoge/foo/bar#hoge
+#scheme wysiwyg
+#host hoge
+#path /foo/bar
+#fragment hoge
+
+#data
+/hoge
+#base wysiwyg:foobar
+#invalid 1
+
+#data
+hoge
+#base wysiwyg:foobar
+#invalid 1
+
+#data
+| #/hoge
+#base wysiwyg:foobar
+#invalid 1
+
+#data
+res:
+#base http://foo/
+#scheme res
+#path
+
+#data
+res://shdoclc.dll/ORGFAV.DLG
+#base http://foo/
+#scheme res
+#host
+shdoclc.dll
+#path
+/ORGFAV.DLG
+
+#data
+res:path/in/classpath/image.png
+#scheme res
+#path
+path/in/classpath/image.png
+
+#data
+/hoge
+#base
+res://foo/bar
+#canon
+res://foo/hoge
+#scheme res
+#host foo
+#path /hoge
+
+#data
+res://C:\WINDOWS\system32\shdoclc.dll/dnserror
+#canon
+res://c/WINDOWS/system32/shdoclc.dll/dnserror
+#base
+http://foo/
+#scheme res
+#host c
+#path
+/WINDOWS/system32/shdoclc.dll/dnserror
+
+#data
+res://C:\WINDOWS\system32\shdocpe.dll/security.htm#subID=BSW;677
+#canon
+res://c/WINDOWS/system32/shdocpe.dll/security.htm#subID=BSW;677
+#base http://foo/
+#scheme res
+#host c
+#path
+/WINDOWS/system32/shdocpe.dll/security.htm
+#fragment
+subID=BSW;677
+
+#data
+res://foo\bar
+#canon
+res://foo/bar
+#scheme res
+#host foo
+#path /bar
+
+#data
+resource:/res/forms.css
+#scheme resource
+#path /res/forms.css
+
+#data
+resource:///res/builtin/htmlBindings.xml#inputFieldsBase
+#scheme resource
+#host
+#path 
+/res/builtin/htmlBindings.xml
+#fragment inputFieldsBase
+
+#data
+resource://foo/bar
+#scheme resource
+#host foo
+#path /bar
+
+#data
+resource:hoge?foo
+#scheme resource
+#path hoge
+#query foo
+
+#data
+resource://app/my_module.jsm
+#scheme resource
+#host app
+#path /my_module.jsm
+
+#data
+shell:My Pictures
+#canon
+shell:My Pictures
+#scheme shell
+#path 
+My Pictures
+
+#data
+shell:windows\web\tip.htm
+#scheme shell
+#path
+windows\web\tip.htm

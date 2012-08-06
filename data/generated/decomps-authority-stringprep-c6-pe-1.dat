@@ -1,0 +1,95 @@
+#data escaped
+http://a%EF%BF%B9b/
+#invalid 1
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
+http://a%EF%BF%B9b/
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a%ef%bf%b9b/
+#gecko-host escaped
+a%ef%bf%b9b
+#ie-canon escaped
+http://a%ef%bf%b9b/
+#ie-host escaped
+a%ef%bf%b9b
+#ie-invalid 
+
+#data escaped
+http://a%EF%BF%BAb/
+#invalid 1
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
+http://a%EF%BF%BAb/
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a%ef%bf%bab/
+#gecko-host escaped
+a%ef%bf%bab
+#ie-canon escaped
+http://a%ef%bf%bab/
+#ie-host escaped
+a%ef%bf%bab
+#ie-invalid 
+
+#data escaped
+http://a%EF%BF%BBb/
+#invalid 1
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
+http://a%EF%BF%BBb/
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a%ef%bf%bbb/
+#gecko-host escaped
+a%ef%bf%bbb
+#ie-canon escaped
+http://a%ef%bf%bbb/
+#ie-host escaped
+a%ef%bf%bbb
+#ie-invalid 
+
+#data escaped
+http://a%EF%BF%BCb/
+#invalid 1
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
+http://a%EF%BF%BCb/
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a%ef%bf%bcb/
+#gecko-host escaped
+a%ef%bf%bcb
+#ie-canon escaped
+http://a%ef%bf%bcb/
+#ie-host escaped
+a%ef%bf%bcb
+#ie-invalid 
+
+#data escaped
+http://a%EF%BF%BDb/
+#invalid 1
+#scheme http
+#path /
+#chrome-invalid 1
+#chrome-canon escaped
+http://a%EF%BF%BDb/
+#gecko-not-invalid 1
+#gecko-canon escaped
+http://a%ef%bf%bdb/
+#gecko-host escaped
+a%ef%bf%bdb
+#ie-canon escaped
+http://a%ef%bf%bdb/
+#ie-host escaped
+a%ef%bf%bdb
+#ie-invalid 
+

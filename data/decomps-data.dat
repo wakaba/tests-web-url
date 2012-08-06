@@ -1,0 +1,1267 @@
+#data
+data:
+#scheme data
+#path
+
+#data
+DATA:
+#canon data:
+#scheme data
+#path
+
+#data
+Data:
+#canon data:
+#scheme data
+#path
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:%2C
+#scheme data
+#path %2C
+
+#data
+data:text
+#scheme data
+#path text
+
+#data
+data:test
+#scheme data
+#path test
+
+#data
+data:,
+#scheme data
+#path ,
+
+#data
+data:text/plain
+#scheme data
+#path text/plain
+
+#data
+data:text/plain,
+#scheme data
+#path text/plain,
+
+#data
+data:text/plain;charset=utf-16,
+#scheme data
+#path text/plain;charset=utf-16,
+
+#data
+data:text,abc
+#scheme data
+#path text,abc
+
+#data
+data:text/plain;charset=us-ascii;abc
+#scheme data
+#path text/plain;charset=us-ascii;abc
+
+#data
+data:text/plain;charset=us-ascii,abc
+#scheme data
+#path text/plain;charset=us-ascii,abc
+
+#data
+data:,a,b
+#scheme data
+#path ,a,b
+
+#data
+data:,foo bar
+#canon 
+data:,foo bar
+#scheme data
+#path 
+,foo bar
+
+#data
+data:,abc#def
+#scheme data
+#path ,abc#def
+
+#data
+data:,abc#def#ghi
+#scheme data
+#path ,abc#def#ghi
+
+#data
+data:text / plain,abc
+#canon
+data:text / plain,abc
+#scheme data
+#path 
+text / plain,abc
+
+#data
+data: text/plain ,abc
+#canon 
+data: text/plain ,abc
+#scheme data
+#path
+ text/plain ,abc
+
+#data
+data:TEXT/PLAIN,ABC
+#scheme data
+#path TEXT/PLAIN,ABC
+
+#data
+data:text\plain,abc
+#canon 
+data:text\plain,abc
+#scheme data
+#path 
+text\plain,abc
+
+#data
+data:text/./plain,abc
+#scheme data
+#path text/./plain,abc
+
+#data
+data:application/../text/plain,abc
+#scheme data
+#path application/../text/plain,abc
+
+#data
+data:;,test
+#scheme data
+#path ;,test
+
+#data
+data:text/plain;,abc
+#scheme data
+#path text/plain;,abc
+
+#data
+data:,A%20brief%20note
+#scheme data
+#path ,A%20brief%20note
+
+#data
+data:text/plain;charset,abc
+#scheme data
+#path text/plain;charset,abc
+
+#data
+data:text/plain; charset=us-ascii,abc
+#canon
+data:text/plain; charset=us-ascii,abc
+#scheme data
+#path
+text/plain; charset=us-ascii,abc
+
+#data
+data:text/plain;charset=US-ASCII,test
+#scheme data
+#path text/plain;charset=US-ASCII,test
+
+#data
+data:;charset=UTF-8,Hello
+#scheme data
+#path ;charset=UTF-8,Hello
+
+#data
+data:text/plain;charset=iso-8859-1,%A1%A2
+#canon data:text/plain;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset=iso-8859-7,%b8%f7%fe
+#scheme data
+#path text/plain;charset=iso-8859-7,%b8%f7%fe
+
+#data
+data:text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset=iso-8859-1;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset;charset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;charset;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain;CHARSET=us-ascii,abc
+#scheme data
+#path text/plain;CHARSET=us-ascii,abc
+
+#data
+data:text/plain;charset=us-ascii ,abc
+#canon 
+data:text/plain;charset=us-ascii ,abc
+#scheme data
+#path 
+text/plain;charset=us-ascii ,abc
+
+#data
+data:text/plain;charset="us-ascii",abc
+#canon data:text/plain;charset="us-ascii",abc
+#scheme data
+#path text/plain;charset="us-ascii",abc
+
+#data
+data:text/plain;charset="euc-jp",%A1%A2
+#canon
+data:text/plain;charset="euc-jp",%A1%A2
+#scheme data
+#path text/plain;charset="euc-jp",%A1%A2
+
+#data
+data:text/plain;charset='euc-jp',%A1%A2
+#scheme data
+#path text/plain;charset='euc-jp',%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+#scheme data
+#path text/plain;noncharset=euc-jp;charset=iso-8859-1,%A1%A2
+
+#data
+data:text/plain;charset=%22euc-jp%22,%A1%A2
+#scheme data
+#path text/plain;charset=%22euc-jp%22,%A1%A2
+
+#data
+data:text/plain;charset="\euc-jp",%A1%A2
+#canon data:text/plain;charset="\euc-jp",%A1%A2
+#scheme data
+#path text/plain;charset="\euc-jp",%A1%A2
+
+#data
+data:text/plain;x-data="#",abc
+#canon data:text/plain;x-data="#",abc
+#scheme data
+#path text/plain;x-data="#",abc
+
+#data
+data:text/plain;x-title="Hello,%20FAIL";,PASS
+#canon data:text/plain;x-title="Hello,%20FAIL";,PASS
+#scheme data
+#path text/plain;x-title="Hello,%20FAIL";,PASS
+
+#data
+data:t%65xt/plain;charset=euc-jp,%A1%A2
+#canon data:t%65xt/plain;charset=euc-jp,%A1%A2
+#scheme data
+#path t%65xt/plain;charset=euc-jp,%A1%A2
+
+#data
+data:text%2Fplain;charset=euc-jp,%A1%A2
+#scheme data
+#path text%2Fplain;charset=euc-jp,%A1%A2
+
+#data
+data:text/pl%61in;charset=euc-jp,%A1%A2
+#canon
+data:text/pl%61in;charset=euc-jp,%A1%A2
+#scheme data
+#path text/pl%61in;charset=euc-jp,%A1%A2
+
+#data
+data:text/plain%3Bcharset=euc-jp,%A1%A2
+#scheme data
+#path text/plain%3Bcharset=euc-jp,%A1%A2
+
+#data
+data:text/plain;%63harset=euc-jp,%A1%A2
+#canon
+data:text/plain;%63harset=euc-jp,%A1%A2
+#scheme data
+#path text/plain;%63harset=euc-jp,%A1%A2
+
+#data
+data:text/plain;charset%3Deuc-jp,%A1%A2
+#scheme data
+#path text/plain;charset%3Deuc-jp,%A1%A2
+
+#data
+data:text/plain;charset=eu%63-jp,%A1%A2
+#canon data:text/plain;charset=eu%63-jp,%A1%A2
+#scheme data
+#path text/plain;charset=eu%63-jp,%A1%A2
+
+#data
+data:text/plain;charset=us-ascii%2Cabc
+#scheme data
+#path text/plain;charset=us-ascii%2Cabc
+
+#data
+data:text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+#scheme data
+#path text/plain;charset=iso-8859-8-i,%f9%ec%e5%ed
+
+#data
+data:text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+#scheme data
+#path text/plain;charset=UTF-8,%d7%a9%d7%9c%d7%95%d7%9d
+
+#data
+data:,;test
+#scheme data
+#path ,;test
+
+#data
+data:,a+b+c
+#scheme data
+#path ,a+b+c
+
+#data
+data:,a/../b
+#scheme data
+#path ,a/../b
+
+#data
+data:,a/./b
+#scheme data
+#path ,a/./b
+
+#data
+data:text/plain;charset=thing;base64;test
+#scheme data
+#path text/plain;charset=thing;base64;test
+
+#data
+data:text/plain;charset=unknown;base64,test
+#scheme data
+#path text/plain;charset=unknown;base64,test
+
+#data
+data:;charset=,test
+#scheme data
+#path ;charset=,test
+
+#data
+data:application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+#scheme data
+#path application/vnd-xxx-query,select_vcount,fcol_from_fieldtable/local
+
+#data
+data:application/octet-stream;name=filename.dat,abc
+#scheme data
+#path application/octet-stream;name=filename.dat,abc
+
+#data
+data:application/x-unknown;name=filename.dat,abc
+#scheme data
+#path application/x-unknown;name=filename.dat,abc
+
+#data
+data:;base64,
+#scheme data
+#path ;base64,
+
+#data
+data:;base64,hello
+#scheme data
+#path ;base64,hello
+
+#data
+data:text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+#scheme data
+#path text/plain;charset=iso-8859-8-i;base64,+ezl7Q==
+
+#data
+data:text/plain;charset=UTF-8;base64,16nXnNeV150=
+#scheme data
+#path text/plain;charset=UTF-8;base64,16nXnNeV150=
+
+#data
+data:text/html;base64,VGhpcyBpcyBhIHRlc3QK
+#scheme data
+#path text/html;base64,VGhpcyBpcyBhIHRlc3QK
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK!?!?
+
+#data
+data:text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+#scheme data
+#path text/plain;base64,VGhpcyBpcyBhIHRlc3QK#fragment
+
+#data
+data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
+#canon
+data:text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
+#scheme data
+#path text/plain;base64,VG!h$pcy]BpcyBh[IHRl>c3QK
+
+#data
+data:text/plain,a
+bcde
+#canon
+data:text/plain,abcde
+#scheme data
+#path
+text/plain,abcde
+
+#data
+data:,Data%20was:%20'%%%%'
+#scheme data
+#path ,Data%20was:%20'%%%%'
+
+#data
+data:text/plain,abcdefg/ef
+#scheme data
+#path text/plain,abcdefg/ef
+
+#data
+data:text/plain,abcdefg/ef#foo
+#scheme data
+#path text/plain,abcdefg/ef#foo
+
+#data escaped
+data:,\u4e00
+#canon
+data:,%E4%B8%80
+#scheme data
+#path
+,%E4%B8%80
+
+#data
+data:,foo?bar=baz
+#scheme data
+#path
+,foo?bar=baz
+
+#data escaped
+data:,foo?bar=baz\u4e00
+#canon
+data:,foo?bar=baz%E4%B8%80
+#scheme data
+#path
+,foo?bar=baz%E4%B8%80
+
+#data escaped
+data:,fo\u0000o
+#canon
+data:,fo%00o
+#scheme data
+#path
+,fo%00o
+
+#data escaped
+data:,fo\u0001o
+#canon
+data:,fo%01o
+#scheme data
+#path
+,fo%01o
+
+#data escaped
+data:,fo\u0002o
+#canon
+data:,fo%02o
+#scheme data
+#path
+,fo%02o
+
+#data escaped
+data:,fo\u0008o
+#canon
+data:,fo%08o
+#scheme data
+#path
+,fo%08o
+
+#data escaped
+data:,fo\u0009o
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000ao
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000bo
+#canon
+data:,fo%0Bo
+#scheme data
+#path
+,fo%0Bo
+
+#data escaped
+data:,fo\u000Co
+#canon
+data:,fo%0Co
+#scheme data
+#path
+,fo%0Co
+
+#data escaped
+data:,fo\u000Do
+#canon
+data:,foo
+#scheme data
+#path
+,foo
+
+#data escaped
+data:,fo\u000Eo
+#canon
+data:,fo%0Eo
+#scheme data
+#path
+,fo%0Eo
+
+#data escaped
+data:,fo\u000fo
+#canon
+data:,fo%0Fo
+#scheme data
+#path
+,fo%0Fo
+
+#data escaped
+data:,fo\u001Bo
+#canon
+data:,fo%1Bo
+#scheme data
+#path
+,fo%1Bo
+
+#data escaped
+data:,fo\u001Fo
+#canon
+data:,fo%1Fo
+#scheme data
+#path
+,fo%1Fo
+
+#data escaped
+data:,fo\u0020o
+#canon
+data:,fo o
+#scheme data
+#path
+,fo o
+
+#data escaped
+data:,fo\u0021o
+#canon
+data:,fo!o
+#scheme data
+#path
+,fo!o
+
+#data escaped
+data:,fo\u0022o
+#canon
+data:,fo"o
+#scheme data
+#path
+,fo"o
+
+#data escaped
+data:,fo\u0024o
+#canon
+data:,fo$o
+#scheme data
+#path
+,fo$o
+
+#data escaped
+data:,fo\u0025o
+#canon
+data:,fo%o
+#scheme data
+#path
+,fo%o
+
+#data escaped
+data:,fo\u0026o
+#canon
+data:,fo&o
+#scheme data
+#path
+,fo&o
+
+#data escaped
+data:,fo\u0027o
+#canon
+data:,fo'o
+#scheme data
+#path
+,fo'o
+
+#data escaped
+data:,fo\u0028o
+#canon
+data:,fo(o
+#scheme data
+#path
+,fo(o
+
+#data escaped
+data:,fo\u0029o
+#canon
+data:,fo)o
+#scheme data
+#path
+,fo)o
+
+#data escaped
+data:,fo\u002ao
+#canon
+data:,fo*o
+#scheme data
+#path
+,fo*o
+
+#data escaped
+data:,fo\u002bo
+#canon
+data:,fo+o
+#scheme data
+#path
+,fo+o
+
+#data escaped
+data:,fo\u002co
+#canon
+data:,fo,o
+#scheme data
+#path
+,fo,o
+
+#data escaped
+data:,fo\u002do
+#canon
+data:,fo-o
+#scheme data
+#path
+,fo-o
+
+#data escaped
+data:,fo\u002eo
+#canon
+data:,fo.o
+#scheme data
+#path
+,fo.o
+
+#data escaped
+data:,fo\u002fo
+#canon
+data:,fo/o
+#scheme data
+#path
+,fo/o
+
+#data escaped
+data:,fo\u0030o
+#canon
+data:,fo0o
+#scheme data
+#path
+,fo0o
+
+#data escaped
+data:,fo\u003ao
+#canon
+data:,fo:o
+#scheme data
+#path
+,fo:o
+
+#data escaped
+data:,fo\u003bo
+#canon
+data:,fo;o
+#scheme data
+#path
+,fo;o
+
+#data escaped
+data:,fo\u003co
+#canon
+data:,fo<o
+#scheme data
+#path
+,fo<o
+
+#data escaped
+data:,fo\u003do
+#canon
+data:,fo=o
+#scheme data
+#path
+,fo=o
+
+#data escaped
+data:,fo\u003eo
+#canon
+data:,fo>o
+#scheme data
+#path
+,fo>o
+
+#data escaped
+data:,fo\u0040o
+#canon
+data:,fo@o
+#scheme data
+#path
+,fo@o
+
+#data escaped
+data:,fo\u0041o
+#canon
+data:,foAo
+#scheme data
+#path
+,foAo
+
+#data escaped
+data:,fo\u005Bo
+#canon
+data:,fo[o
+#scheme data
+#path
+,fo[o
+
+#data escaped
+data:,fo\u005Co
+#canon
+data:,fo\o
+#scheme data
+#path
+,fo\o
+
+#data escaped
+data:,fo\u005Do
+#canon
+data:,fo]o
+#scheme data
+#path
+,fo]o
+
+#data escaped
+data:,fo\u005Eo
+#canon
+data:,fo^o
+#scheme data
+#path
+,fo^o
+
+#data escaped
+data:,fo\u005Fo
+#canon
+data:,fo_o
+#scheme data
+#path
+,fo_o
+
+#data escaped
+data:,fo\u0060o
+#canon
+data:,fo`o
+#scheme data
+#path
+,fo`o
+
+#data escaped
+data:,fo\u0061o
+#canon
+data:,foao
+#scheme data
+#path
+,foao
+
+#data escaped
+data:,fo\u007ao
+#canon
+data:,fozo
+#scheme data
+#path
+,fozo
+
+#data escaped
+data:,fo\u007Bo
+#canon
+data:,fo{o
+#scheme data
+#path
+,fo{o
+
+#data escaped
+data:,fo\u007co
+#canon
+data:,fo|o
+#scheme data
+#path
+,fo|o
+
+#data escaped
+data:,fo\u007do
+#canon
+data:,fo}o
+#scheme data
+#path
+,fo}o
+
+#data escaped
+data:,fo\u007Eo
+#canon
+data:,fo~o
+#scheme data
+#path
+,fo~o
+
+#data escaped
+data:,fo\u007Fo
+#canon
+data:,fo%7Fo
+#scheme data
+#path
+,fo%7Fo
+
+#data escaped
+data:,fo\u0080o
+#canon
+data:,fo%C2%80o
+#scheme data
+#path
+,fo%C2%80o
+
+#data escaped
+data:,fo\u00FFo
+#canon
+data:,fo%C3%BFo
+#scheme data
+#path
+,fo%C3%BFo
+
+#data escaped
+data:,fo%00o
+#canon
+data:,fo%00o
+#scheme data
+#path
+,fo%00o
+
+#data escaped
+data:,fo%01o
+#canon
+data:,fo%01o
+#scheme data
+#path
+,fo%01o
+
+#data escaped
+data:,fo%09o
+#canon
+data:,fo%09o
+#scheme data
+#path
+,fo%09o
+
+#data escaped
+data:,fo%0Ao
+#canon
+data:,fo%0Ao
+#scheme data
+#path
+,fo%0Ao
+
+#data escaped
+data:,fo%0bo
+#canon
+data:,fo%0bo
+#scheme data
+#path
+,fo%0bo
+
+#data escaped
+data:,fo%0Co
+#canon
+data:,fo%0Co
+#scheme data
+#path
+,fo%0Co
+
+#data escaped
+data:,fo%0do
+#canon
+data:,fo%0do
+#scheme data
+#path
+,fo%0do
+
+#data escaped
+data:,fo%0eo
+#canon
+data:,fo%0eo
+#scheme data
+#path
+,fo%0eo
+
+#data escaped
+data:,fo%0Fo
+#canon
+data:,fo%0Fo
+#scheme data
+#path
+,fo%0Fo
+
+#data escaped
+data:,fo%20o
+#canon
+data:,fo%20o
+#scheme data
+#path
+,fo%20o
+
+#data escaped
+data:,fo%21o
+#canon
+data:,fo%21o
+#scheme data
+#path
+,fo%21o
+
+#data escaped
+data:,fo%22o
+#canon
+data:,fo%22o
+#scheme data
+#path
+,fo%22o
+
+#data escaped
+data:,fo%23o
+#canon
+data:,fo%23o
+#scheme data
+#path
+,fo%23o
+
+#data escaped
+data:,fo%24o
+#canon
+data:,fo%24o
+#scheme data
+#path
+,fo%24o
+
+#data escaped
+data:,fo%25o
+#canon
+data:,fo%25o
+#scheme data
+#path
+,fo%25o
+
+#data escaped
+data:,fo%26o
+#canon
+data:,fo%26o
+#scheme data
+#path
+,fo%26o
+
+#data escaped
+data:,fo%31o
+#canon
+data:,fo%31o
+#scheme data
+#path
+,fo%31o
+
+#data escaped
+data:,fo%40o
+#canon
+data:,fo%40o
+#scheme data
+#path
+,fo%40o
+
+#data escaped
+data:,fo%41o
+#canon
+data:,fo%41o
+#scheme data
+#path
+,fo%41o
+
+#data escaped
+data:,fo%50o
+#canon
+data:,fo%50o
+#scheme data
+#path
+,fo%50o
+
+#data escaped
+data:,fo%5ao
+#canon
+data:,fo%5ao
+#scheme data
+#path
+,fo%5ao
+
+#data escaped
+data:,fo%5Bo
+#canon
+data:,fo%5Bo
+#scheme data
+#path
+,fo%5Bo
+
+#data escaped
+data:,fo%5Co
+#canon
+data:,fo%5Co
+#scheme data
+#path
+,fo%5Co
+
+#data escaped
+data:,fo%5Do
+#canon
+data:,fo%5Do
+#scheme data
+#path
+,fo%5Do
+
+#data escaped
+data:,fo%5Eo
+#canon
+data:,fo%5Eo
+#scheme data
+#path
+,fo%5Eo
+
+#data escaped
+data:,fo%5Fo
+#canon
+data:,fo%5Fo
+#scheme data
+#path
+,fo%5Fo
+
+#data escaped
+data:,fo%60o
+#canon
+data:,fo%60o
+#scheme data
+#path
+,fo%60o
+
+#data escaped
+data:,fo%61o
+#canon
+data:,fo%61o
+#scheme data
+#path
+,fo%61o
+
+#data escaped
+data:,fo%62o
+#canon
+data:,fo%62o
+#scheme data
+#path
+,fo%62o
+
+#data escaped
+data:,fo%7Ao
+#canon
+data:,fo%7Ao
+#scheme data
+#path
+,fo%7Ao
+
+#data escaped
+data:,fo%7bo
+#canon
+data:,fo%7bo
+#scheme data
+#path
+,fo%7bo
+
+#data escaped
+data:,fo%7co
+#canon
+data:,fo%7co
+#scheme data
+#path
+,fo%7co
+
+#data escaped
+data:,fo%7do
+#canon
+data:,fo%7do
+#scheme data
+#path
+,fo%7do
+
+#data escaped
+data:,fo%7Eo
+#canon
+data:,fo%7Eo
+#scheme data
+#path
+,fo%7Eo
+
+#data escaped
+data:,fo%7Fo
+#canon
+data:,fo%7Fo
+#scheme data
+#path
+,fo%7Fo
+
+#data escaped
+data:,fo%80o
+#canon
+data:,fo%80o
+#scheme data
+#path
+,fo%80o
+
+#data escaped
+data:,fo%A0o
+#canon
+data:,fo%A0o
+#scheme data
+#path
+,fo%A0o
+
+#data escaped
+data:,fo%Cdo
+#canon
+data:,fo%Cdo
+#scheme data
+#path
+,fo%Cdo
+
+#data escaped
+data:,fo%FFo
+#canon
+data:,fo%FFo
+#scheme data
+#path
+,fo%FFo
+
+#data escaped
+data:,?\u0022a
+#canon escaped
+data:,?\u0022a
+#scheme data
+#path 
+,?"a
+
+#data
+data://foo
+#scheme data
+#path
+//foo
+
+#data
+data:/foo/bar
+#scheme data
+#path
+/foo/bar
+
+#data
+#base
+data:,
+#canon
+data:,
+#scheme data
+#path
+,
+
+#data
+| #foo
+#base
+data:,
+#invalid 1
+
+#data
+foo
+#base
+data:,
+#invalid 1
+
+#data
+/foo
+#base
+data:,
+#invalid 1
+
+#data
+.
+#base
+data:,
+#invalid 1
+
+#data
+?foo
+#base
+data:,
+#invalid 1
+
+#data
+//foo
+#base
+data:,
+#invalid 1
+
+#data
+./foo/bar
+#base data:text/plain,abc
+#invalid 1
+
+#data
+foo
+#base data:text/plain,abc
+#invalid 1
+
+#data
+,abc
+#base
+data:,
+#invalid 1
+
+#data
+text/html,hoge
+#base
+data:,
+#invalid 1

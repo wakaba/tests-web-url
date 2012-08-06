@@ -1,0 +1,783 @@
+#data
+#base
+#invalid 1
+
+#data
+foo/bar
+#base non-absolute
+#invalid 1
+
+#data
+http://foo/bar
+#base non-absolute
+#invalid 1
+
+#data
+| #foo
+#base http://foo/bar
+#scheme http
+#host foo
+#path /bar
+#fragment foo
+
+#data
+| #foo
+#base http://foo#bar
+#scheme http
+#host foo
+#path
+#fragment foo
+
+#data
+| #hoge
+#base http://foo?bar
+#scheme http
+#host foo
+#path
+#query bar
+#fragment hoge
+
+#data
+| #hoge
+#base http://foo:bar@baz:a/b?c#d
+#scheme http
+#user foo
+#password bar
+#host baz
+#port a
+#path /b
+#query c
+#fragment hoge
+
+#data
+?hoge
+#base http://foo
+#scheme http
+#host foo
+#path
+#query hoge
+
+#data
+?hoge
+#base http://foo/bar
+#scheme http
+#host foo
+#path /bar
+#query hoge
+
+#data
+?hoge
+#base http://foo/bar?baz
+#scheme http
+#host foo
+#path /bar
+#query hoge
+
+#data
+?hoge
+#base http://foo/bar/?baz
+#scheme http
+#host foo
+#path /bar/
+#query hoge
+
+#data
+?hoge#fuga
+#base http://foo
+#scheme http
+#host foo
+#path
+#query hoge
+#fragment fuga
+
+#data
+?hoge#fuga
+#base http://foo#baz
+#scheme http
+#host foo
+#path
+#query hoge
+#fragment fuga
+
+#data
+| ?hoge
+#base http://foo:bar@baz:a/b?c#d
+#scheme http
+#user foo
+#password bar
+#host baz
+#port a
+#path /b
+#query hoge
+
+#data
+//hoge
+#base http://foo/bar
+#scheme http
+#host hoge
+#path
+
+#data
+//hoge/fuga?abc#def
+#base http://foo/bar
+#scheme http
+#host hoge
+#path /fuga
+#query abc
+#fragment def
+
+#data
+//abc
+#base http://a:b@c:d/e?f#g
+#scheme http
+#host abc
+#path
+
+#data
+//x:y@z:l/m?n#o
+#base http://a:b@c:d/e?f#g
+#scheme http
+#user x
+#password y
+#host z
+#port l
+#path /m
+#query n
+#fragment o
+
+#data
+//foo?bar
+#base http://x/y/z#a
+#scheme http
+#host foo
+#path
+#query bar
+
+#data
+//foo/bar
+#base http://
+#scheme http
+#host foo
+#path /bar
+
+#data
+//foo/bar
+#base http:abc
+#invalid 1
+
+#data
+/foo/bar
+#base http://a/b/c
+#scheme http
+#host a
+#path /foo/bar
+
+#data
+/foo/bar
+#base http://a:b@c:d/e/f?g#h
+#scheme http
+#user a
+#password b
+#host c
+#port d
+#path /foo/bar
+
+#data
+/foo?bar
+#base http://a/b/c
+#scheme http
+#host a
+#path /foo
+#query bar
+
+#data
+/foo#bar
+#base http://a/b/c
+#scheme http
+#host a
+#path /foo
+#fragment bar
+
+#data
+/foo?bar#baz
+#base http://a/b/c
+#scheme http
+#host a
+#path /foo
+#query bar
+#fragment baz
+
+#data
+/foo?bar#baz
+#base http://
+#scheme http
+#host
+#path /foo
+#query bar
+#fragment baz
+
+#data
+http://foo/baz
+#base http://foo/bar
+#scheme http
+#host foo
+#path /baz
+
+#data
+http://foo/baz
+#base http://hoge/bar
+#scheme http
+#host foo
+#path /baz
+
+#data
+http:?foo
+#base http://hoge/fuga
+#scheme http
+#host hoge
+#path /fuga
+#query foo
+
+#data
+http:?foo#bar
+#base http://hoge?fuga
+#scheme http
+#host hoge
+#path
+#query foo
+#fragment bar
+
+#data
+http:#bar
+#base http://hoge/fuga
+#scheme http
+#host hoge
+#path /fuga
+#fragment bar
+
+#data
+http:/foo/bar
+#base http://hoge/fuga
+#scheme http
+#host hoge
+#path /foo/bar
+
+#data
+hTtP://foo/bar
+#base http://hoo/aaa
+#scheme http
+#host foo
+#path /bar
+
+#data
+gg:h
+#base http://a/b/c/d;p?q
+#scheme gg
+#path h
+
+#data
+/g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+//g
+#base http://a/b/c/d;p?q
+#scheme http
+#host g
+#path
+
+#data
+?y
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/d;p
+#query y
+
+#data
+| #s
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+#fragment s
+
+#data
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+
+#data
+#base http://a/b/c/
+#scheme http
+#host a
+#path /b/c/
+
+#data
+#base http://a/b/c/d;p?q#s
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+
+#data
+| #
+#base http://a/b/c/d;p?q#s
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+#fragment
+
+#data
+| #t
+#base http://a/b/c/d;p?q#s
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+#fragment t
+
+#data
+/./g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+/../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+http:#abc
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+#fragment abc
+
+#data escaped
+?foo\u000Abar
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#query escaped
+foobar
+
+#data escaped
+?foo\u000Abar#abc\u000Adef
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#query escaped
+foobar
+#fragment escaped
+abcdef
+
+#data escaped
+| #foo\u000Abar
+#base http://hoge/
+#scheme http
+#host hoge
+#path /
+#fragment escaped
+foobar
+
+#note
+Following test cases have no applicable spec at the moment...
+#data
+//dummy
+#base http://dummy
+#scheme http
+#host dummy
+#path
+
+#data
+hoge
+#base http://foo/bar/baz
+#scheme http
+#host foo
+#path /bar/hoge
+
+#data
+hoge?fuga
+#base http://foo/bar
+#scheme http
+#host foo
+#path /hoge
+#query fuga
+
+#data
+./foo
+#base http://hoge/fuga
+#scheme http
+#host hoge
+#path /foo
+
+#data
+./foo#bar
+#base http://hoge/fuga
+#scheme http
+#host hoge
+#path /foo
+#fragment bar
+
+#data
+./foo
+#base http://hoge/a/b
+#scheme http
+#host hoge
+#path /a/foo
+
+#data
+./foo
+#base http://hoge/a/b/
+#scheme http
+#host hoge
+#path /a/b/foo
+
+#data
+../foo
+#base http://hoge/a/b
+#scheme http
+#host hoge
+#path /foo
+
+#data
+../foo
+#base http://hoge/a/b/c/
+#scheme http
+#host hoge
+#path /a/b/foo
+
+#data
+foo/..
+#base http://hoge/a/b
+#scheme http
+#host hoge
+#path /a/
+
+#data
+g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+
+#data
+./g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+
+#data
+g/
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g/
+
+#data
+g?y
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#query y
+
+#data
+g#s
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#fragment s
+
+#data
+g?y#s
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#query y
+#fragment s
+
+#data
+;x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/;x
+
+#data
+g;x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g;x
+
+#data
+;x?y#s
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/;x
+#query y
+#fragment s
+
+#data
+.
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/
+
+#data
+./
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/
+
+#data
+..
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/
+
+#data
+../
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/
+
+#data
+../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/g
+
+#data
+../..
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+../../..
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../../
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+../../../..
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../../../
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /
+
+#data
+../../../../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /g
+
+#data
+g.
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g.
+
+#data
+.g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/.g
+
+#data
+g..
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g..
+
+#data
+..g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/..g
+
+#data
+./../g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/g
+
+#data
+./g/.
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g/
+
+#data
+g/./h
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g/h
+
+#data
+g/../h
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/h
+
+#data
+g;x=1/./y
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g;x=1/y
+
+#data
+g;x=1/../y
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/y
+
+#data
+g?y/./x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#query y/./x
+
+#data
+g?y/../x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#query y/../x
+
+#data
+g#s/./x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#fragment s/./x
+
+#data
+g#s/../x
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+#fragment s/../x
+
+#data
+http:g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g
+
+#data
+http:
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/d;p
+#query q
+
+#data
+http:.
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/
+
+#data
+./g:h
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/g:h
+
+#data
+./a/b/c/./d/./e/../f/g
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/a/b/c/d/f/g
+
+#data
+%2E/a/b/%2E%2E/%2e
+#base http://a/b/c/d;p?q
+#scheme http
+#host a
+#path /b/c/a/

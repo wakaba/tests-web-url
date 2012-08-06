@@ -1,0 +1,642 @@
+#data
+http://0.0.0.0xFF/
+#canon http://0.0.0.255/
+#scheme http
+#host 0.0.0.255
+#path /
+
+#data
+http://0.0.0xFF.0/
+#canon http://0.0.255.0/
+#scheme http
+#host 0.0.255.0
+#path /
+
+#data
+http://0.0.0xFFFF/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.0.0xffff/
+#canon http://0.0.255.255/
+#scheme http
+#host 0.0.255.255
+#path /
+
+#data
+http://0.00.0x.0x0/
+#canon http://0.0.0.0/
+#scheme http
+#host 0.0.0.0
+#path /
+
+#data
+http://0.0xFF.0.0/
+#canon http://0.255.0.0/
+#scheme http
+#host 0.255.0.0
+#path /
+
+#data
+http://0.255.255.255/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://0.0xFFFFFF/
+#canon http://0.255.255.255/
+#scheme http
+#host 0.255.255.255
+#path /
+
+#data
+http://00000000000000000001/
+#canon http://0.0.0.1/
+#scheme http
+#host 0.0.0.1
+#path /
+
+#data
+http://0000000000000300.0x00000000000000fF.00000000000000001/
+#canon http://192.255.0.1/
+#scheme http
+#host 192.255.0.1
+#path /
+
+#data
+http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
+#canon http://0000000000000300.0xffffffffffffffff.3022415481470977/
+#scheme http
+#host 0000000000000300.0xffffffffffffffff.3022415481470977
+#path /
+
+#data
+http://000030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://00000844498133/
+#canon http://00000844498133/
+#scheme http
+#host 00000844498133
+#path /
+
+#data
+http://0300.0250.00.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://030052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0X12C0a80001/
+#canon http://0x12c0a80001/
+#scheme http
+#host 0x12c0a80001
+#path /
+
+#data
+http://0xC0.0Xa8.0x0.0x1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xC0a80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0x13235xy4A/
+#canon http://0x13235xy4a/
+#scheme http
+#host 0x13235xy4a
+#path /
+
+#data
+http://0xCG.0xA8.0x0.0x1/
+#canon http://0xcg.0xa8.0x0.0x1/
+#scheme http
+#host 0xcg.0xa8.0x0.0x1
+#path /
+
+#data
+http://0xFF.0.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0xFF.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0x00.0x100.0x10.0x4F/
+#canon http://0x00.0x100.0x10.0x4f/
+#scheme http
+#host 0x00.0x100.0x10.0x4f
+#path /
+
+#data
+http://0x100.0x00.0x10.0x4F/
+#canon http://0x100.0x00.0x10.0x4f/
+#scheme http
+#host 0x100.0x00.0x10.0x4f
+#path /
+
+#data
+http://00xFFFFFFFF/
+#canon http://00xffffffff/
+#scheme http
+#host 00xffffffff
+#path /
+
+#data
+http://0xFFFFFFFF/
+#canon http://255.255.255.255/
+#scheme http
+#host 255.255.255.255
+#path /
+
+#data
+http://0x0FFFFFFFF/
+#canon http://255.255.255.255/
+#scheme http
+#host 255.255.255.255
+#path /
+
+#data
+http://0xFFFFFFFFF/
+#canon http://0xfffffffff/
+#scheme http
+#host 0xfffffffff
+#path /
+
+#data
+http://0xFFFFFFFF.0/
+#canon http://0xffffffff.0/
+#scheme http
+#host 0xffffffff.0
+#path /
+
+#data
+http://0xFFFFFFFF./
+#canon http://0xffffffff./
+#scheme http
+#host 0xffffffff.
+#path /
+
+#data
+http://0xc0.052000001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.0x00A80001/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168.0.1. hello/
+#canon http://192.168.0.1.%20hello/
+#scheme http
+#host 192.168.0.1.%20hello
+#path /
+
+#data
+http://192.168.0./
+#canon http://192.168.0./
+#scheme http
+#host 192.168.0.
+#path /
+
+#data
+http://192.168.0.1./
+#canon http://192.168.0.1./
+#scheme http
+#host 192.168.0.1.
+#path /
+
+#data
+http://192.168.1/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://192.168/
+#canon http://192.0.0.168/
+#scheme http
+#host 192.0.0.168
+#path /
+
+#data
+http://192/
+#canon http://0.0.0.192/
+#scheme http
+#host 0.0.0.192
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01%2e/
+#canon http://0xc0.0250.01./
+#scheme http
+#host 0xc0.0250.01.
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01./
+#canon http://0xc0.0250.01./
+#scheme http
+#host 0xc0.0250.01.
+#path /
+
+#data
+http://0xc0.0250.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+#invalid 1
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01%2e/
+#canon http://0xc0.0250.01./
+#scheme http
+#host 0xc0.0250.01.
+#path /
+
+#data
+http://%30%78%63%30%2e%30%32%35%30.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://0xc0.0250.01./
+#canon http://0xc0.0250.01./
+#scheme http
+#host 0xc0.0250.01.
+#path /
+
+#data
+http://0xc0.0250.01/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data
+http://%3g%78%63%30%2e%30%32%35%30%2E.01/
+#invalid 1
+
+#data
+http://192.168.0.1 hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data
+http://192.168.0.1%20hello/
+#canon http://192.168.0.1%20hello/
+#scheme http
+#host 192.168.0.1%20hello
+#path /
+
+#data
+http://192.168.0.0/
+#canon http://192.168.0.0/
+#scheme http
+#host 192.168.0.0
+#path /
+
+#data
+http://192.168.0.000/
+#canon http://192.168.0.0/
+#scheme http
+#host 192.168.0.0
+#path /
+
+#data
+http://192.168.0.255/
+#canon http://192.168.0.255/
+#scheme http
+#host 192.168.0.255
+#path /
+
+#data
+http://192.168.0.0255/
+#canon http://192.168.0.173/
+#scheme http
+#host 192.168.0.173
+#path /
+
+#data
+http://192.168.0.000255/
+#canon http://192.168.0.173/
+#scheme http
+#host 192.168.0.173
+#path /
+
+#data
+http://192.168.0.256/
+#canon http://192.168.0.256/
+#scheme http
+#host 192.168.0.256
+#path /
+
+#data
+http://192.168.0.0256/
+#canon http://192.168.0.174/
+#scheme http
+#host 192.168.0.174
+#path /
+
+#data
+http://192.168.0.0800/
+#canon http://192.168.0.0800/
+#scheme http
+#host 192.168.0.0800
+#path /
+
+#data
+http://192.168.0.080/
+#canon http://192.168.0.080/
+#scheme http
+#host 192.168.0.080
+#path /
+
+#data
+http://192.168.0.0777/
+#canon http://192.168.0.0777/
+#scheme http
+#host 192.168.0.0777
+#path /
+
+#data
+http://192.168.000.0/
+#canon http://192.168.0.0/
+#scheme http
+#host 192.168.0.0
+#path /
+
+#data
+http://192.168.255.0/
+#canon http://192.168.255.0/
+#scheme http
+#host 192.168.255.0
+#path /
+
+#data
+http://192.168.0255.0/
+#canon http://192.168.173.0/
+#scheme http
+#host 192.168.173.0
+#path /
+
+#data
+http://192.168.000255.0/
+#canon http://192.168.173.0/
+#scheme http
+#host 192.168.173.0
+#path /
+
+#data
+http://192.168.256.0/
+#canon http://192.168.256.0/
+#scheme http
+#host 192.168.256.0
+#path /
+
+#data
+http://192.168.0256.0/
+#canon http://192.168.174.0/
+#scheme http
+#host 192.168.174.0
+#path /
+
+#data
+http://192.168.0800.0/
+#canon http://192.168.0800.0/
+#scheme http
+#host 192.168.0800.0
+#path /
+
+#data
+http://192.168.0777.0/
+#canon http://192.168.0777.0/
+#scheme http
+#host 192.168.0777.0
+#path /
+
+#data
+http://192.000.0.0/
+#canon http://192.0.0.0/
+#scheme http
+#host 192.0.0.0
+#path /
+
+#data
+http://192.255.0.0/
+#canon http://192.255.0.0/
+#scheme http
+#host 192.255.0.0
+#path /
+
+#data
+http://192.0255.0.0/
+#canon http://192.173.0.0/
+#scheme http
+#host 192.173.0.0
+#path /
+
+#data
+http://192.000255.0.0/
+#canon http://192.173.0.0/
+#scheme http
+#host 192.173.0.0
+#path /
+
+#data
+http://192.256.0.0/
+#canon http://192.256.0.0/
+#scheme http
+#host 192.256.0.0
+#path /
+
+#data
+http://192.0256.0.0/
+#canon http://192.174.0.0/
+#scheme http
+#host 192.174.0.0
+#path /
+
+#data
+http://192.0800.0.0/
+#canon http://192.0800.0.0/
+#scheme http
+#host 192.0800.0.0
+#path /
+
+#data
+http://192.0777.0.0/
+#canon http://192.0777.0.0/
+#scheme http
+#host 192.0777.0.0
+#path /
+
+#data
+http://000.0.0.0/
+#canon http://0.0.0.0/
+#scheme http
+#host 0.0.0.0
+#path /
+
+#data
+http://255.0.0.0/
+#canon http://255.0.0.0/
+#scheme http
+#host 255.0.0.0
+#path /
+
+#data
+http://0255.0.0.0/
+#canon http://173.0.0.0/
+#scheme http
+#host 173.0.0.0
+#path /
+
+#data
+http://000255.0.0.0/
+#canon http://173.0.0.0/
+#scheme http
+#host 173.0.0.0
+#path /
+
+#data
+http://256.0.0.0/
+#canon http://256.0.0.0/
+#scheme http
+#host 256.0.0.0
+#path /
+
+#data
+http://0256.0.0.0/
+#canon http://174.0.0.0/
+#scheme http
+#host 174.0.0.0
+#path /
+
+#data
+http://0800.0.0.0/
+#canon http://0800.0.0.0/
+#scheme http
+#host 0800.0.0.0
+#path /
+
+#data
+http://0777.0.0.0/
+#canon http://0777.0.0.0/
+#scheme http
+#host 0777.0.0.0
+#path /
+
+#data
+http://192.168.0.1.0/
+#canon http://192.168.0.1.0/
+#scheme http
+#host 192.168.0.1.0
+#path /
+
+#data
+http://192.168.0.1.00/
+#canon http://192.168.0.1.00/
+#scheme http
+#host 192.168.0.1.00
+#path /
+
+#data
+http://192.168.0.0255.0/
+#canon http://192.168.0.0255.0/
+#scheme http
+#host 192.168.0.0255.0
+#path /
+
+#data
+http://192.168.0.0255./
+#canon http://192.168.0.0255./
+#scheme http
+#host 192.168.0.0255.
+#path /
+
+#data escaped
+http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data escaped
+http://\uFF10\uFF38\uFF43\uFF10\uFF0E\uFF10\uFF12\uFF15\uFF10\uFF0E\uFF10\uFF11/
+#canon http://192.168.0.1/
+#scheme http
+#host 192.168.0.1
+#path /
+
+#data escaped
+http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11\uFF1A\uFF18\uFF10/
+#invalid 1
+
+#data escaped
+http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11:\uFF18\uFF10/
+#invalid 1
+
+#data escaped
+http://\uFF11\uFF19\uFF12\uFF0E\uFF11\uFF16\uFF18\uFF0E\uFF10\uFF0E\uFF11:%EF%BC%98%EF%BC%90/
+#invalid 1

@@ -1,0 +1,301 @@
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+http://foo/bar?%1B$B0lCz%1B(B
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+http://foo/bar?\u1000
+#charset iso-2022-jp
+#canon escaped
+http://foo/bar??
+#scheme http
+#host foo
+#path /bar
+#query escaped
+?
+
+#data escaped
+http://foo/bar?\u4E00\u1000\u4E01
+#charset iso-2022-jp
+#canon escaped
+http://foo/bar?%1B$B0l%1B(B?%1B$BCz%1B(B
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%1B$B0l%1B(B?%1B$BCz%1B(B
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset utf-16
+#canon escaped
+http://foo/bar?%E4%B8%80%E4%B8%81
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset utf-8
+#canon escaped
+http://foo/bar?%E4%B8%80%E4%B8%81
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+http://foo/bar?abcdef
+#charset utf-16
+#canon escaped
+http://foo/bar?abcdef
+#scheme http
+#host foo
+#path /bar
+#query escaped
+abcdef
+
+#data escaped
+http://foo/bar?\u1000
+#charset utf-16
+#canon escaped
+http://foo/bar?%E1%80%80
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E1%80%80
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset euc-jp
+#canon escaped
+http://foo/bar?%B0%EC%C3%FA
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%B0%EC%C3%FA
+
+#data escaped
+http://foo/bar?\u1000
+#charset euc-jp
+#canon escaped
+http://foo/bar??
+#scheme http
+#host foo
+#path /bar
+#query escaped
+?
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset shift_jis
+#canon escaped
+http://foo/bar?%88%EA%92%9A
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%88%EA%92%9A
+
+#data escaped
+http://foo/bar?\u1000
+#charset shift_jis
+#canon escaped
+http://foo/bar??
+#scheme http
+#host foo
+#path /bar
+#query escaped
+?
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset ibm037
+#canon escaped
+http://foo/bar?%E4%B8%80%E4%B8%81
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+http://foo/bar?\u1000
+#charset ibm037
+#canon escaped
+http://foo/bar?%E1%80%80
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E1%80%80
+
+#data escaped
+http://foo/bar?abcdef
+#charset ibm037
+#canon escaped
+http://foo/bar?abcdef
+#scheme http
+#host foo
+#path /bar
+#query escaped
+abcdef
+
+#data escaped
+http://foo/bar?\u4E00\u4E01
+#charset utf-7
+#canon escaped
+http://foo/bar?%E4%B8%80%E4%B8%81
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+http://foo/bar?\u1000
+#charset utf-7
+#canon escaped
+http://foo/bar?%E1%80%80
+#scheme http
+#host foo
+#path /bar
+#query escaped
+%E1%80%80
+
+#data escaped
+http://foo/bar?abcdef
+#charset utf-7
+#canon escaped
+http://foo/bar?abcdef
+#scheme http
+#host foo
+#path /bar
+#query escaped
+abcdef
+
+#data escaped
+https://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+https://foo/bar?%1B$B0lCz%1B(B
+#scheme https
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+ftp://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+ftp://foo/bar?%1B$B0lCz%1B(B
+#scheme ftp
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+file://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+file://foo/bar?%1B$B0lCz%1B(B
+#scheme file
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+chrome://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+chrome://foo/bar?%1B$B0lCz%1B(B
+#scheme chrome
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+ws://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+ws://foo/bar?%1B$B0lCz%1B(B
+#scheme ws
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B
+
+#data escaped
+mailto:foo@bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+mailto:foo@bar?%E4%B8%80%E4%B8%81
+#scheme mailto
+#path foo@bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+data:,a?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+data:,a?%E4%B8%80%E4%B8%81
+#scheme data
+#path
+,a?%E4%B8%80%E4%B8%81
+
+#data escaped
+javascript:,a?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+javascript:,a?%E4%B8%80%E4%B8%81
+#scheme javascript
+#path
+,a?%E4%B8%80%E4%B8%81
+
+#data escaped
+about:foo@bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+about:foo@bar?%E4%B8%80%E4%B8%81
+#scheme about
+#path 
+foo@bar?%E4%B8%80%E4%B8%81
+
+#data escaped
+unknown:foo@bar?\u4E00\u4E01
+#charset iso-2022-jp
+#canon escaped
+unknown:foo@bar?%E4%B8%80%E4%B8%81
+#scheme unknown
+#path foo@bar
+#query escaped
+%E4%B8%80%E4%B8%81
+
+#data escaped
+unknown://foo/bar?\u4E00\u4E01
+#charset iso-2022-jp
+#base
+http://hoge/fuga
+#canon escaped
+unknown://foo/bar?%1B$B0lCz%1B(B
+#scheme unknown
+#host foo
+#path /bar
+#query escaped
+%1B$B0lCz%1B(B

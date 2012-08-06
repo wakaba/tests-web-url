@@ -1,0 +1,741 @@
+#data
+javascript:
+#scheme javascript
+#path
+
+#data
+JavaScript:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+JAVASCRIPT:
+#canon javascript:
+#scheme javascript
+#path
+
+#data
+javascript:void(0)
+#scheme javascript
+#path void(0)
+
+#data
+javascript:""
+#scheme javascript
+#path
+""
+
+#data
+javascript:"abc"
+#scheme javascript
+#path
+"abc"
+
+#data
+javascript:a?b
+#scheme javascript
+#path
+a?b
+
+#data
+javascript:a?b?c
+#scheme javascript
+#path
+a?b?c
+
+#data
+javascript:a?b#c
+#scheme javascript
+#path
+a?b#c
+
+#data
+javascript:"abc#def"
+#scheme javascript
+#path
+"abc#def"
+
+#data
+javascript:"abc"#def
+#scheme javascript
+#path
+"abc"#def
+
+#data
+javascript:"abc#def#ghi"
+#scheme javascript
+#path
+"abc#def#ghi"
+
+#data
+javascript:"abc?def"
+#scheme javascript
+#path 
+"abc?def"
+
+#data
+javascript://a
+#scheme javascript
+#path //a
+
+#data
+javascript://www.example.com/
+#scheme javascript
+#path //www.example.com/
+
+#data
+javascript:/a/b
+#scheme javascript
+#path /a/b
+
+#data
+javascript:?ab
+#scheme javascript
+#path ?ab
+
+#data
+javascript:#ab
+#scheme javascript
+#path
+| #ab
+
+#data
+javascript:javascript:"abc"
+#scheme javascript
+#path 
+javascript:"abc"
+
+#data
+javascript:123;%0A"abc"
+#scheme javascript
+#path 
+123;%0A"abc"
+
+#data
+javascript:123;%0D"abc"
+#scheme javascript
+#path
+123;%0D"abc"
+
+#data
+javascript:123;%0D%0A"abc"
+#scheme javascript
+#path
+123;%0D%0A"abc"
+
+#data
+javascript:123;%09"abc"
+#scheme javascript
+#path 
+123;%09"abc"
+
+#data
+javascript:123;%0B"abc"
+#scheme javascript
+#path 
+123;%0B"abc"
+
+#data
+javascript:123;%0C"abc"
+#scheme javascript
+#path 
+123;%0C"abc"
+
+#data
+javascript:"abc%25def"
+#scheme javascript
+#path 
+"abc%25def"
+
+#data
+javascript:"abc%0Adef"
+#scheme javascript
+#path
+"abc%0Adef"
+
+#data
+javascript:"abc\%0Adef"
+#scheme javascript
+#path
+"abc\%0Adef"
+
+#data
+javascript:return false
+#scheme javascript
+#path 
+return false
+
+#data
+javascript:14 % 4
+#scheme javascript
+#path
+14 % 4
+
+#data escaped
+javascript: // \u4e00
+#canon
+javascript: // %E4%B8%80
+#scheme javascript
+#path
+ // %E4%B8%80
+
+#data escaped
+javascript: // # \u4e00
+#canon
+javascript: // # %E4%B8%80
+#scheme javascript
+#path
+ // # %E4%B8%80
+
+#data
+JavaScript:Foo
+#canon javascript:Foo
+#scheme javascript
+#path Foo
+
+#data escaped
+javascript:a\u0000b
+#canon
+javascript:a%00b
+#scheme javascript
+#path
+a%00b
+
+#data escaped
+javascript:a\u0001b
+#canon
+javascript:a%01b
+#scheme javascript
+#path
+a%01b
+
+#data escaped
+javascript:a\u0008b
+#canon
+javascript:a%08b
+#scheme javascript
+#path
+a%08b
+
+#data escaped
+javascript:a\u0009b
+#canon
+javascript:ab
+#scheme javascript
+#path
+ab
+
+#data escaped
+javascript:a\u000Ab
+#canon
+javascript:ab
+#scheme javascript
+#path
+ab
+
+#data escaped
+javascript:a\u000bb
+#canon
+javascript:a%0Bb
+#scheme javascript
+#path
+a%0Bb
+
+#data escaped
+javascript:a\u000Cb
+#canon
+javascript:a%0Cb
+#scheme javascript
+#path
+a%0Cb
+
+#data escaped
+javascript:a\u000Db
+#canon
+javascript:ab
+#scheme javascript
+#path
+ab
+
+#data escaped
+javascript:a\u000Eb
+#canon
+javascript:a%0Eb
+#scheme javascript
+#path
+a%0Eb
+
+#data escaped
+javascript:a\u0020b
+#canon
+javascript:a b
+#scheme javascript
+#path
+a b
+
+#data escaped
+javascript:a\u0021b
+#canon
+javascript:a!b
+#scheme javascript
+#path
+a!b
+
+#data escaped
+javascript:a\u0022b
+#canon
+javascript:a"b
+#scheme javascript
+#path
+a"b
+
+#data escaped
+javascript:a\u0024b
+#canon
+javascript:a$b
+#scheme javascript
+#path
+a$b
+
+#data escaped
+javascript:a\u0030b
+#canon
+javascript:a0b
+#scheme javascript
+#path
+a0b
+
+#data escaped
+javascript:a\u005Cb
+#canon
+javascript:a\b
+#scheme javascript
+#path
+a\b
+
+#data escaped
+javascript:a\u005Db
+#canon
+javascript:a]b
+#scheme javascript
+#path
+a]b
+
+#data escaped
+javascript:a\u007Cb
+#canon
+javascript:a|b
+#scheme javascript
+#path
+a|b
+
+#data escaped
+javascript:a\u007Db
+#canon
+javascript:a}b
+#scheme javascript
+#path
+a}b
+
+#data escaped
+javascript:a\u007Eb
+#canon
+javascript:a~b
+#scheme javascript
+#path
+a~b
+
+#data escaped
+javascript:a\u007Fb
+#canon
+javascript:a%7Fb
+#scheme javascript
+#path
+a%7Fb
+
+#data escaped
+javascript:a\u0080b
+#canon
+javascript:a%C2%80b
+#scheme javascript
+#path
+a%C2%80b
+
+#data escaped
+javascript:a\u00A0b
+#canon escaped
+javascript:a%C2%A0b
+#scheme javascript
+#path escaped
+a%C2%A0b
+
+#data escaped
+javascript:a%E2%80%88b
+#canon escaped
+javascript:a%E2%80%88b
+#scheme javascript
+#path escaped
+a%E2%80%88b
+
+#data escaped
+javascript:a\u4E00b
+#canon escaped
+javascript:a%E4%B8%80b
+#scheme javascript
+#path escaped
+a%E4%B8%80b
+
+#data escaped
+javascript:a\uA000b
+#canon escaped
+javascript:a%EA%80%80b
+#scheme javascript
+#path escaped
+a%EA%80%80b
+
+#data escaped
+javascript:a\uDA00b
+#canon escaped
+javascript:a%EF%BF%BDb
+#scheme javascript
+#path escaped
+a%EF%BF%BDb
+
+#data escaped
+javascript:a\uDA00\uDFFEb
+#canon escaped
+javascript:a%F2%90%8F%BEb
+#canon8
+javascript:a%EF%BF%BD%EF%BF%BDb
+#scheme javascript
+#path escaped
+a%F2%90%8F%BEb
+#path8
+a%EF%BF%BD%EF%BF%BDb
+
+#data escaped
+javascript:a\uE000b
+#canon escaped
+javascript:a%EE%80%80b
+#scheme javascript
+#path escaped
+a%EE%80%80b
+
+#data escaped
+javascript:a\uFFFDb
+#canon escaped
+javascript:a%EF%BF%BDb
+#scheme javascript
+#path escaped
+a%EF%BF%BDb
+
+#data escaped
+javascript:a\uFFFEb
+#canon escaped
+javascript:a%EF%BF%BDb
+#scheme javascript
+#path escaped
+a%EF%BF%BDb
+
+#data escaped
+javascript:a\uFFFFb
+#canon escaped
+javascript:a%EF%BF%BDb
+#scheme javascript
+#path escaped
+a%EF%BF%BDb
+
+#data escaped
+javascript:a\U00010000b
+#canon escaped
+javascript:a%F0%90%80%80b
+#scheme javascript
+#path escaped
+a%F0%90%80%80b
+
+#data escaped
+javascript:a\U000E0041b
+#canon escaped
+javascript:a%F3%A0%81%81b
+#scheme javascript
+#path escaped
+a%F3%A0%81%81b
+
+#data
+javascript:a%00b
+#scheme javascript
+#path a%00b
+
+#data
+javascript:a%01b
+#scheme javascript
+#path a%01b
+
+#data
+javascript:a%0Ab
+#scheme javascript
+#path a%0Ab
+
+#data
+javascript:a%20b
+#scheme javascript
+#path a%20b
+
+#data
+javascript:a%22b
+#scheme javascript
+#path a%22b
+
+#data
+javascript:a%4ab
+#scheme javascript
+#path a%4ab
+
+#data
+javascript:a%5Cb
+#scheme javascript
+#path a%5Cb
+
+#data
+javascript:a%7eb
+#scheme javascript
+#path a%7eb
+
+#data
+javascript:a%7fb
+#scheme javascript
+#path a%7fb
+
+#data
+javascript:a%c0b
+#scheme javascript
+#path a%c0b
+
+#data
+javascript:a%C2%A1b
+#scheme javascript
+#path a%C2%A1b
+
+#data
+javascript:a%FFb
+#scheme javascript
+#path a%FFb
+
+#data
+#base javascript:alert(1)
+#canon javascript:alert(1)
+#scheme javascript
+#path alert(1)
+
+#data
+./foo/bar
+#base javascript:alert(1)
+#invalid 1
+
+#data
+foo
+#base javascript:alert(1)
+#invalid 1
+
+#data
+?foo
+#base javascript:alert(1)
+#invalid 1
+
+#data
+| #foo
+#base javascript:alert(1)
+#invalid 1
+
+#data escaped
+jscript:a % 55 // # \u4e00
+#canon escaped
+jscript:a % 55 // # \u4e00
+#scheme jscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+jscript:a % 55 // # \u4e00 "
+#canon escaped
+jscript:a % 55 // # \u4e00 "
+#scheme jscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data escaped
+vbscript:a % 55 ' # \u4e00
+#canon
+vbscript:a % 55 ' # %E4%B8%80
+#scheme vbscript
+#path escaped
+a % 55 ' # %E4%B8%80
+
+#data escaped
+vbscript:a % 55 ' # \u4e00 "
+#canon
+vbscript:a % 55 ' # %E4%B8%80 "
+#scheme vbscript
+#path escaped
+a % 55 ' # %E4%B8%80 "
+
+#data escaped
+mocha:a % 55 // # \u4e00
+#canon escaped
+mocha:a % 55 // # \u4e00
+#scheme mocha
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+mocha:a % 55 // # \u4e00 "
+#canon escaped
+mocha:a % 55 // # \u4e00 "
+#scheme mocha
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data escaped
+ecmascript:a % 55 // # \u4e00
+#canon escaped
+ecmascript:a % 55 // # \u4e00
+#scheme ecmascript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+ecmascript:a % 55 // # \u4e00 "
+#canon escaped
+ecmascript:a % 55 // # \u4e00 "
+#scheme ecmascript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data escaped
+livescript:a % 55 // # \u4e00
+#canon escaped
+livescript:a % 55 // # \u4e00
+#scheme livescript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+livescript:a % 55 // # \u4e00 "
+#canon escaped
+livescript:a % 55 // # \u4e00 "
+#scheme livescript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data escaped
+perlscript:a % 55 // # \u4e00
+#canon escaped
+perlscript:a % 55 // # \u4e00
+#scheme perlscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+perlscript:a % 55 // # \u4e00 "
+#canon escaped
+perlscript:a % 55 // # \u4e00 "
+#scheme perlscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data escaped
+unknownscript:a % 55 // # \u4e00
+#canon escaped
+unknownscript:a % 55 // # \u4e00
+#scheme unknownscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00
+
+#data escaped
+unknownscript:a % 55 // # \u4e00 "
+#canon escaped
+unknownscript:a % 55 // # \u4e00 "
+#scheme unknownscript
+#path escaped
+a % 55 //\u0020
+#fragment escaped
+ \u4e00 \u0022
+
+#data
+mocha://foo
+#canon
+mocha://foo/
+#scheme mocha
+#host foo
+#path /
+
+#data
+livescript://foo
+#canon
+livescript://foo/
+#scheme livescript
+#host foo
+#path /
+
+#data
+ecmascript://foo
+#canon
+ecmascript://foo/
+#scheme ecmascript
+#host foo
+#path /
+
+#data
+vbscript://foo
+#canon
+vbscript://foo
+#scheme vbscript
+#path
+//foo
+
+#data
+jscript://foo
+#canon
+jscript://foo/
+#scheme jscript
+#host foo
+#path /
+
+#data
+javascript1.1://foo
+#canon
+javascript1.1://foo/
+#scheme javascript1.1
+#host foo
+#path /
+
+#data
+unknownscript://foo
+#canon
+unknownscript://foo/
+#scheme unknownscript
+#host foo
+#path /

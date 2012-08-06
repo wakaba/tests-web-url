@@ -1,0 +1,442 @@
+<!DOCTYPE HTML>
+
+<p id=result class=FAIL>FAIL (noscript)</p>
+
+<pre id=result-tap style="white-space:pre-wrap"></pre>
+
+<script src="http://suika.fam.cx/www/js/sami/script/sami-core.js"></script>
+<script src="http://suika.fam.cx/www/js/sami/script/sami-test.js"></script>
+<iframe style="width: 0; height: 0"></iframe>
+
+<button id=submit-button type=button>Submit result</button>
+
+<nav>
+  <table>
+    <tr>
+      <th><code>decomps.dat</code>
+      <td>
+        <a href="decomps.html">Normal mode</a>
+      <td>
+        <a href="decomps.html?compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-about.dat</code>
+      <td>
+        <a href="decomps.html?decomps-about.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-about.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-authority.dat</code>
+      <td>
+        <a href="decomps.html?decomps-authority.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-authority.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-authority-domain.dat</code>
+      <td>
+        <a href="decomps.html?decomps-authority-domain.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-authority-domain.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-authority-ipv4.dat</code>
+      <td>
+        <a href="decomps.html?decomps-authority-ipv4.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-authority-ipv4.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-authority-ipv6.dat</code>
+      <td>
+        <a href="decomps.html?decomps-authority-ipv6.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-authority-ipv6.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-charsets.dat</code>
+      <td>
+        <a href="decomps-charsets.html?decomps-charsets.dat">Normal mode</a>
+      <td>
+        <a href="decomps-charsets.html?decomps-charsets.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-data.dat</code>
+      <td>
+        <a href="decomps.html?decomps-data.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-data.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-file.dat</code>
+      <td>
+        <a href="decomps.html?decomps-file.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-file.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-fragment.dat</code>
+      <td>
+        <a href="decomps.html?decomps-fragment.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-fragment.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-ftp.dat</code>
+      <td>
+        <a href="decomps.html?decomps-ftp.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-ftp.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-javascript.dat</code>
+      <td>
+        <a href="decomps.html?decomps-javascript.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-javascript.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-mailto.dat</code>
+      <td>
+        <a href="decomps.html?decomps-mailto.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-mailto.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-path.dat</code>
+      <td>
+        <a href="decomps.html?decomps-path.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-path.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-port.dat</code>
+      <td>
+        <a href="decomps.html?decomps-port.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-port.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-query.dat</code>
+      <td>
+        <a href="decomps.html?decomps-query.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-query.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-relative.dat</code>
+      <td>
+        <a href="decomps.html?decomps-relative.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-relative.dat;compat">Compat mode</a>
+    <tr>
+      <th><code>decomps-scheme.dat</code>
+      <td>
+        <a href="decomps.html?decomps-scheme.dat">Normal mode</a>
+      <td>
+        <a href="decomps.html?decomps-scheme.dat;compat">Compat mode</a>
+  </table>
+  <a href="http://suika.fam.cx/gate/test-results/list/test2/all">Results</a>
+</nav>
+
+<script>
+  var r = document.getElementById ('result');
+  var tap = document.getElementById ('result-tap');
+  var tm = new SAMI.Test.Manager (r, new SAMI.StringContainer.Element (tap));
+  var iframe = document.getElementsByTagName ('iframe')[0];
+  var button = document.getElementById ('submit-button');
+
+  var isHierarchicalScheme = {
+    gopher: true,
+    http: true,
+    https: true,
+    ftp: true,
+    file: true
+  };
+  var schemeDefaultPort = {
+    gopher: 70,
+    http: 80,
+    https: 443,
+    ftp: 21
+  };
+
+  var fileName = decodeURIComponent
+      ((location.search || '').replace (/^\?/, '').replace (/;.*/, ''));
+  if (!/\.dat$/.test(fileName)) fileName = 'decomps.dat';
+
+  // XXX compat mode is too complex now...
+  var compatMode = location.search.match (/compat/);
+
+  var isWebKit = compatMode && navigator.userAgent.match (/WebKit/);
+  var isChrome = isWebKit && navigator.userAgent.match (/Chrome/);
+  var isSafari = isWebKit && !isChrome && navigator.userAgent.match (/Safari/);
+  var isGecko = compatMode && !isWebKit && navigator.product == 'Gecko';
+  var isIE = compatMode && document.all;
+  var isOpera = compatMode && window.opera;
+  var illegalURLs = 0;
+  var canonCompatMode = location.search.match (/canoncompat/);
+  if (isOpera) {
+    var a = document.createElement ('a');
+    a.href = 'http://\uFFFF/';
+    illegalURLs = parseInt (a.href.replace (/^opera:illegal-url-/, ''));
+    illegalURLs++;
+  }
+
+  if (isWebKit || isGecko) {
+    delete isHierarchicalScheme.ldap;
+  }
+
+  var noiframe = location.search.match (/noiframe/);
+  var starttime = (new Date).valueOf ();
+
+  var names = [];
+  var labels = [];
+  var classes = [];
+  var results = [];
+  SAMI.Test.executeTestsByURL ('../data/' + fileName + '?' + Math.random (), {
+    data: {isPrefixed: true},
+    path: {isPrefixed: true}
+  }, function (test) {
+    var originalURL = test.getField ('data');
+    var baseURL = test.getFieldValue ('base');
+
+    var u;
+    if (baseURL == null) {
+      if (noiframe) {
+        u = canonURL (originalURL);
+      } else {
+        baseURL = originalURL;
+        u = getURL (originalURL, baseURL);
+      }
+    } else {
+      u = getURL (originalURL, baseURL);
+    }
+
+    var actual;
+    try {
+      actual = {
+        url: u.href,
+        scheme: u.protocol,
+        host: u.hostname,
+        port: u.port,
+        path: u.pathname,
+        query: u.search,
+        fragment: u.hash
+      };
+      actual.hostport = u.host;
+    } catch (e) {
+      actual = {
+        url: '',
+        scheme: '',
+        host: '',
+        port: '',
+        path: '',
+        query: '',
+        fragment: ''
+      };
+      actual.hostport = '';
+    }
+    var expected = {
+      url: test.getFieldValue ('canon'),
+      scheme: test.getFieldValue ('scheme'),
+      host: test.getFieldValue ('host'),
+      port: test.getFieldValue ('port'),
+      path: test.getFieldValue ('path'),
+      query: test.getFieldValue ('query'),
+      fragment: test.getFieldValue ('fragment')
+    };
+    if (isGecko || isOpera) {
+      if (canonCompatMode) expected.url = test.getFieldValue ('canon-unescaped') || expected.url;
+      expected.host = test.getFieldValue ('host-unescaped') || expected.host;
+    }
+    if (expected.url == null) expected.url = originalURL;
+    var schemeNormalized = (expected.scheme || '').toLowerCase ();
+    if (isHierarchicalScheme[schemeNormalized] || originalURL.match (/^[^:/]+:\//)) {
+      expected.host = expected.host || '';
+      expected.port = expected.port || '';
+      expected.path = expected.path || '';
+      expected.query = expected.query == null ? '' : '?' + expected.query;
+      expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+    } else {
+      expected.host = '';
+      expected.port = '';
+      if (isWebKit || isIE) {
+        expected.path = expected.path || '';
+      } else {
+        expected.path = '';
+      }
+      expected.query = expected.query == null ? '' : '?' + expected.query;
+      expected.hostport = '';
+    }
+    expected.scheme = expected.scheme == null ? '' : expected.scheme + ':';
+    expected.fragment = expected.fragment == null ? '' : '#' + expected.fragment;
+
+    if (isIE) {
+      if (canonCompatMode) {
+        expected.url = expected.url.replace (/^([^:]+):\/\/([^/]+)\//, function (_, a, b) {
+          return a + '://' + b.toLowerCase () + '/';
+        });
+        if (expected.host) expected.host = expected.host.toLowerCase ();
+      }
+    }
+
+    if (isWebKit) {
+      if (isChrome) {
+        expected.url = test.getFieldValue ('chrome-canon') || expected.url;
+        expected.host = test.getFieldValue ('chrome-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      }
+      if (expected.port == '') expected.port = "0";
+      if (expected.scheme == '') expected.scheme = ':';
+    }
+    if (isGecko || isWebKit || isIE) {
+      if (isGecko) {
+        expected.url = test.getFieldValue ('gecko-canon') || expected.url;
+        expected.host = test.getFieldValue ('gecko-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+        if (/^\[[\s\S]*\]$/.test (expected.host)) {
+          expected.host = expected.host.replace (/^\[/, '').replace (/\]$/, '');
+        }
+      } else if (isIE) {
+        expected.url = test.getFieldValue ('ie-canon') || expected.url;
+        expected.host = test.getFieldValue ('ie-host') || expected.host;
+        expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      }
+      if (expected.query == '?') expected.query = '';
+      if (expected.fragment == '#') expected.fragment = '';
+    }
+    if (isIE || isOpera) {
+      if (expected.port == '') expected.port = schemeDefaultPort[schemeNormalized] || '';
+      if (!isOpera) expected.hostport = expected.host + (expected.port != '' ? ':' + expected.port : '');
+      expected.path = expected.path.replace (/^\//, '');
+    }
+    
+    var invalid = test.getFieldValue ('invalid') ||
+        (isChrome && test.getFieldValue ('chrome-invalid')) ||
+        (isGecko && test.getFieldValue ('gecko-invalid')) ||
+        (isIE && test.getFieldValue ('ie-invalid'));
+    if (invalid && isChrome && test.getFieldValue ('chrome-not-invalid'))
+        invalid = false;
+    if (invalid && isGecko && test.getFieldValue ('gecko-not-invalid'))
+        invalid = false;
+    if (invalid && isIE && test.getFieldValue ('ie-not-invalid'))
+        invalid = false;
+    if (invalid) {
+      expected = {
+        url: '',
+        scheme: '',
+        host: '',
+        port: '',
+        hostport: '',
+        path: '',
+        query: '',
+        fragment: ''
+      };
+
+      if (isWebKit) {
+        if (canonCompatMode) {
+          expected.url = test.getFieldValue ('invalid-canon')
+              || (isChrome ? test.getFieldValue ('chrome-canon') :
+                  isSafari ? test.getFieldValue ('safari-canon') : null)
+              || originalURL.replace (/[^\u0021-\u007E]+/g, function (_) {
+                   try {
+                     return encodeURI (_);
+                   } catch (e) {
+                     return _;
+                   }
+                 }).replace (/%([0-9A-Fa-f]{2})/g, function (_) {
+                   return _.toUpperCase ();
+                 });
+        }
+        expected.scheme = ':';
+        expected.port = '0';
+      }
+      if (isGecko) {
+        if (canonCompatMode) {
+          expected.url = test.getFieldValue ('invalid-canon')
+              || test.getFieldValue ('gecko-canon')
+              || originalURL;
+        }
+        if (/^http:/i.test (originalURL)) expected.scheme = 'http:';
+      }
+      if (isOpera) {
+        ++illegalURLs;
+        if (canonCompatMode) expected.url = 'opera:illegal-url-' + illegalURLs;
+        expected.scheme = 'opera:';
+        expected.host = undefined;
+        expected.port = '0';
+        expected.path = 'illegal-url-' + illegalURLs;
+        ++illegalURLs;
+      }
+    }
+
+    var name = originalURL + ' + ' + baseURL;
+    tm.is (actual.url, expected.url, name + ' canonical');
+    tm.is (actual.scheme, expected.scheme, name + ' scheme');
+    tm.is (actual.host, expected.host, name + ' host');
+    tm.is (actual.port, expected.port, name + ' port');
+    tm.is (actual.hostport, expected.hostport, name + ' hostport');
+    tm.is (actual.path, expected.path, name + ' path');
+    tm.is (actual.query, expected.query, name + ' query');
+    tm.is (actual.fragment, expected.fragment, name + ' fragment');
+
+    names.push (percentEncode (name));
+    labels.push (originalURL + "\n" + baseURL);
+    classes.push (actual.url == expected.url ? 'PASS' : 'FAIL');
+    results.push (actual.url);
+  }, function () {
+    tm.done ();
+    var endtime = (new Date).valueOf ();
+    tm.out.say ('# ' + (endtime - starttime) + 'ms');
+
+    var data = 'env-name=' + encodeURIComponent (navigator.userAgent);
+    for (var i = 0; i < names.length; i++) {
+      data += '&test-name=' + percentEncode (names[i]);
+      data += '&test-label=' + percentEncode (labels[i]);
+      data += '&test-class=' + percentEncode (classes[i]);
+      data += '&test-result=' + percentEncode (results[i]);
+    }
+    button.value = data;
+  }, function (e) {
+    tm.abort (e.type + ' - ' + e.text);
+  }, {
+    async: {
+      n: 30,
+      delay: 500
+    }
+  });
+
+  function getURL (url, baseURL) {
+    /* Some characters are processed by HTML parser, so this 
+       code cannot test URLs containing them. */
+    var doc = iframe.contentWindow.document;
+    doc.open ();
+    doc.write ('<!DOCTYPE HTML>');
+    doc.write ('<base href="' + SAMI.String.htescape (baseURL) + '">');
+    doc.write ('<a href="' + SAMI.String.htescape (url)
+        .replace (/\u000A/g, '&#xa;')
+        .replace (/\u000D/g, '&#xd;')
+        .replace (/\u0000/g, '&#x0;') + '">xx</a>');
+    doc.close ();
+    
+    return doc.getElementsByTagName ('a')[0];
+  } // getURL
+
+  function canonURL (url) {
+    var a = document.createElement ('a');
+    a.setAttribute ('href', url);
+    return a;
+  } // canonURL
+
+  function percentEncode (s) {
+    try {
+      return encodeURIComponent (s);
+    } catch (e) {
+      s = s.replace (/[\uD800-\uDFFF]/g, function (c) {
+        return "\\u" + c.charCodeAt (0).toString (16).toUpperCase ();
+      });
+      return encodeURIComponent (s);
+    }
+  }
+
+  var testsetName = 'test1';
+  button.onclick = function () {
+    if (!button.value) return;
+    var url = 'http://suika.fam.cx/gate/test-results/list/' + testsetName;
+    var xhr = new XMLHttpRequest ();
+    xhr.open ('POST', url, true);
+    xhr.setRequestHeader ('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        button.appendChild (document.createTextNode (' (Done: ' + xhr.status + ')'));
+      }
+    };
+    xhr.send (button.value);
+  };
+</script>
+<!-- License: Public Domain. -->

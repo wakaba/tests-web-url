@@ -1,0 +1,1359 @@
+URL Parsing, Resolution, and Canonicalization
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This document describes how the |Web::URL::Parser| module parses,
+resolves, and canonicalizes URLs, in English.  It is just a
+description of the implementation; it's not a formal spec and not so
+strict as conformance requirements in modern Web specs.
+
+This document is WORK IN PROGRESS.
+
+You are granted a license to use, reproduce and create derivative
+works of this document.
+
+* URL specs
+
+At the time of writing there is no spec which completely describes
+what browsers do (or should do) for URLs.  However, following specs
+include incomplete descriptions of URL processing rules and are used
+as basis of this document:
+
+- [url-spec] URL parsing <http://tools.ietf.org/html/draft-abarth-url-01>
+- [WA1] Web Applications 1.0 <http://whatwg.org/c>
+- [RFC 3986] URI <http://tools.ietf.org/html/rfc3986>
+
+This document will be obsolete once a single Web-compatible URL
+parsing spec is published...
+
+See also: <http://suika.fam.cx/~wakaba/wiki/sw/n/URL5> (In Japanese).
+
+* Character classes
+
+** Unreserved characters
+
+An *unreserved character* is a character that is "unreserved" [RFC
+3986].
+
+  Note. That is, U+002D (-), U+002E (.), U+0030 (0) to U+0039 (9),
+  U+0041 (A) to U+005A (Z), U+005F (_), U+0061 (a) to U+007A (z), and
+  U+007E (~).
+
+A *non-unreserved octet* is an octet that does /not/ represent an
+"unreserved character" if the octet is interpreted as a US-ASCII
+character.
+
+** Valid scheme characters
+
+A *valid scheme character* [url-spec] is one of the following
+characters: U+002B (+), U+002D (-), U+002E (.), U+0030 (0) to U+0039
+(9), U+0041 (A) to U+005A (Z), and U+0061 (a) to U+007A (z).
+
+** Authority terminating characters
+
+An *authority terminating character* [url-spec] is either a "slash
+charcter", U+003F (?), or U+0023 (#).
+
+  Note.  U+003B (;) is /not/ an "authority terminating characters".
+
+* Parsed URL
+
+A *parsed URL* consists of the following (possibly missing)
+components: |scheme|, |authority|, |path|, |query|, and |fragment|.
+The |authority| component consists of the following (possibly missing)
+components: |user|, |password|, |host|, and |port|.  Each component is
+a string, i.e. a sequence of characters.
+
+In addition, a "parsed URL" has two flags: /invalid/ and
+/hierarchical/.
+
+* Hierarchicalness
+
+Following schemes ("ASCII case-insensitive") are */not/ hierarchical*:
+
+  - about
+  - data
+  - javascript
+  - mailto
+  - vbscript
+
+A URL is *hierarchical* if one of following conditions are met:
+
+  - The scheme of the URL is /not/ classified as "not hierarchical"
+    and the URL is the |scheme| component followed by a U+003A COLON
+    character (:) followed by a "slash character" followed by zero ore
+    more characters,
+
+  - The |scheme| component of the URL is "ASCII case-insensitively"
+    equal to |file|, or
+
+  - The URL is marked as /hierarchical/.
+
+* Preprocessing
+
+The *steps to preprocess a string* is as follows:
+
+  1. Let /s/ be the given string.
+
+  2. Scan /s/ and replace any code point in the following ranges,
+     i.e. surrogate, noncharacter [UNICODE], and non-Unicode code
+     points, by a U+FFFD REPLACEMENT CHARACTER character:
+
+    - U+D800 ... U+DFFF
+    - U+FDD0 ... U+FDEF
+    - U+FFFE, U+FFFF, U+1FFFE, U+1FFFF, U+2FFFE, U+2FFFF, U+3FFFE,
+      U+3FFFF, U+4FFFE, U+4FFFF, U+5FFFE, U+5FFFF, U+6FFFE, U+6FFFF,
+      U+7FFFE, U+7FFFF, U+8FFFE, U+8FFFF, U+9FFFE, U+9FFFF, U+AFFFE,
+      U+AFFFF, U+BFFFE, U+BFFFF, U+CFFFE, U+CFFFF, U+DFFFE, U+DFFFF,
+      U+EFFFE, U+EFFFF, U+FFFFE, U+FFFFF, U+10FFFE, U+10FFFF
+    - Non-Unicode code points
+
+  3. Remove the following characters from /s/: U+0009 CHARACTER
+     TABULATION, U+000A LINE FEED, and U+000D CARRIAGE RETURN.
+
+  4. Remove the following characters from the beginning and the end of
+     /s/: U+000B LINE TABULATION, U+000C FORM FEED, and U+0020 SPACE.
+
+* Parsing
+
+The *steps to parse a URL*, which receives a string and returns a
+"parsed URL", is as follows:
+
+  Let /s/ be the given string (i.e. the string interpreted as a URL).
+
+  Let /url/ be a "parsed URL" with no components.
+
+  Apply the "steps to preprocess a string" to /s/.
+
+  If /s/ begins with two or more U+005C REVERSE SOLIDUS character (\),
+  follow the "steps to parse a UNC path" with /s/ and /url/ and abort
+  these steps.
+
+  Follow the "steps to find the scheme" with /s/.
+
+  If the previous step returns /scheme/, let the |scheme| component of
+  /url/ be /scheme/.
+
+  Otherwise, set the /hierarchical/ flag of /url/.
+
+  If there is the |scheme| component in /url/ and consists of a
+  character in the range U+0041 ... U+005A and U+0061 ... U+007A,
+  follow the "steps to parse a drive URL" with /s/ and /url/ and abort
+  these steps.
+
+  Otherwise, if there is the |scheme| component in /url/ and is "ASCII
+  case-insensitively" equal to |file|, follow the "steps to parse a
+  |file:| URL" with /s/ and /url/ and abort these steps.
+
+  Otherwise, if there is the |scheme| component in /url/ and is "ASCII
+  case-insensitively" equal to |mailto|, follow the "steps to parse a
+  |mailto:| URL" with /s/ and /url/ and abort these steps.
+
+  Otherwise, if /s/ or /url/ is /hierarchical/, follow the steps for
+  "parsing a URL" (Section 3. of the URL parsing spec [url-spec]).
+
+  Otherwise, if there is the |scheme| component in /url/ and is not
+  /hierarchical/:
+
+    If /s/ contains a U+0023 NUMBER SIGN character (#), remove the
+    first such character and the following characters from /s/.  Let
+    the |fragment| component of /url/ be the removed characters except
+    for the first character (#).
+
+    If /s/ contains a U+003F QUESTION MARK character (?), remove the
+    first such character and the following characters from /s/.  Let
+    the |query| component of /url/ be the removed characters except
+    for the first character (?).
+
+  Let the |path| component of /url/ be /s/.
+
+** Parsing a |mailto:| URL
+
+The *steps to parse a |mailto:| URL*, invoked with /s/ and /url/, is
+as follows:
+
+  If /s/ contains a U+003F QUESTION MARK character (?):
+
+    Split /s/ into two parts by the first U+003F QUESTION MARK
+    character (?).
+
+    Let the |path| component of /s/ be the first part.
+
+    Let the |query| component of /s/ be the second part.
+
+    Note. These components do not include the U+003F QUESTION MARK
+    character (?) used to split /s/.  They can be empty strings.
+
+  Otherwise, let the |path| component of /url/ be /s/.
+
+** Parsing a drive URL
+
+The *steps to parse a drive URL*, invoked with /s/ and /url/, is as
+follows:
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component of /url/ be the removed characters except for
+  the first character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component of /url/ be the removed characters except for the
+  first character.
+
+  Let the |path| component of /url/ be the concatenation of the
+  following substrings in order:
+
+    1. A U+002F SOLIDUS character (/).
+
+    2. The |scheme| component of /url/.
+
+    3. A U+003A COLON character (:).
+
+    4. A U+002F SOLIDUS character (/) if /s/ does not begin with a
+       "slash character".
+
+    5. /s/.
+
+  Let the |scheme| component of /url/ be |file|.
+
+  Let the |host| component of /url/ be the empty string.
+
+** Parsing a |file:| URL
+
+The *steps to parse a |file:| URL*, invoked with /s/ and /url/, is as
+follows:
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component of /url/ be the removed characters except for
+  the first character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component of /url/ be the removed characters except for the
+  first character.
+
+  If /s/ begins with exactly three "slash characters":
+
+    Remove the "slash characters" from the beginning of /s/.
+
+    Let the |host| component of /url/ be the empty string.
+
+    Let the |path| component of /url/ be a U+002F SOLIDUS character
+    (/) followed by /s/.
+
+  Otherwise, if /s/ begins with two or more "slash characters":
+
+    Remove the "slash characters" from the beginning of /s/.
+
+    Remove zero or more characters that are not "slash characters"
+    from the beginning of /s/.  Let the |host| component of /url/ be
+    the sequence of the removed characters.
+
+    Let the |path| component of /url/ be /s/.
+
+  Otherwise, let the |path| component of /url/ be /s/.
+
+** Parsing a UNC path
+
+The *steps to parse a UNC path*, invoked with /s/ and /url/, is as
+follows:
+
+  Remove one or more U+005C REVERSE SOLIDUS characters (\) at the
+  beginning of /s/.
+
+  If /s/ contains a U+0023 NUMBER SIGN character (#), remove the first
+  such character and the following characters from /s/.  Let the
+  |fragment| component of /url/ be the removed characters except for
+  the first character.
+
+  If /s/ contains a U+003F QUESTION MARK character (?), remove the
+  first such character and the following characters from /s/.  Let the
+  |query| component of /url/ be the removed characters except for the
+  first character.
+  
+  Remove zero or more characters that are not "slash characters" at
+  the beginning of /s/.  Let the |host| component be the sequence of
+  the removed characters.
+
+  Let the |path| component of /url/ be /s/.
+
+** Finding the scheme
+
+The *steps to find the scheme*, invoked with /s/, is as follow:
+
+  If /s/ begins with one or more "valid scheme characters" followed by
+  a U+003A COLON character (:), "find the scheme", as described in
+  Section 3.1. of the URL parsing spec [url-spec].
+
+  Otherwise, set the /invalid/ flag of /url/.
+
+** Finding the authority, path, query, and fragment of URL
+
+The steps for "finding the authority, path, query, and fragment"
+(Section 3.2 of the URL parsing spec [url-spec]) is ammended as
+follows, where /s/ represents the original input string and /url/
+represents the result "parsed URL":
+
+  If /s/ begins with the |scheme| component of /url/ followed by a
+  U+003A COLON character (:) followed by exactly three "slash
+  characters":
+
+    Let the |authority| component and the |host| component of /url/ be
+    the empty string.
+
+      Note. The |user|, |password|, and |port| components are left
+      undefined.
+
+    Let the |path| component of /url/ be /s/.
+
+    Remove the |scheme| component of /url/ and three following
+    characters from the beginning of the |path| component of /url/.
+
+  Otherwise, if /s/ begins with the |scheme| component followed by a
+  U+003A COLON character (:) followed by two or more "slash
+  characters":
+
+    Follow the steps for "finding the user-info, host, and port"
+    (Section 3.3. of the URL parsing spec [url-spec]).
+
+  Follow the steps for "finding the authority, path, query, and
+  fragment" (Section 3.2. of the URL parsing spec [url-spec]).
+
+* Resolution
+
+The *steps to resolve a URL", which receives a string to be resolved
+and a "parsed URL" which the string is resolved against, and returns a
+"parsed URL", is as follows:
+
+  1. Let /relative-url/ be the given string.
+ 
+  2. Let /base-url/ be the given "parsed URL".
+
+  3. Let /resolved-url/ be a "parsed URL".
+
+  4. If /base-url/ is /invalid/, set the /invalid/ flag of
+     /resolved-url/, return /resolved-url/, and abort these steps.
+
+    Note. If the base URL is /invalid/, no string can be resolved
+    against it.
+
+  5. Invoke the "steps to preprocess a string" with /relative-url/ as
+     /s/.
+
+  6. If /relative-url/ is the empty string:
+
+    1. Let /resolved-url/ be /base-url/.
+
+    2. Remove the |fragment| component from /resolved-url/, if any.
+
+    3. Return /resolved-url/ and abort the entire steps.
+
+  7. Invoke the "steps to parse a URL" with /resolved-url/ as /s/.
+     Let /resolved-url/ be the result "parsed URL".
+
+  8. If /resolved-url/ is /invalid/ (i.e. /resolved-url/ does not have
+     the |scheme| component):
+
+    1. Invoke the "steps to resolve a relative URL" with
+       /resolved-url/ and /base-url/.
+
+    2. Return /resolved-url/ and abort the entire steps.
+
+  9. Otherwise, if /base-url/ is /hierarchical/ and the |scheme|
+     components of /resolved-url/ and /base-url/ match "ASCII
+     case-insensitively":
+
+    1. If /resolved-url/ only contains the |scheme| component (i.e. it
+       does not have |authority|, |query|, and |fragment| components,
+       and the |path| component, if any, is the empty string),
+
+      1. Let /resolved-url/ be /base-url/.
+
+      2. Remove the |fragment| component from /resolved-url/, if any.
+
+      3. Return /resolved-url/ and abort the entire steps.
+
+    2. Invoke the "steps to resolve a relative URL" with
+       /resolved-url/ and /base-url/.
+
+    3. Return /resolved-url/ and abort the entire steps.
+
+  10. Otherwise, if /resolved-url/ is /hierarchical/, and
+      /resolved-url/ has the |path| component:
+
+    1. If the |scheme| component of /resolved-url/ is "ASCII
+       case-insensitively" equal to |file|, percent-decode any |%2F|
+       and |%5C| ("ASCII case-insensitive") in the |path| component of
+       /resolved-url/.
+
+    2. Invoke the steps to "remove dot-segments" [RFC 3986] with the
+       |path| component of /resolved-url/.
+
+  8. Return /resolved-url/.
+
+    Note.  If /resolved-url/ is *not* /hierarchical/, it is returned
+    as is.
+
+The "steps to resolve a relative URL", given "parsed URLs"
+/resolved-url/ and /base-url/, are as follow:
+
+  1. If /base-url/ is *not* /hierarchical/, set the /invalid/ flag of
+     /resolved-url/, return /resolved-url/, and abort these steps.
+
+  2. If /resolved-url/ has the |authority| component:
+
+    1. Let the |scheme| component of /resolved-url/ be the |scheme|
+       component of /base-url/.
+ 
+    2. If there is the |path| component in /resolved-url/:
+
+      1. If the |scheme| component of /resolved-url/ is "ASCII
+         case-insensitively" equal to |file|, percent-decode any |%2F|
+         and |%5C| ("ASCII case-insensitive") in the |path| component
+         of /resolved-url/.
+
+      2. Invoke the steps to "remove dot-segments" [RFC 3986] with the
+         |path| component of /resolved-url/.
+
+    3. If there is the |authority| component in /resolved-url/ and the
+       |scheme| component of /resolved-url/ is "ASCII
+       case-insensitively" equal to |file|, let the |host| component
+       of /resolved-url/ be the |authority| component of
+       /resolved-url/ and remove |user|, |password|, and |port|
+       components from /resolved-url/.
+
+      Note. In other words, the |host| component of |file:| URLs is
+      always equal to the entire |authority| component.
+
+  3. Otherwise, if there is the |path| component in /resolved-url/ and
+     it begins with a "slash character",
+
+    1. Let the |scheme| component of /resolved-url/ be the |scheme|
+       component of /base-url/.
+
+    2. Let the |authority| component of /resolved-url/ be the
+       |authority| component of /base-url/.
+
+    3. If the |scheme| component of /resolved-url/ is "ASCII
+       case-insensitively" equal to |file|, percent-decode any |%2F|
+       and |%5C| ("ASCII case-insensitive") in the |path| component of
+       /resolved-url/.
+
+    4. Invoke the steps to "remove dot-segments" [RFC 3986] with the
+       |path| component of /resolved-url/.
+
+  4. Otherwise, if there is no |path| component (either empty or
+     missing) but there is the |query| component:
+
+    1. Let the |scheme| component of /resolved-url/ be the |scheme|
+       component of /base-url/.
+
+    2. Let the |authority| component of /resolved-url/ be the
+       |authority| component of /base-url/.
+
+    3. Let the |path| component of /resolved-url/ be the |path|
+       component of /base-url/.
+
+  5. Otherwise, if there is no |path| component (either empty or
+     missing) but there is the |fragment| component:
+
+    1. Let the |scheme| component of /resolved-url/ be the |scheme|
+       component of /base-url/.
+
+    2. Let the |authority| component of /resolved-url/ be the
+       |authority| component of /base-url/.
+
+    3. Let the |path| component of /resolved-url/ be the |path|
+       component of /base-url/.
+
+    4. Let the |query| component of /resolved-url/ be the |query|
+       component of /base-url/.
+
+  6. Otherwise:
+
+    1. Let the |scheme| component of /resolved-url/ be the |scheme|
+       component of /base-url/.
+
+    2. Let the |authority| component of /resolved-url/ be the
+       |authority| component of /base-url/.
+
+    3. Let /r_path/ be the |path| component of /resolved-url/.
+
+    4. Let /b_path/ be the |path| component of /base-url/.
+
+    5. If the |scheme| component of /resolved-url/ is "ASCII
+       case-insensitively" equal to |file|:
+
+      1. Percent-decode any |%2F| and |%5C| ("ASCII case-insensitive")
+         in /r_path/.
+
+      2. If /r_path/ begins with a "drive specification":
+
+        1. Remove the |authority| component of /resolved-url/.
+
+        2. Let /b_path/ be the empty string.
+
+    6. Invoke the steps to "merge path" [RFC 3986] with /r_path/ and
+       /b_path/.
+
+    7. Invoke the steps to "remove dot-segments" [RFC 3986] with
+       /r_path/.
+
+    8. Let the |path| component of /resolved-url/ be /r_path/.
+
+  7. Return /resolved-url/.
+
+** Merge path
+
+When the steps to "merge path" [RFC 3986] is invoked, use "slash
+character" definition [url-spec] instead of the "/" character for
+comparison.
+
+** Remove dot-segments
+
+Before invoking the steps to "remove dot-segments" [RFC 3986], any
+U+005C REVERSE SOLIDUS (\) character in the input string MUST be
+replaced by a U+002F SOLIDUS (/) character.
+
+In the steps to "remove dot-segments", any occurence of "%2E" or "%2e"
+in the input string MUST be treated as if it were a U+002E FULL STOP
+character (.).
+
+* Percent-encoding
+
+The *steps to percent-encode a string*, invoked with a string, a
+character encoding, and a list of percent-encoded octets, is as
+follows:
+
+  1. Let /s/ be the given string.
+
+    Note. At this point, /s/ is a string of characters.
+
+  2. Let /encoding/ be the given character encoding.
+
+  3. If /encoding/ is not an "ASCII-compatibile character encoding"
+     [WA1], let /encoding/ be UTF-8.
+
+  4. Let /octets/ be the list of octets being percent-encoded.
+
+  5. Replace any code point in /s/ which cannot be represented in
+     /encoding/ by a U+003F QUESTION MARK character (?).
+
+  6. Encode /s/ in /encoding/.
+
+    Note. At this point, /s/ is a string of octets.
+
+  7. Replace any octet in /s/ contained in /octets/ by the
+     percent-encoded [RFC 3986] form of the octet, using uppercase
+     hexadecimal digits.
+
+  8. Decode /s/ by /encoding/.
+
+    Note. At this point, /s/ is a string of characters.
+
+Encoding and decoding MUST be done in a manner consistent with other
+parts of the Web platform [WA1] [WEBENCODINGS].
+
+* Authority
+
+** Drive specifications
+
+A string is *drive specification* if it is a "drive letter" optionally
+followed by a "drive suffix".
+
+A *drive letter* is a character in the range U+0041 ... U+005A and
+U+0061 ... U+007A, or its percent-encoded form (in the UTF-8
+encoding).
+
+A *drive suffix* is a U+003A COLON character (:) or U+007C VERTICAL
+LINE character (|), or its percent-encoded form (in the UTF-8
+encoding).
+
+** IPv4 addresses
+
+A string /s/ is an *IPv4 address* if one of the following conditions
+is met:
+
+  - Four "numbers" concatenated by a U+002E FULL STOP character (.),
+    where all "numbers" are greater than or equal to zero (0) and less
+    than or eqaul to 255 (0xFF).
+
+  - Three "numbers" concatenated by a U+002E FULL STOP character (.),
+    where first two "numbers" are greater than or equal to zero (0)
+    and less than or eqaul to 255 (0xFF) and the last "number" is
+    greater than or equal to zero (0) and less than or equal to 65535
+    (0xFFFF).
+
+  - Two "numbers" concatenated by a U+002E FULL STOP character (.),
+    where the first "number" is greater than or equal to zero (0) and
+    less than or eqaul to 255 (0xFF) and the last "number" is greater
+    than or equal to zero (0) and less than or equal to 16777215
+    (0xFFFFFF).
+
+  - A "number" which is greater than or equal to zero (0) and less
+    than or equal to 4294967295 (0xFFFFFFFF).
+
+In this definition, a *number* is represented in the form of one of
+the following character sequences:
+
+  - A U+0030 DIGIT ZERO character (0), followed by U+0058 LATIN
+    CAPITAL LETTER X character (X) or U+0078 LATIN SMALL LETTER X
+    character (x), followed by zero or more hexadecimal digits,
+    i.e. characters in the range U+0030 ... U+0039, U+0041 ... U+0046,
+    and U+0061 ... U+0066.  The value of this "number" is represented
+    by the hexadecimal digits in the sequence.  If no hexadecimal
+    digit is contained, the value of the "number" is zero (0).
+
+  - A U+0030 DIGIT ZERO character (0), followed by zero or more octal
+    digits, i.e. characters in the range U+0030 ... U+0037.  The value
+    of this "number" is represented by the octal digits in the
+    sequence.
+
+  - Characters in the range U+0031 ... U+0039, followed by zero or
+    more characters in the range U+0030 ... U+0039.  The value of this
+    "number" is represented by the characters in the sequence,
+    interpreted as decimal number.
+
+The *steps to canonicalize an IPv4 address* are given in the following
+algorithm, which return an "IPv4 address" in its canonical form, or
+fall in the /fail/ state:
+
+    1. Let /s/ be the given string.
+
+    2. Let /addr/ be a 32-bit unsigned number.  In the following
+       steps, the notation /addr[i]/ represents the /i/-th bit of
+       /addr/, where /addr[0]/ is the least significant bit and
+       /addr[31]/ is the most significant bit of the number.  In this
+       context, a bit sequence /addr[i + j - 1]/ ... /addr[i]/ can be
+       interpreted as a /j/-bit unsigned number, where /addr[i + j -
+       1]/ is the most significant bit.
+
+    3. If /s/ is an IPv4 address with four numbers, let /addr[31]/
+       ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, let /addr[15]/
+       ... /addr[8]/ be the third number, and let /addr[7]/
+       ... /addr[0]/ be the last number.
+
+    4. Otherwise, if /s/ is an IPv4 address with three numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[16]/ be the second number, and let /addr[15]/
+       ... /addr[0]/ be the last number.
+
+    5. Otherwise, if /s/ is an IPv4 address with two numbers, let
+       /addr[31]/ ... /addr[24]/ be the first number, let /addr[23]/
+       ... /addr[0]/ be the last number.
+
+    6. Otherwise, if /s/ is an IPv4 address with a number, let /addr/
+       be the number.
+
+    7. Otherwise, return "fail" and abort these steps.
+
+    8. Return a string consist of the following substrings, in this
+       order:
+
+         1. The number /addr[31]/ ... /addr[24]/
+
+         2. A U+002E FULL STOP character (.)
+
+         3. The number /addr[23]/ ... /addr[16]/
+
+         4. A U+002E FULL STOP character (.)
+
+         5. The number /addr[15]/ ... /addr[8]/
+
+         6. A U+002E FULL STOP character (.)
+
+         7. The number /addr[7]/ ... /addr[0]/
+
+       Numbers are represented by decimal digits, i.e. characters in
+       the range U+0030 ... U+0039, in the shortest form.
+
+      Note.  This definition of IPv4 addresses originally comes from
+      the UNIX |inet_addr()| function
+      <http://pubs.opengroup.org/onlinepubs/9699919799/functions/inet_addr.html>
+      [POSIX].
+
+** IPv6 addresses
+
+The *steps to canonicalize an IPv6 address* are given in the following
+algorithm, which return an "IPv6 address" in its canonical form, or
+fall in the "fail" state:
+
+    1. Let /s/ be the given string.
+
+    2. If /s/ matches to the |IPv6address| production rule [RFC 3986]
+       using the modified |IPv4address| production rule:
+
+      IPv4address = octet "." octet "." octet "." octet
+      octet = dec-octet / "00" DIGIT / "0" DIGIT DIGIT
+
+       ... then, /s/ can be interpreted as an "IPv6 address".  Return
+       the canonical representation of the "IPv6 address" and abort
+       these steps.
+
+    3. Otherwise, return "fail" and abort these steps.
+
+The canonical representation of an "IPv6 address" is a textual
+representation of the "IPv6 address" conforming to the recommendation
+for the IPv6 text representation as described in RFC 5952 [RFC 5952],
+Section 4.
+
+** Domain name canonicalization
+
+Domain name canonicalization is apparently a disaster zone - five
+major browsers do completely different canonicalization and there is
+no interoperatibility at all on their IDN handling.
+
+Therefore it is difficult to define the behavior we should follow
+here.  Following steps are approximations of what those browsers do.
+It should contain some or more mistakes, as their behavior are too
+complex to understand perfectly.  Needless to say, no formal spec has
+succeeded to document this situation at the time of writing.
+
+Markers "CHROME", "GECKO", "IE", and "THIS" are used in following
+steps.
+
+Steps without any marker apply to all browsers and "THIS"
+specification.  Steps with marker apply to the specified ones only.
+
+The marker *THIS* denotes the steps chosen by THIS specification.
+They are determined such that the algorithm (hopefully) meets to the
+following criteria:
+
+  - The algorithm should be as simple and sane as possbile.
+
+  - The algorithm should result in same output as browsers if Chrome,
+    Gecko, and IE generate the same result.
+
+  - The output should only contain ASCII characters allowed in URLs.
+
+  - Percent-encoded and decoded sequences should be equivalent as long
+    as they represents an unreserved character or an character that
+    cannot be used in URLs.
+
+  - Percent-encoded sequences should be interpreted either as a UTF-8
+    string or as an invalid sequence.
+
+  - The algorithm should be idempotent.
+
+  - The algorithm should not disallow use of code points where
+    characters are assgined after Unicode 3.2.
+
+  - It should allow use of non-conforming ASCII domain names in the
+    wild.
+
+  - It should allow use of IDNs valid in both IDNA2003 [IDNA2003] and
+    IDNA2008 [IDNA2008], independent of whether they are
+    percent-encoded or not, and Punycode-encoded or not.
+
+** The Nameprep algorithm
+
+This is a modified version of the Nameprep algorithm [NAMEPREP].  It
+returns either a string or the "fail" state.
+
+  1. Let /s/ be the given string.
+
+  2. GECKO: If /s/ contains U+0340 COMBINING GRAVE TONE MARK character
+     or U+0341 COMBINING ACUTE TONE MARK character, return "fail" and
+     abort the Nameprep algorithm.
+
+  3. Apply /s/ the Map step [STRINGPREP] [NAMEPREP].
+
+  4. GECKO: If there are Corrigendum 5 Sequences
+     <http://www.unicode.org/reports/tr15/#Corrigendum_5_Sequences> in
+     /s/, swap the second last and the last characters in the
+     sequences.
+
+      Note. This step emulates Gecko's behavior that does not support
+      Corrigendum 5.
+
+  5. Let /has-unassigned/ be false.
+
+  6. THIS/GECKO: Let /has-unassigned/ be true if /s/ contains a code
+     point which is contained in the table of unassigned code points
+     as of Unicode 3.2.0 (See Appendix A.1 of RFC 3454) [STRINGPREP].
+
+  7. Apply /s/ the following variant of NFKC [UNICODE]:
+
+    THIS: Latest version of Unicode (including Corrigendum #3,
+    Corrigendum #4, and Corrigendum #5).
+
+    GECKO: Unicode 4.0.0 (including Corrigendum #3 and Corrigendum #4)
+    with Corrigendum #5.
+
+    CHROME: Unicode 3.2.0 with Corrigendum #3 and Corrigendum #5
+    (without Corrigendum #4).
+
+    IE: Unicode 3.2.0 with Corrigendum #3 and Corrigendum #5 (without
+    Corrigendum #4).
+
+  8. THIS/GECKO: If /has-unassigned/ is true, apply /s/ the Map step
+     [STRINGPREP] [NAMEPREP], again.
+
+  9. THIS/GECKO: Apply /s/ the variant of NFKC as described in Step 7.
+
+      NOTE: Steps 8 and 9 ensure that /s/ does not contain uppercase
+      letters generated by NFKC.  As the Map step followed by NFKC is
+      idempotent, checking of the /has-unassigned/ flag can be
+      omitted.
+
+  10. Apply /s/ the Prohibit step [STRINGPREP] [NAMEPREP].  If it
+      fails, return "fail" and abort the Nameprep algorithm.
+
+  11. If the algorithm is invoked with bidi checking: Apply Check bidi
+      step [STRINGPREP] [NAMEPREP], using:
+
+    THIS: Latest version of Unicode.
+
+    CHROME: Latest version of Unicode (Version 6.0.0 at the time of
+    writing).
+
+    IE/GECKO: Unicode 3.2.0.
+
+        NOTE: In IE, Nameprep check bidi step is somewhat more complex
+        than Stringprep's one.
+
+  12. Return /s/.
+
+  Note. Different user agents might return different results for these
+  steps if they implement different versions of Unicode.
+
+** The CanonicalizeHost algorithm
+
+This algorithm returns either a string or the "fail" state.
+
+  1. Let /s/ be the given string.  Let /scheme/ be the |scheme|
+     component of the URL in which /s/ occurs.
+
+  2. Remove U+0009 CHARACTER TABULATION character, U+000A LINE FEED
+     character, and U+000D CARRIAGE RETURN character from /s/.
+
+  3. Let /fallback/ be "fail".
+
+  4. GECKO: Let /fallback/ be /s/, converted to ASCII lowercase [WA1].
+
+  5. THIS: If /s/ begins by "%5B" or "%5b", return /fallback/ and
+     abort the CanonicalizeHost algorithm.
+
+  6. THIS/CHROME: For any percent-encoded substring /ss/ in /s/,
+
+    1. Percent-decode /ss/.
+
+    2. Decode /ss/ as UTF-8, with error handling [WA1].
+
+  7. IE: Replace following percent-encoded sequences (ASCII
+     case-insensitive) by its percent-decoded representation:
+
+    %00 .. %1F, %20, %22, %2D .. %2F, %30 .. %39, %3C, %3E, %3F, %41
+    .. %5A, %5C, %5E .. %7F
+    
+        NOTE: These percent-encoded sequences represents ASCII
+        characters that are not allowed in URLs, ASCII digits, ASCII
+        latin characters, "-", "_", and ".".
+
+  8. Let /has-root-dot/ be false.
+
+  9. Let /need-punycode/ be true if /s/ contains a non-ASCII
+     character, or false otherwise.
+
+  10. CHROME/IE: If the last character of /s/, if any, is a label
+      separator [RFC 3490], let /has-root-dot/ be true and remove the
+      character.
+ 
+  11. THIS/GECKO/IE: Invoke the Nameprep algorithm without bidi
+      checking with /s/.  If the algorithm returns a string, let /s/
+      be the string.  Otherwise, return /fallback/ and abort the
+      CanonicalizeHost algorithm.
+
+  12. CHROME: If /s/ contains a U+0025 PERCENT SIGN character (%),
+      return /fallback/ and abort the CanonicalizeHost algorithm.
+
+  13. GECKO: If /s/ contains a U+0000 NULL character or a U+0020 SPACE
+      character:
+
+    1. If /fallback/ contains a U+0000 NULL character or a U+0020
+       SPACE character, return "fail" and abort the CanonicalizeHost
+       algorithm.
+
+    2. Otherwise, if /fallback/ contains any character disallowed by
+       the "Prohibit" step of Nameprep [RFC 3491, RFC 3454], return
+       /fallback/ and abort the CanonicalizeHost algorithm.
+
+  14. CHROME: *Percent-encode* /s/, with /encoding/ set to UTF-8 and
+      the following /octets/: 0x20 (space), 0x21 (!), 0x22 ("), 0x23
+      (#), 0x24 ($), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*),
+      0x2C (,), 0x3C (<), 0x3D (=), 0x3E (>), 0x40 (@), 0x5E (^), 0x60
+      (`), 0x7B ({), 0x7C (|), and 0x7D (}).
+
+  15. Replace any label separator [RFC 3490] in /s/ by a U+002E FULL
+      STOP character (.).
+
+  16. THIS: If the last character of /s/, if any, is U+002E FULL STOP
+      character (.), let /has-root-dot/ be true and remove the
+      character.
+
+  17. Split /s/ by U+002E FULL STOP character (.) and let /labels/ be
+      the result.  /labels/ is a list of one or more strings, where
+      some of strings could be empty.
+
+  18. IE: If any string in /labels/ begins with "xn--", let
+      /need-punycode/ be true.
+
+  19. Let /idn-enabled/ be false.
+
+  20. If the /need-punycode/ flag is true,
+
+    1. GECKO: Check the TLD by following the steps below:
+
+      1. Let /tld/ be the last non-empty string in /labels/, if any,
+         or the empty string.
+
+      2. If /tld/ contains a non-ASCII character,
+
+        2.1. Encode /tld/ by Punycode [RFC 3492].  If the algorithm
+             fails, let /tld/ be the empty string.
+
+        2.2. Prepend "xn--" to /tld/ unless it is the empty string.
+
+      3. Let /idn-enabled/ be whether /tld/ is in the list of
+         IDN-enabled TLDs or not [WHITELIST].
+
+      4. Let /idn-enabled/ be false if /s/ contains a character
+         included in the list of IDN blacklist characters [BLACKLIST].
+
+    2. For each item /label/ in /labels/,
+
+      1. THIS/GECKO/CHROME:
+
+        1. Invoke the Nameprep algorithm (including bidi checking)
+           with /label/.  If the algorithm returns a string, let
+           /label/ be the string.  Otherwise, return /fallback/ and
+           abort the CanonicalizeHost algorithm.
+
+            NOTE: For "THIS" and "GECKO", only the Check bidi step
+            need to be applied here, as the Nameprep algorithm without
+            bidi checking is invoked in an earlier step.
+
+        2. If /label/ contains a non-ASCII character,
+
+          1. If /idn-enabled/ is false,
+
+            1. THIS/CHROME: If /label/ begins with "xn--" and contains
+               non-ASCII character, return /fallback/ and abort the
+               CanonicalizeHost algorithm.
+
+            2. Encode /label/ by Punycode [RFC 3492].  If it fails,
+               return /fallback/ and abort the CanonicalizeHost
+               algorithm.
+
+            3. Prepend "xn--" to /label/.
+
+            4. If /label/ contains more than 63 characters, return
+               /fallback/ and abort the CanonicalizeHost algorithm.
+
+        3. Otherwise, if /label/ contains no non-ASCII character,
+
+          1. GECKO: Let /label/ be first 62 characters of it if it
+             contains more than 62 characters.
+
+          2. THIS/CHROME: If /label/ is the empty string, return
+             /fallback/ and abort the CanonicalizeHost algorithm.
+
+          3. If /label/ contains more than 63 characters, return
+             /fallback/ and abort the CanonicalizeHost algorithm.
+
+      2. IE: Apply the modified ToUnicode operation [RFC 3490] as
+         follows:
+
+        1. If /label/ contains a non-ASCII character,
+
+          1. Encode /label/ by Punycode [RFC 3492].  If it fails,
+             return /fallback/ and abort the CanonicalizeHost
+             algorithm.
+
+          2. Prepend "xn--" to /label/.
+        
+        2. Let /p_label/ be /label/.
+
+        3. If /label/ begins with "xn--",
+
+          1. Remove "xn--" prefix from /label/.
+
+          2. Decode /label/ by Punycode decode algorithm.  If it
+             fails, return /fallback/ and abort the CanonicalizeHost
+             algorithm.
+
+        4. Apply ToASCII operation [RFC 3490] to /label/, with the
+           UseSTD3ASCIIRules flag set (and without AllowUnassigned
+           flag), and let /a_label/ be the output.  Note that the
+           Nameprep algorithm defined by this specification is invoked
+           within the ToASCII operation.  If the ToASCII operation
+           fails, return /fallback/ and abort the CanonicalizeHost
+           algorithm.
+
+        5. If /a_label/ is different from /p_label/, return /fallback/
+           and abort the CanonicalizeHost algorithm.
+
+        6. If /label/ contains a U+3002 IDEOGRAPHIC FULL STOP
+           character, return /fallback/ and abort the CanonicalizeHost
+           algorithm.
+
+  21. Let /s/ be the concatenation of the strings in /labels/ by
+      U+002E FULL STOP character (.).
+
+  22. If /has-root-dot/ is true, append a U+002E FULL STOP character
+      (.) to /s/.
+
+  23. CHROME: Replace any percent-encoded octets in /s/ by a character
+      in the range U+0000-U+00FF.
+
+  24. CHROME: Convert /s/ to ASCII lowercase [WA1].
+
+  25. If /s/ begins with a U+005B LEFT SQUARE BRACKET character ([)
+      and ends by a U+005D RIGHT SQUARE BRACKET character (]):
+
+    1. Let /t/ be /s/.
+
+    2. Remove the first character from /t/.
+
+    3. Remove the last character from /t/.
+
+    4. Invoke the rules for canonicalizing an IPv6 address with /t/.
+       If it results in a string, return a U+005B LEFT SQUARE BRACKET
+       character ([) followed by the string followed by a U+005D RIGHT
+       SQUARE BRACKET character (]), and abort the CanonicalizeHost
+       algorithm.
+
+    NOTE: How broken host components contianing "[" and/or "]"
+    characters are handled not always compatible with browsers, as
+    browsers canonicalize them differently and none of them could be
+    considered as sane and idempotent.
+
+  26. THIS: Otherwise, if /s/ contains a U+003A COLON character (:)
+      and /scheme/ is different from |file| (ASCII case-insensitive),
+      return /fallback/ and abort the CanonicalizeHost algorithm.
+
+  27. Invoke the rules for canonicalizing an IPv4 address with /s/.
+      If it results in a string, return the string and abort the
+      CanonicalizeHost algorithm.
+
+  28. If /s/ contains one of the following characters, return
+      /fallback/ and abort the CanonicalizeHost algorithm:
+
+      THIS: U+0000, U+002F (/), U+0025 (%), or U+005C (\).
+
+      CHROME: U+0000, ..., U+001F, U+0025 (%), U+002F (/), U+003A (:),
+      U+003B (;), U+003F (?), U+005B ([), U+005C (\), U+005D (]),
+      U+005E (^), U+007E (~), or U+007F.
+
+      IE: U+0000, U+002F (/), U+003F (?), or U+005C (\).
+
+      GECKO: None.
+
+  29. IE: If /s/ contains one of the following sequences, return
+      /fallback/ and abort the CanonicalizeHost algorithm: "%00" or
+      "%" not followed by two hexadecimal digits.
+
+  30. *Percent-encode* /s/, with /encoding/ set to UTF-8 and the
+      following /octets/:
+
+    THIS: 0x00-0x1F, 0x20, 0x21 (!), 0x22 ("), 0x23 (#), 0x24 ($),
+    0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2C
+    (,), 0x2F (/), 0x3B (;), 0x3C (<), 0x3D (=), 0x3E (>), 0x3F (?),
+    0x5C (\), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D (}), 0x7F.
+    In addition, 0x40 (@) if /scheme/ is different from |file| (ASCII
+    case-insensitive).
+
+        NOTE: These are ASCII characters not allowed in URLs,
+        delimiter characters used before or after the |host|
+        component, characters percent-encoded in Chrome (See Step 28),
+        ";", and "%".  Characters ":", "[", and "]", which are used to
+        represent IPv6 addresses, are not percent-encoded here.
+
+    IE: 0x00-0x1F, 0x20, 0x22 ("), 0x3C (<), 0x3E (>), 0x5C (\), 0x5E
+    (^), 0x60 (`), 0x7B ({), 0x7C (|), 0x7D (}), 0x7F.  Use lowercase
+    letters to represent hexadeciamal numbers.
+
+    CHROME: 0x20, 0x21 (!), 0x22 ("), 0x23 (#), 0x24 ($), 0x26 (&),
+    0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2C (,), 0x3C (<), 0x3D
+    (=), 0x3E (>), 0x40 (@), 0x5E (^), 0x60 (`), 0x7B ({), 0x7C (|),
+    and 0x7D (}).
+
+    GECKO: None.
+
+  31. Return /s/.
+
+** Port numbers
+
+/This section is non-normative./
+
+  URL scheme  Default port number  Reference
+  ----------- -------------------- ----------
+  file        (none)
+  ftp         21                   [RFC 1738]
+  gopher      70                   [RFC 4266]
+  http        80                   [RFC 2616]
+  https       443                  [HTTPS]
+  telnet      23                   [RFC 4248]
+  tn3270      23                   [RFC 6270]
+  rlogin      513                  [draft-yevstifeyev-rlogin-uri]
+  ws          80                   [draft-ietf-hybi-thewebsocketprotocol]
+  wss         443                  [draft-ietf-hybi-thewebsocketprotocol]
+
+  Note. Two different user agents might canonicalize the same URL in
+  two different ways if one supports a URL scheme such that it knows
+  the default port for the URL scheme but the other does not.
+
+* Canonicalization
+
+The *steps to canonicalize a URL*, invoked with a "parsed URL" /u/ and
+a character encoding /encoding/, is as follows:
+
+  If /u/ is /invalid/, return /u/ and abort these steps.
+
+  If there is the |scheme| component in /u/, replace the component by
+  the same string converted to ASCII lowercase [WA1].
+
+  If there is the |user| component or the |password| component in /u/:
+
+    If there is the |password| component in /u/ and it is the empty
+    string, remove the |password| component (and preceding U+003A
+    COLON character (:)).
+
+    If the |user| component is the empty string and there is no
+    |password| component, remove the |user| component (and following
+    U+0040 COMMERCIAL AT character (@)).
+
+    "Percent-encode" the |user| component of /u/, with /encoding/ set
+    to UTF-8 and /octets/ set to the octets EXCEPT for the octets for
+    the unreserved ASCII characters [RFC 3986], 0x21 (!), 0x24 ($),
+    0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A (*), 0x2B
+    (+), and 0x2D (,).
+
+    "Percent-encode" the |password| component of /u/, if any, with
+    /encoding/ set to UTF-8 and /octets/ set to the octets EXCEPT for
+    the octets for the unreserved ASCII characters [RFC 3986], 0x21
+    (!), 0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()),
+    0x2A (*), 0x2B (+), and 0x2D (,).
+
+  HOSTPATH: Let /original-host/ be the |host| component of /u/.  Let
+  /original-path/ be the |path| component of /u/.  Note that these
+  component might be /missing/, which is different from the empty
+  string.
+
+  If the |scheme| component of /u/ is |file|:
+
+    If the |host| component of /u/ is a "drive specification":
+
+      Let the |path| component be a U+002F SOLIDUS character (/),
+      followed by the |host| component of /u/, followed by a U+002F
+      SOLIDUS character (/) if the original |path| component does not
+      begin with a "slash character" or the |path| component is
+      missing, followed by the original |path| component if any.
+
+      Let the |host| component be the empty string.
+
+    Otherwise:
+
+      If there is no |host| component in /u/ or the |host| component
+      of /u/ is equal to |localhost|, let the |host| component be the
+      empty string.
+
+      If there is the |path| component in /u/:
+
+        If the |host| component of /u/ is the empty string and the
+        |path| component of /u/ begins with three or more "slash
+        characters",
+
+          Remove those "slash characters" from the |path| component of
+          /u/.
+
+          Remove zero or more characters that are not "slash
+          characters" from the beginning of /u/.  Let the |host|
+          component of /u/ be the removed string.
+
+        If the |path| component of /u/ begins with an optional "slash
+        character" followed by a "drive specification" followed by a
+        "slash character" or the end of the string:
+
+          Replace them by a U+002F SOLIDUS character (/) followed by
+          the percent-decoded (as a UTF-8 string) representation of
+          the "drive letter" in the "drive specification", followed by
+          a U+003A COLON character (:), followed by a U+002F SOLIDUS
+          character (/).
+
+          If the |host| component of /u/ is equal to "%3F", let the
+          |host| component of /u/ be the empty string.
+
+  If there is the |host| component, invoke the CanonicalizeHost
+  algorithm with the |host| and then:
+
+    If the algorithm returns a string, then let the |host| component
+    be the string.  The string can be the empty string.
+
+    Otherwise, if the algorithm fails, /u/ is invalid.  Abort the
+    entire steps.
+
+  If there is the |port| component in /u/:
+
+    If the |port| component is the empty string, remove the |port|
+    component (and preceding U+003A COLON character (:)).
+
+    Otherwise, if the |port| component consist of one or more sequence
+    of characters in the range U+0030 to U+0039, inclusive:
+
+      Interpret the |port| component as a decimal number and let /p/
+      be that number.
+
+      If /p/ is equal to the default port of the scheme of /u/, if
+      any, remove the |port| component (and preceding U+003A COLON
+      character (:)).
+
+      Otherwise, if /p/ is less than or equal to 65535, replace the
+      |port| component by the shortest representation of /p/ in
+      decimal, using characters in the range U+0030 to U+0039,
+      inclusive.
+
+      Otherwise, /u/ is invalid.  Abort the entire steps.
+
+    Otherwise, /u/ is invalid.  Abort the entire steps.
+
+  If /u/ is hierarchical:
+
+    If /u/ does not have the |path| component or the |path| component
+    is the empty string, let the |path| component be a U+002F SOLIDUS
+    character (/).
+
+    Otherwise, if the |path| component of /u/ does not begin with a
+    U+002F SOLIDUS character (/), prepend a U+002F SOLIDUS character
+    (/) to the |path| component of /u/.
+
+  If /u/ is hierarchical, or if the |scheme| component of /u/ is ASCII
+  case-insensitively equal to |mailto|:
+
+    Percent-decode percent-encoded representations of unreserved
+    characters in the |path| component of /u/.
+
+    "Percent-encode" the |path| component of /u/, with /encoding/ set
+    to UTF-8 and /octets/ set to the octets EXCEPT for the octets for
+    the unreserved ASCII characters [RFC 3986], 0x21 (!), 0x23 (#),
+    0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29 ()), 0x2A
+    (*), 0x2B (+), 0x2D (,), 0x2F (/), 0x3A (:), 0x3B (;), 0x3D (=),
+    0x40 (@), 0x5B ([), and 0x5D (]).
+
+  Otherwise, "percent-encode" the |path| component of /u/, with
+  /encoding/ set to UTF-8 and /octets/ set to the octets 0x00-0x1F and
+  0x7F-0xFF (inclusive).
+
+      Note. ASCII characters not allowed in URLs are not
+      percent-encoded here.
+
+  If the |scheme| component of /u/ is |file|, and if the |host|
+  component of /u/ is different from /original-host/, or the |path|
+  component of /u/ is different from /original-path/, then go to the
+  step labeled "HOSTPATH".
+
+  If the |scheme| component of /u/ is "/not/ hierarchical":
+
+    If there is the |path| component in /u/ and it begins with two or
+    more U+002F SOLIDUS characters (/):
+
+      If there is no |authority| component in /u/, or if there is only
+      empty |host| component in the |authority| component in /u/,
+      prepend "/." (a U+002F SOLIDUS character (/) followed by a
+      U+002E FULL STOP character (.)) to the |path| component of /u/.
+
+        Note. Although this step introduces a non-normalized "."
+        path-segment, it is necessary to prevent the |path| component
+        prefixed by two or more "slash characters" such that its
+        serialization would be parsed as the |authority| component.
+
+  If /u/ is "hierarchical", let /query-encoding/ be /encoding/.
+  Otherwise, let /query-encoding/ be UTF-8.
+
+  "Percent-encode" the |query| component of /u/, with /encoding/ set
+  to /query-encoding/ and /octets/ set to the octets EXCEPT for the
+  octets for the unreserved ASCII characters [RFC 3986], 0x21 (!),
+  0x23 (#), 0x24 ($), 0x25 (%), 0x26 (&), 0x27 ('), 0x28 ((), 0x29
+  ()), 0x2A (*), 0x2B (+), 0x2D (,), 0x2F (/), 0x3A (:), 0x3B (;),
+  0x3D (=), 0x40 (@), 0x5B ([), 0x5D (]), 0x5C (\), 0x5E (^), 0x60
+  (`), 0x7B ({), 0x7C (|), and 0x7D (}).
+
+  If there are characters in the range U+0080-U+009F (inclusive),
+  replace them by their "percent-encoded" representation (where
+  /encoding/ is set to UTF-8 and /octets/ is set to 0x80-0xFF
+  (inclusive)).  "Percent-encode" the |fragment| component of /u/,
+  with /encoding/ set to UTF-8 and /octets/ set to 0x00-0x1F
+  (inclusive) and 0x7F.
+
+      Note. Non-ASCII characters other than C1 control characters are
+      not percent-encoded here.  As a result, a canonicalized URL
+      might contain non-ASCII characters in its |fragment| component.
+
+* Serialization
+
+The *steps to serialize a parsed URL" is as follows:
+
+  1. Let /u/ be the "parsed URL" to serialize.
+
+  2. If /u/ is /invalid/, return nothing and abort these steps.  (An
+     invalid URL cannot be serialized.)
+
+  3. Let /s/ be the empty string.
+
+  4. Append the |scheme| component of /u/ to /s/.
+
+  5. Append a U+003A COLON character (:) to /s/.
+
+  6. If /u/ contains one or more of |user|, |password|, |host|, and
+     |port| components (even if it is equal to the empty string):
+
+    1. Append a U+002F SOLIDUS character (/) to /s/.
+
+    2. Append another U+002F SOLIDUS character (/) to /s/.
+
+    3. If /u/ contains one or both of |user| and |password| components
+       (even if it is equal to the empty string):
+
+      1. Append the |user| component of /u/, if any, to /s/.
+
+      2. If /u/ contains the |password| component (even if it is equal
+         to the empty string):
+
+        1. Append a U+003A COLON character (:) to /s/.
+
+        2. Append the |password| component of /u/ to /s/.
+
+      3. Append a U+0040 COMMERCIAL AT character (@) to /s/.
+
+    4. Append the |host| component of /u/, if any, to /s/.
+
+    5. If /u/ contains the |port| component (even if it is equal to
+       the empty string):
+
+      1. Append a U+003A COLON character (:) to /s/.
+
+      2. Append the |port| component of /u/ to /s/.
+
+  7. Append the |path| component of /u/, if any, to /s/.
+
+  8. If /u/ contains the |query| component of /u/ (even if it is equal
+     to the empty string):
+
+    1. Append a U+003F QUESTION MARK character (?) to /s/.
+
+    2. Append the |query| component of /u/ to /s/.
+
+  9. If /u/ contains the |fragment| component (even if it is equal to
+     the empty string):
+
+    1. Append a U+0023 NUMBER SIGN character (#) to /s/.
+
+    2. Append the |fragment| component of /u/ to /s/.
+
+  10. Return /s/.
+
+    Note.  The returned string might or might not contain non-ASCII
+    characters or ASCII characters not allowed in URLs.  It might or
+    might not be a conforming URL.
