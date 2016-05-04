@@ -854,10 +854,11 @@ telnet:foo@bar
 #data
 telnet://foo@bar:23/
 #canon
-telnet://foo@bar/
+telnet://foo@bar:23/
 #scheme telnet
 #user foo
 #host bar
+#port 23
 #path /
 
 #data
@@ -888,11 +889,12 @@ tn3270://a:b@c:24/
 tn3270://a:b@c:23/
 #base http://foo/
 #canon
-tn3270://a:b@c/
+tn3270://a:b@c:23/
 #scheme tn3270
 #user a
 #password b
 #host c
+#port 23
 #path /
 
 #data
@@ -914,9 +916,10 @@ rlogin://foo/
 #data
 rlogin://foo:513
 #canon
-rlogin://foo/
+rlogin://foo:513/
 #scheme rlogin
 #host foo
+#port 513
 #path /
 
 #data
