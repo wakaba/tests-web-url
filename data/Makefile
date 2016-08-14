@@ -11,8 +11,10 @@ charprop-subset: \
   lib/Char/Prop/Unicode/5_1_0/BidiClass.pm
 
 lib/Char/Prop/Unicode/%.pm: lib/Char/Prop/Unicode
+	mkdir -p lib/Char/Prop/Unicode
 	$(WGET) -O $@ https://github.com/wakaba/perl-charclass/raw/master/$@
 lib/Char/Prop/Unicode/5_1_0/%.pm: lib/Char/Prop/Unicode/5_1_0
+	mkdir -p lib/Char/Prop/Unicode/5_1_0
 	$(WGET) -O $@ https://github.com/wakaba/perl-charclass/raw/master/$@
 
 lib/Char/Prop/Unicode:
