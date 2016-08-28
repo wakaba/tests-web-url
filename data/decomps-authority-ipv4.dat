@@ -71,6 +71,7 @@ http://0000000000000300.0x00000000000000fF.00000000000000001/
 #data
 http://0000000000000300.0xffffffffFFFFFFFF.3022415481470977/
 #canon http://0000000000000300.0xffffffffffffffff.3022415481470977/
+#invalid 1
 #scheme http
 #host 0000000000000300.0xffffffffffffffff.3022415481470977
 #path /
@@ -105,6 +106,7 @@ http://030052000001/
 
 #data
 http://0X12C0a80001/
+#invalid 1
 #canon http://0x12c0a80001/
 #scheme http
 #host 0x12c0a80001
@@ -161,6 +163,7 @@ http://0xFF.0/
 
 #data
 http://0x00.0x100.0x10.0x4F/
+#invalid 1
 #canon http://0x00.0x100.0x10.0x4f/
 #scheme http
 #host 0x00.0x100.0x10.0x4f
@@ -168,6 +171,7 @@ http://0x00.0x100.0x10.0x4F/
 
 #data
 http://0x100.0x00.0x10.0x4F/
+#invalid 1
 #canon http://0x100.0x00.0x10.0x4f/
 #scheme http
 #host 0x100.0x00.0x10.0x4f
@@ -196,6 +200,7 @@ http://0x0FFFFFFFF/
 
 #data
 http://0xFFFFFFFFF/
+#invalid 1
 #canon http://0xfffffffff/
 #scheme http
 #host 0xfffffffff
@@ -203,6 +208,7 @@ http://0xFFFFFFFFF/
 
 #data
 http://0xFFFFFFFF.0/
+#invalid 1
 #canon http://0xffffffff.0/
 #scheme http
 #host 0xffffffff.0
@@ -395,6 +401,7 @@ http://192.168.0.000255/
 
 #data
 http://192.168.0.256/
+#invalid 1
 #canon http://192.168.0.256/
 #scheme http
 #host 192.168.0.256
@@ -423,6 +430,7 @@ http://192.168.0.080/
 
 #data
 http://192.168.0.0777/
+#invalid 1
 #canon http://192.168.0.0777/
 #scheme http
 #host 192.168.0.0777
@@ -458,6 +466,7 @@ http://192.168.000255.0/
 
 #data
 http://192.168.256.0/
+#invalid 1
 #canon http://192.168.256.0/
 #scheme http
 #host 192.168.256.0
@@ -479,6 +488,7 @@ http://192.168.0800.0/
 
 #data
 http://192.168.0777.0/
+#invalid 1
 #canon http://192.168.0777.0/
 #scheme http
 #host 192.168.0777.0
@@ -514,6 +524,7 @@ http://192.000255.0.0/
 
 #data
 http://192.256.0.0/
+#invalid 1
 #canon http://192.256.0.0/
 #scheme http
 #host 192.256.0.0
@@ -535,6 +546,7 @@ http://192.0800.0.0/
 
 #data
 http://192.0777.0.0/
+#invalid 1
 #canon http://192.0777.0.0/
 #scheme http
 #host 192.0777.0.0
@@ -570,6 +582,7 @@ http://000255.0.0.0/
 
 #data
 http://256.0.0.0/
+#invalid 1
 #canon http://256.0.0.0/
 #scheme http
 #host 256.0.0.0
@@ -591,6 +604,7 @@ http://0800.0.0.0/
 
 #data
 http://0777.0.0.0/
+#invalid 1
 #canon http://0777.0.0.0/
 #scheme http
 #host 0777.0.0.0
