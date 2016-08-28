@@ -1274,8 +1274,11 @@ http://a%1Fb.test/
 #ie-canon http://a%1fb.test/
 #ie-host a%1fb.test
 
+#name
+U+0020
 #data escaped
 http://a\u0020b.test/
+#invalid 1
 #canon http://a%20b.test/
 #scheme http
 #host a%20b.test
@@ -1284,8 +1287,11 @@ http://a\u0020b.test/
 #gecko-canon escaped
 http://a\u0020b.test/
 
+#name
+U+0020
 #data escaped
 http://a%20b.test/
+#invalid 1
 #canon http://a%20b.test/
 #scheme http
 #host a%20b.test
@@ -3126,8 +3132,11 @@ http://%ef%bc%85ef%ef%bc%85bd%ef%bc%8581%ef%bc%85ef%ef%bc%85bd%ef%bc%858%ef%bc%9
 #ie-host
 %ef%bc%85ef%ef%bc%85bd%ef%bc%8581%ef%bc%85ef%ef%bc%85bd%ef%bc%858%ef%bc%92.com
 
+#name
+U+0020
 #data
 http://GOO 　goo.com/
+#invalid 1
 #canon http://goo%20%20goo.com/
 #scheme http
 #host goo%20%20goo.com
@@ -3137,8 +3146,11 @@ http://GOO 　goo.com/
 http://GOO 　goo.com/
 #ie-invalid 1
 
+#name
+U+0020
 #data
 http://goo%20%20goo.com/
+#invalid 1
 #canon http://goo%20%20goo.com/
 #scheme http
 #host goo%20%20goo.com
@@ -3151,8 +3163,11 @@ http://GoOgLe.CoM/
 #host google.com
 #path /
 
+#name
+U+0020
 #data
 http://Goo%20 goo%7C|.com/
+#invalid 1
 #canon http://goo%20%20goo%7C%7C.com/
 #scheme http
 #host goo%20%20goo%7C%7C.com
@@ -3163,8 +3178,11 @@ http://Goo%20 goo%7C|.com/
 #ie-canon http://goo%20%20goo%7c%7c.com/
 #ie-host goo%20%20goo%7c%7c.com
 
+#name
+U+0020
 #data
 http://goo%20%20goo%7C%7C.com/
+#invalid 1
 #canon http://goo%20%20goo%7C%7C.com/
 #scheme http
 #host goo%20%20goo%7C%7C.com
@@ -3178,8 +3196,11 @@ http://goo%20%20goo%7c%7c.com/
 #ie-host
 goo%20%20goo%7c%7c.com
 
+#name
+U+0020
 #data
 http://goo%20%20goo%7c%7c.com/
+#invalid 1
 #canon http://goo%20%20goo%7C%7C.com/
 #scheme http
 #host goo%20%20goo%7C%7C.com
@@ -3193,8 +3214,11 @@ http://goo%20%20goo%7c%7c.com/
 #ie-host
 goo%20%20goo%7c%7c.com
 
+#name
+U+0020
 #data
 http://goo%20%20goo%7c%7c.com%41/
+#invalid 1
 #canon http://goo%20%20goo%7C%7C.coma/
 #scheme http
 #host goo%20%20goo%7C%7C.coma
@@ -3654,8 +3678,11 @@ http://\u00E9.example.org/
 #ie-host escaped
 \u00E9.example.org
 
+#name
+U+0020
 #data escaped
 http://\u00A8.example.org
+#invalid 1
 #canon
 http://xn--%20-ccb.example.org/
 #scheme http
@@ -5472,8 +5499,11 @@ http://a\u2183b/
 #ie-host escaped
 a\u2183b
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://a\u2488/
+#invalid 1
 #canon escaped
 http://a1./
 #scheme http
@@ -5481,8 +5511,11 @@ http://a1./
 #path /
 #ie-invalid 1
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://a\u2488b/
+#invalid 1
 #canon escaped
 http://a1.b/
 #scheme http
@@ -5507,8 +5540,11 @@ http://\u0641\u2488\u0642/
 \u0641\u2488\u0642
 #ie-invalid 1
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://1\u24882\u2489\u248A6/
+#invalid 1
 #canon escaped
 http://11.22.3.6/
 #scheme http
@@ -5542,8 +5578,11 @@ http://\u00E0.b/
 #ie-host escaped
 \u00E0.b
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b/
 #scheme http
@@ -5560,8 +5599,11 @@ http://\u00E01.b/
 #ie-host escaped
 \u00E01.b
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b.c/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5574,8 +5616,11 @@ http://\u00E01.b.c/
 #ie-host escaped
 \u00E01.b.c
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b%2Ec/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5590,8 +5635,11 @@ http://\u00E01.b.c/
 #ie-host escaped
 \u00E01.b.c
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b\uFF0Ec/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5604,8 +5652,11 @@ http://\u00E01.b.c/
 #ie-host escaped
 \u00E01.b.c
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b\u3002c/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5618,8 +5669,11 @@ http://\u00E01.b.c/
 #ie-host escaped
 \u00E01.b.c
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b\uFF61c/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5632,8 +5686,11 @@ http://\u00E01.b.c/
 #ie-host escaped
 \u00E01.b.c
 
+#name
+U+2488 (disallowed)
 #data escaped
 http://\u00E0\u2488b%EF%BD%A1c/
+#invalid 1
 #canon escaped
 http://xn--1-rfa.b.c/
 #scheme http
@@ -5647,8 +5704,11 @@ http://xn--1-rfa.b%ef%bd%a1c/
 xn--1-rfa.b%ef%bd%a1c
 #ie-invalid 1
 
+#name
+U+2024 (disallowed)
 #data escaped
 http://a\u2024/
+#invalid 1
 #canon escaped
 http://a./
 #scheme http
@@ -5656,16 +5716,22 @@ http://a./
 #path /
 #ie-invalid 1
 
+#name
+U+2024 (disallowed)
 #data escaped
 http://a\u2024b/
+#invalid 1
 #canon escaped
 http://a.b/
 #scheme http
 #host a.b
 #path /
 
+#name
+U+2024 (disallowed)
 #data escaped
 http://xn--4gq\u2024xn--4gq.jp/
+#invalid 1
 #canon escaped
 http://xn--4gq.xn--4gq.jp/
 #scheme http
@@ -5677,8 +5743,11 @@ http://\u4E00.\u4E00.jp/
 #ie-host escaped
 \u4E00.\u4E00.jp
 
+#name
+U+2024 (disallowed)
 #data escaped
 http://\u0641\u2024\u0642/
+#invalid 1
 #canon
 http://xn--dhb.xn--ehb/
 #scheme http
@@ -5712,6 +5781,8 @@ http://xn--1.-jvdg/
 #chrome-host xn--1.-jvdg
 #ie-invalid 1
 
+#name
+U+2025 (disallowed)
 #data escaped
 http://a\u2025b/
 #invalid 1
@@ -5727,6 +5798,8 @@ http://a..b/
 http://a..b/
 #gecko-host a..b
 
+#name
+U+2026 (disallowed)
 #data escaped
 http://a\u2026b/
 #invalid 1
@@ -5742,6 +5815,8 @@ http://a...b/
 http://a...b/
 #gecko-host a...b
 
+#name
+U+2026 (disallowed)
 #data escaped
 http://\u2026/
 #invalid 1
@@ -5757,6 +5832,8 @@ http://.../
 http://.../
 #gecko-host ...
 
+#name
+U+2026 (disallowed)
 #data escaped
 http://\u00E0\u2026b/
 #invalid 1
@@ -6089,8 +6166,11 @@ http://a\u2665b/
 #ie-host escaped
 a\u2665b
 
+#name
+U+0020
 #data escaped
 http://a\u02D8b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
@@ -6102,8 +6182,11 @@ http://xn--a b-5dc/
 xn--a b-5dc
 #ie-invalid 1
 
+#name
+U+0020
 #data escaped
 http://a \u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
@@ -6117,8 +6200,11 @@ http://a \u0306b/
 http://xn--a%20b-4fd/
 #chrome-host xn--a%20b-4fd
 
+#name
+U+0020
 #data escaped
 http://a%20\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
@@ -6132,8 +6218,11 @@ http://xn--a%20b-4fd/
 http://xn--a%20b-4fd/
 #gecko-host xn--a%20b-4fd
 
+#name
+U+0020
 #data escaped
 http://a\u00A0\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
@@ -6158,8 +6247,11 @@ http://a\u1680\u0306b/
 a\u1680\u0306b
 #ie-invalid 1
 
+#name
+U+0020
 #data escaped
 http://a\u2000\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
@@ -6171,8 +6263,11 @@ http://a\u2000\u0306b/
 a\u2000\u0306b
 #ie-invalid 1
 
+#name
+U+0020
 #data escaped
 http://a\u3000\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%20b-5dc/
 #scheme http
