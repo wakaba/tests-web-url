@@ -44,6 +44,7 @@ http://%D9%82%D9%87%D9%88%D8%a9@example/
 non-ASCII [] in authority
 #data
 http://[c@d]/
+#invalid 1
 #canon http://%5Bc@d]/
 #scheme http
 #user %5Bc
@@ -52,6 +53,7 @@ http://[c@d]/
 
 #data
 http://user@[c@d]/
+#invalid 1
 #canon http://user%40%5Bc@d]/
 #scheme http
 #user user%40%5Bc

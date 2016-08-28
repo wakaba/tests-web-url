@@ -1828,6 +1828,7 @@ file:///c:/windowsA
 #data
 //%3F/c:/windows
 #base http://a/b/c
+#invalid 1
 #canon http://%3F/c:/windows
 #scheme http
 #host %3F
@@ -1878,6 +1879,7 @@ file://ab:/foo/bar
 #data
 //%3F/host/windows
 #base http://a/b/c
+#invalid 1
 #canon http://%3F/host/windows
 #scheme http
 #host %3F

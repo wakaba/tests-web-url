@@ -251,6 +251,7 @@ about://@
 
 #data
 http://@[c@d]/
+#invalid 1
 #canon http://%40%5Bc@d]/
 #scheme http
 #user %40%5Bc
