@@ -1,6 +1,14 @@
 URL Parsing, Resolution, and Canonicalization
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+*** WARNING ***
+
+THIS DOCUMENT IS OBSOLETE.
+
+  Use URL Standard <https://url.spec.whatwg.org/> instead.
+
+*** ******* ***
+
 This document describes how the |Web::URL::Parser| module parses,
 resolves, and canonicalizes URLs, in English.  It is just a
 description of the implementation; it's not a formal spec and not so

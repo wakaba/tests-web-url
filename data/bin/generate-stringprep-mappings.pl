@@ -624,10 +624,10 @@ generate_from_list
     pe_input => 1,
     invalid => 1;
 
-generate_from_list
-    \@Unicode::Stringprep::Unassigned::A1,
-    => 'decomps-authority-stringprep-a1',
-    unassigned => 1;
+#generate_from_list
+#    \@Unicode::Stringprep::Unassigned::A1,
+#    => 'decomps-authority-stringprep-a1',
+#    unassigned => 1;
 
 __END__
 
