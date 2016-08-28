@@ -2390,8 +2390,11 @@ http://192.168.%E2%80%8D0.001/
 #ie-canon http://192.168.%e2%80%8d0.001/
 #ie-host 192.168.%e2%80%8d0.001
 
+#name
+non-ASCII [] in authority
 #data escaped
 http://[\u200C::0]/
+#invalid 1
 #canon http://[::]/
 #scheme http
 #host [::]
@@ -2402,8 +2405,11 @@ http://[::0]/
 [::0]
 #ie-invalid 1
 
+#name
+non-ASCII [] in authority
 #data escaped
 http://[:%E2%80%8D:0]/
+#invalid 1
 #canon http://[::]/
 #scheme http
 #host [::]
@@ -3232,8 +3238,11 @@ http://goo%20%20goo%7c%7c.coma/
 #ie-host
 goo%20%20goo%7c%7c.coma
 
+#name
+non-ASCII [] in authority
 #data
 http://[google.com]/
+#invalid 1
 #canon
 http://[google.com]/
 #scheme http

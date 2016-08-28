@@ -42,8 +42,11 @@ http://[::]/
 [::]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:::]/
+#invalid 1
 #canon
 http://[:::]/
 #scheme http
@@ -51,8 +54,11 @@ http://[:::]/
 [:::]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:::1]/
+#invalid 1
 #canon
 http://[:::1]/
 #scheme http
@@ -60,8 +66,11 @@ http://[:::1]/
 [:::1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:::001]/
+#invalid 1
 #canon
 http://[:::001]/
 #scheme http
@@ -187,8 +196,11 @@ http://[1::%25eth0]/
 http://[1::%eth0]/
 #invalid 1
 
+#name
+bad [] in authority
 #data
 http://[v1.2001:0DB8::0:1+02]/
+#invalid 1
 #canon
 http://[v1.2001:0db8::0:1+02]/
 #scheme http
@@ -196,8 +208,11 @@ http://[v1.2001:0db8::0:1+02]/
 [v1.2001:0db8::0:1+02]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:/
+#invalid 1
 #canon http://[/
 #scheme http
 #host [
@@ -259,36 +274,51 @@ http://[192::c0a8:1]/
 #host [192::c0a8:1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:::192.168.0.1]/
+#invalid 1
 #canon http://[:::192.168.0.1]/
 #scheme http
 #host [:::192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:::192.168.0.1]/
+#invalid 1
 #canon http://[1:::192.168.0.1]/
 #scheme http
 #host [1:::192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:::192.168.0.1]/
+#invalid 1
 #canon http://[1:2:::192.168.0.1]/
 #scheme http
 #host [1:2:::192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:0xC0.0Xa8.0x0.0x1]/
+#invalid 1
 #canon http://[::ffff:0xc0.0xa8.0x0.0x1]/
 #scheme http
 #host [::ffff:0xc0.0xa8.0x0.0x1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.168.1]/
+#invalid 1
 #canon http://[::ffff:192.168.1]/
 #scheme http
 #host [::ffff:192.168.1]
@@ -301,15 +331,21 @@ http://[::ffff:c0a8:1]/
 #host [::ffff:c0a8:1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2]/
+#invalid 1
 #canon http://[::ffff:192.1.2]/
 #scheme http
 #host [::ffff:192.1.2]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:1920.1.1.2]/
+#invalid 1
 #canon http://[::ffff:1920.1.1.2]/
 #scheme http
 #host [::ffff:1920.1.1.2]
@@ -322,22 +358,31 @@ http://[::ffff:192.1.2.010]/
 #host [::ffff:c001:20a]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.0010]/
+#invalid 1
 #canon http://[::ffff:192.1.2.0010]/
 #scheme http
 #host [::ffff:192.1.2.0010]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.00010]/
+#invalid 1
 #canon http://[::ffff:192.1.2.00010]/
 #scheme http
 #host [::ffff:192.1.2.00010]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.000010]/
+#invalid 1
 #canon http://[::ffff:192.1.2.000010]/
 #scheme http
 #host [::ffff:192.1.2.000010]
@@ -364,8 +409,11 @@ http://[::ffff:192.168.0.000]/
 #host [::ffff:c0a8:0]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.168.0.0000]/
+#invalid 1
 #canon http://[::ffff:192.168.0.0000]/
 #scheme http
 #host [::ffff:192.168.0.0000]
@@ -392,36 +440,51 @@ http://[::ffff:192.168.0.001]/
 #host [::ffff:c0a8:1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.168.0.0001]/
+#invalid 1
 #canon http://[::ffff:192.168.0.0001]/
 #scheme http
 #host [::ffff:192.168.0.0001]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.256]/
+#invalid 1
 #canon http://[::ffff:192.1.2.256]/
 #scheme http
 #host [::ffff:192.1.2.256]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.257]/
+#invalid 1
 #canon http://[::ffff:192.1.2.257]/
 #scheme http
 #host [::ffff:192.1.2.257]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.260]/
+#invalid 1
 #canon http://[::ffff:192.1.2.260]/
 #scheme http
 #host [::ffff:192.1.2.260]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::ffff:192.1.2.300]/
+#invalid 1
 #canon http://[::ffff:192.1.2.300]/
 #scheme http
 #host [::ffff:192.1.2.300]
@@ -461,8 +524,11 @@ http://[1080:0:1:2:8:800:200c:417a]/
 [1080:0:1:2:8:800:200c:417a]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[001080:000000:000001:000002:00008:00800:0200C:00417A]/
+#invalid 1
 #canon
 http://[001080:000000:000001:000002:00008:00800:0200c:00417a]/
 #scheme http
@@ -470,8 +536,11 @@ http://[001080:000000:000001:000002:00008:00800:0200c:00417a]/
 [001080:000000:000001:000002:00008:00800:0200c:00417a]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5:6:7:192.168.0.1]/
+#invalid 1
 #canon
 http://[1:2:3:4:5:6:7:192.168.0.1]/
 #scheme http
@@ -479,8 +548,11 @@ http://[1:2:3:4:5:6:7:192.168.0.1]/
 [1:2:3:4:5:6:7:192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5:6:7::192.168.0.1]/
+#invalid 1
 #canon
 http://[1:2:3:4:5:6:7::192.168.0.1]/
 #scheme http
@@ -488,8 +560,11 @@ http://[1:2:3:4:5:6:7::192.168.0.1]/
 [1:2:3:4:5:6:7::192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5:6::192.168.0.1]/
+#invalid 1
 #canon
 http://[1:2:3:4:5:6::192.168.0.1]/
 #scheme http
@@ -497,8 +572,11 @@ http://[1:2:3:4:5:6::192.168.0.1]/
 [1:2:3:4:5:6::192.168.0.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5:6:7:8:192.168.0.1]/
+#invalid 1
 #canon
 http://[1:2:3:4:5:6:7:8:192.168.0.1]/
 #scheme http
@@ -524,8 +602,11 @@ http://[ff01::43]/
 [ff01::43]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[FF::01::43]/
+#invalid 1
 #canon
 http://[ff::01::43]/
 #scheme http
@@ -533,8 +614,11 @@ http://[ff::01::43]/
 [ff::01::43]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5::06:7:8]/
+#invalid 1
 #canon
 http://[1:2:3:4:5::06:7:8]/
 #scheme http
@@ -542,8 +626,11 @@ http://[1:2:3:4:5::06:7:8]/
 [1:2:3:4:5::06:7:8]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:3:4:5::06:7:8:9]/
+#invalid 1
 #canon
 http://[1:2:3:4:5::06:7:8:9]/
 #scheme http
@@ -686,8 +773,11 @@ http://[::fffe:8190:3426]/
 [::fffe:8190:3426]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[FFFF:129.144.52.38]/
+#invalid 1
 #canon
 http://[ffff:129.144.52.38]/
 #scheme http
@@ -695,8 +785,11 @@ http://[ffff:129.144.52.38]/
 [ffff:129.144.52.38]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[FFFF:129.144.52.03]/
+#invalid 1
 #canon
 http://[ffff:129.144.52.03]/
 #scheme http
@@ -704,8 +797,11 @@ http://[ffff:129.144.52.03]/
 [ffff:129.144.52.03]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::FFFF:129.144.52.38:00]/
+#invalid 1
 #canon
 http://[::ffff:129.144.52.38:00]/
 #scheme http
@@ -721,40 +817,55 @@ http://[2002:c000:22a::]/
 #host [2002:c000:22a::]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[2002:c000:022a:]/
+#invalid 1
 #canon
 http://[2002:c000:022a:]/
 #scheme http
 #host [2002:c000:022a:]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:2002:c000:022a]/
+#invalid 1
 #canon
 http://[:2002:c000:022a]/
 #scheme http
 #host [:2002:c000:022a]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:2002:c000:022a::]/
+#invalid 1
 #canon
 http://[:2002:c000:022a::]/
 #scheme http
 #host [:2002:c000:022a::]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::2002:c000:022a:]/
+#invalid 1
 #canon
 http://[::2002:c000:022a:]/
 #scheme http
 #host [::2002:c000:022a:]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::2002:c000:022a::]/
+#invalid 1
 #canon
 http://[::2002:c000:022a::]/
 #scheme http
@@ -778,8 +889,11 @@ http://[64:ff9b::c000:221]/
 [64:ff9b::c000:221]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[64:ff9b::192.00.2.33:]/
+#invalid 1
 #canon
 http://[64:ff9b::192.00.2.33:]/
 #scheme http
@@ -787,8 +901,11 @@ http://[64:ff9b::192.00.2.33:]/
 [64:ff9b::192.00.2.33:]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[64:ff9b::192.00.2.33::]/
+#invalid 1
 #canon
 http://[64:ff9b::192.00.2.33::]/
 #scheme http
@@ -804,8 +921,11 @@ http://[64:ff9b::c000:221]/
 [64:ff9b::c000:221]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[129.144.52.38]/
+#invalid 1
 #canon
 http://[129.144.52.38]/
 #scheme http
@@ -846,8 +966,11 @@ http://[::1:37]/
 [::1:37]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::FFFF:12931438]/
+#invalid 1
 #canon
 http://[::ffff:12931438]/
 #scheme http
@@ -855,8 +978,11 @@ http://[::ffff:12931438]/
 [::ffff:12931438]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::FFFF:012931438]/
+#invalid 1
 #canon
 http://[::ffff:012931438]/
 #scheme http
@@ -864,8 +990,11 @@ http://[::ffff:012931438]/
 [::ffff:012931438]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::FFFF:0123143]/
+#invalid 1
 #canon
 http://[::ffff:0123143]/
 #scheme http
@@ -873,8 +1002,11 @@ http://[::ffff:0123143]/
 [::ffff:0123143]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::FFFF:0x123143]/
+#invalid 1
 #canon
 http://[::ffff:0x123143]/
 #scheme http
@@ -882,8 +1014,11 @@ http://[::ffff:0x123143]/
 [::ffff:0x123143]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[000:01:02:003:004:5:6:007:3]/
+#invalid 1
 #canon http://[000:01:02:003:004:5:6:007:3]/
 #scheme http
 #host [000:01:02:003:004:5:6:007:3]
@@ -893,8 +1028,11 @@ http://[000:01:02:003:004:5:6:007:3]/
 http://%5B:80/
 #invalid 1
 
+#name
+bad [] in authority
 #data escaped
 http://[:80/
+#invalid 1
 #canon
 http://[/
 #scheme http
@@ -953,8 +1091,11 @@ http://%5Bxyz/
 http://%5B\uFF1A\uFF1A%5D/
 #invalid 1
 
+#name
+bad [] in authority
 #data escaped
 http://[\uFF1A\uFF1A]/
+#invalid 1
 #canon
 http://[::]/
 #scheme http
@@ -962,8 +1103,11 @@ http://[::]/
 [::]
 #path /
 
+#name
+bad [] in authority
 #data escaped
 http://\uFF3B\uFF1A\uFF1A\uFF3D/
+#invalid 1
 #canon
 http://[::]/
 #scheme http
@@ -971,16 +1115,22 @@ http://[::]/
 [::]
 #path /
 
+#name
+bad [] in authority
 #data escaped
 http://[\uFF1A\uFF1A\uFF13\uFF17]/
+#invalid 1
 #canon escaped
 http://[::37]/
 #scheme http
 #host [::37]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[2001:db8:::192.0.2.1]/
+#invalid 1
 #canon
 http://[2001:db8:::192.0.2.1]/
 #scheme http
@@ -1023,8 +1173,11 @@ http://ab[2001:0DB8::80/60]/../
 http://2001:db8::1.80/
 #invalid 1
 
+#name
+bad [] in authority
 #data
 http://[v6:ff01::43]/
+#invalid 1
 #canon
 http://[v6:ff01::43]/
 #scheme http
@@ -1032,8 +1185,11 @@ http://[v6:ff01::43]/
 [v6:ff01::43]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v6:ff01::043]/
+#invalid 1
 #canon
 http://[v6:ff01::043]/
 #scheme http
@@ -1041,8 +1197,11 @@ http://[v6:ff01::043]/
 [v6:ff01::043]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v6.ff01::43]/
+#invalid 1
 #canon
 http://[v6.ff01::43]/
 #scheme http
@@ -1050,8 +1209,11 @@ http://[v6.ff01::43]/
 [v6.ff01::43]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v6.ff01::043]/
+#invalid 1
 #canon
 http://[v6.ff01::043]/
 #scheme http
@@ -1059,8 +1221,11 @@ http://[v6.ff01::043]/
 [v6.ff01::043]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v06.ff01::43]/
+#invalid 1
 #canon
 http://[v06.ff01::43]/
 #scheme http
@@ -1068,8 +1233,11 @@ http://[v06.ff01::43]/
 [v06.ff01::43]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[IPv6:ff01::43]/
+#invalid 1
 #canon
 http://[ipv6:ff01::43]/
 #scheme http
@@ -1085,8 +1253,11 @@ http://[::102:304]/
 #host [::102:304]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::192.168.000.001.1]/
+#invalid 1
 #canon
 http://[::192.168.000.001.1]/
 #scheme http
@@ -1094,8 +1265,11 @@ http://[::192.168.000.001.1]/
 [::192.168.000.001.1]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::192.168.000.1000]/
+#invalid 1
 #canon
 http://[::192.168.000.1000]/
 #scheme http
@@ -1103,8 +1277,11 @@ http://[::192.168.000.1000]/
 [::192.168.000.1000]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[::192.168.0.0333]/
+#invalid 1
 #canon
 http://[::192.168.0.0333]/
 #scheme http
@@ -1112,8 +1289,11 @@ http://[::192.168.0.0333]/
 [::192.168.0.0333]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[192.168.000.001]/
+#invalid 1
 #canon
 http://[192.168.000.001]/
 #scheme http
@@ -1121,8 +1301,11 @@ http://[192.168.000.001]/
 [192.168.000.001]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[192.168.000.0x01]/
+#invalid 1
 #canon
 http://[192.168.000.0x01]/
 #scheme http
@@ -1130,23 +1313,32 @@ http://[192.168.000.0x01]/
 [192.168.000.0x01]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[0:0:0:255.255.255.255]/
+#invalid 1
 #canon
 http://[0:0:0:255.255.255.255]/
 #scheme http
 #host [0:0:0:255.255.255.255]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v9.AgeasG:eeagew]/
+#invalid 1
 #canon http://[v9.ageasg:eeagew]/
 #scheme http
 #host [v9.ageasg:eeagew]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[v09.AgeasG:eeagew]/
+#invalid 1
 #canon
 http://[v09.ageasg:eeagew]/
 #scheme http
@@ -1154,8 +1346,11 @@ http://[v09.ageasg:eeagew]/
 [v09.ageasg:eeagew]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[V29.AgeasG:eeagew]/
+#invalid 1
 #canon
 http://[v29.ageasg:eeagew]/
 #scheme http
@@ -1163,8 +1358,11 @@ http://[v29.ageasg:eeagew]/
 [v29.ageasg:eeagew]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[vE.AgeasG:eeagew]/
+#invalid 1
 #canon
 http://[ve.ageasg:eeagew]/
 #scheme http
@@ -1172,8 +1370,11 @@ http://[ve.ageasg:eeagew]/
 [ve.ageasg:eeagew]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[.AgeasG:eeagew]/
+#invalid 1
 #canon
 http://[.ageasg:eeagew]/
 #scheme http

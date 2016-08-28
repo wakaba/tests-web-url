@@ -40,6 +40,8 @@ http://%D9%82%D9%87%D9%88%D8%a9@example/
 #host example
 #path /
 
+#name
+non-ASCII [] in authority
 #data
 http://[c@d]/
 #canon http://%5Bc@d]/
@@ -192,58 +194,82 @@ http://:@
 #host
 #path /
 
+#name
+bad [] in authority
 #data
 http://[]
+#invalid 1
 #canon http://[]/
 #scheme http
 #host []
 #path /
 
+#name
+bad [] in authority
 #data
 http://[]/
+#invalid 1
 #scheme http
 #host []
 #path /
 
+#name
+bad [] in authority
 #data
 http://[?]
+#invalid 1
 #canon http://[/?]
 #scheme http
 #host [
 #path /
 #query ]
 
+#name
+bad [] in authority
 #data
 http://[#]
+#invalid 1
 #canon http://[/#]
 #scheme http
 #host [
 #path /
 #fragment ]
 
+#name
+bad [] in authority
 #data
 http://[/]
+#invalid 1
 #canon http://[/]
 #scheme http
 #host [
 #path /]
 
+#name
+bad [] in authority
 #data
 http://[\]
+#invalid 1
 #canon http://[/]
 #scheme http
 #host [
 #path /]
 
+#name
+bad [] in authority
 #data
 http://[:]
+#invalid 1
 #canon http://[:]/
 #scheme http
 #host [:]
 #path /
 
+#name
+bad [] in authority
 #data
 http://[:80]
+#invalid 1
 #canon http://[:80]/
 #scheme http
 #host [:80]
@@ -293,17 +319,24 @@ http://foo:/
 #host foo
 #path /
 
+#name
+bad [] in authority
 #data
 http://[foo:80
+#invalid 1
 #canon http://[foo/
 #scheme http
 #host [foo
 #path /
 
+#name
+bad [] in authority
 #data
 http://[1:2:4
 #invalid 1
 
+#name
+bad [] in authority
 #data
 http://[1:2:3/4:5]
 #invalid 1
@@ -322,8 +355,11 @@ http://foo:080/
 #host foo
 #path /
 
+#name
+bad [] in authority
 #data
 http://[foo;bar=a]:80
+#invalid 1
 #canon http://[foo%3Bbar%3Da]/
 #scheme http
 #host [foo%3Bbar%3Da]
