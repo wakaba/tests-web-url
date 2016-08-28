@@ -211,15 +211,21 @@ http://[::%:]/
 http://[::%25:]/
 #invalid 1
 
+#name
+U+0020 in authority
 #data
 http://[::1 hello]/
+#invalid 1
 #canon http://[::1%20hello]/
 #scheme http
 #host [::1%20hello]
 #path /
 
+#name
+U+0020 in authority
 #data
 http://[::1%20hello]/
+#invalid 1
 #canon http://[::1%20hello]/
 #scheme http
 #host [::1%20hello]

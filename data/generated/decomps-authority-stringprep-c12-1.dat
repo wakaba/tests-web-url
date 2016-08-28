@@ -1,5 +1,8 @@
+#name
+U+0020 in authority
 #data escaped
 http://a\u00A0b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -35,8 +38,11 @@ http://a\u1680b/
 a\u1680b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2000b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -57,8 +63,11 @@ http://a\u2000b/
 a\u2000b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2001b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -79,8 +88,11 @@ http://a\u2001b/
 a\u2001b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2002b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -101,8 +113,11 @@ http://a\u2002b/
 a\u2002b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2003b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -123,8 +138,11 @@ http://a\u2003b/
 a\u2003b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2004b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -145,8 +163,11 @@ http://a\u2004b/
 a\u2004b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2005b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -167,8 +188,11 @@ http://a\u2005b/
 a\u2005b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2006b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -189,8 +213,11 @@ http://a\u2006b/
 a\u2006b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2007b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -211,8 +238,11 @@ http://a\u2007b/
 a\u2007b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2008b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -233,8 +263,11 @@ http://a\u2008b/
 a\u2008b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u2009b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -255,8 +288,11 @@ http://a\u2009b/
 a\u2009b
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u200Ab/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -299,8 +335,11 @@ http://ab/
 ab
 #ie-invalid 
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u202Fb/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -321,8 +360,11 @@ http://a\u202Fb/
 a\u202Fb
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u205Fb/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped
@@ -343,8 +385,11 @@ http://a\u205Fb/
 a\u205Fb
 #ie-invalid 1
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u3000b/
+#invalid 1
 #canon escaped
 http://a%20b/
 #host escaped

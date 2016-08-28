@@ -3940,8 +3940,11 @@ http://a\u03B9b/
 a\u03B9b
 #ie-invalid 
 
+#name
+U+0020 in authority
 #data escaped
 http://a\u037Ab/
+#invalid 1
 #canon escaped
 http://xn--a%20b-myc/
 #scheme http

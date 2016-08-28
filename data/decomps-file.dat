@@ -1586,8 +1586,11 @@ file:///::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D
 #host
 #path /::%7B450d8fba-ad25-11d0-98a8-0800361b1103%7D
 
+#name
+U+0020 in authority of file://
 #data
 file://Folder Settings\folder.htt
+#invalid 1
 #canon file://folder%20settings/folder.htt
 #scheme file
 #host folder%20settings

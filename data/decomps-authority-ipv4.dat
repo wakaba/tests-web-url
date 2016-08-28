@@ -229,8 +229,11 @@ http://192.0x00A80001/
 #host 192.168.0.1
 #path /
 
+#name
+U+0020 in authority
 #data
 http://192.168.0.1. hello/
+#invalid 1
 #canon http://192.168.0.1.%20hello/
 #scheme http
 #host 192.168.0.1.%20hello
@@ -335,15 +338,21 @@ http://0xc0.0250.01/
 http://%3g%78%63%30%2e%30%32%35%30%2E.01/
 #invalid 1
 
+#name
+U+0020 in authority
 #data
 http://192.168.0.1 hello/
+#invalid 1
 #canon http://192.168.0.1%20hello/
 #scheme http
 #host 192.168.0.1%20hello
 #path /
 
+#name
+U+0020 in authority
 #data
 http://192.168.0.1%20hello/
+#invalid 1
 #canon http://192.168.0.1%20hello/
 #scheme http
 #host 192.168.0.1%20hello
