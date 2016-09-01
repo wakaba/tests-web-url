@@ -85,6 +85,7 @@ ftp://foo@hoge/
 
 #data
 ftp://foo@
+#invalid 1
 #canon
 ftp://foo@/
 #scheme ftp
@@ -164,10 +165,10 @@ ftp://foo/baz
 #data
 ftp:///foo/bar
 #canon
-ftp:///foo/bar
+ftp://foo/bar
 #scheme ftp
-#host 
-#path /foo/bar
+#host foo
+#path /bar
 
 #data
 ftp://hoge\bar\baz
@@ -400,10 +401,10 @@ ftp:///hoge
 #base
 http://foo/bar/baz
 #canon
-ftp:///hoge
+ftp://hoge/
 #scheme ftp
-#host 
-#path /hoge
+#host hoge
+#path /
 
 #data
 ftp:?hoge

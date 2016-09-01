@@ -38,6 +38,7 @@ ab
 http://a\u1806b/
 #canon escaped
 http://ab/
+#invalid 1
 #scheme http
 #host escaped
 ab

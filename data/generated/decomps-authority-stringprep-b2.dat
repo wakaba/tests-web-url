@@ -1474,8 +1474,11 @@ http://a\u012Fb/
 a\u012Fb
 #ie-invalid 
 
+#name 
+U+0130
 #data escaped
 http://a\u0130b/
+#invalid 1
 #canon escaped
 http://xn--aib-9dc/
 #scheme http
@@ -15051,6 +15054,7 @@ ac\u2215kgb
 
 #data escaped
 http://a\u33C7b/
+#invalid 1
 #canon escaped
 http://aco.b/
 #scheme http

@@ -8,6 +8,7 @@ http://foo/bar
 
 #data
 http://
+#invalid 1
 #canon http:///
 #scheme http
 #host 
@@ -15,6 +16,7 @@ http://
 
 #data
 HTTP://
+#invalid 1
 #canon http:///
 #scheme http
 #host
@@ -264,6 +266,7 @@ http://a:b@[c@d:4]:3/
 
 #data
 http://a:b@:3/
+#invalid 1
 #scheme http
 #user a
 #password b
@@ -713,6 +716,7 @@ http://192.0x00A80001/
 #data
 http://user:pass@/
 #canon http://user:pass@/
+#invalid 1
 #scheme http
 #user user
 #password pass

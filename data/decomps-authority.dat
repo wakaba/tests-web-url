@@ -1,6 +1,7 @@
 
 #data
 http:///
+#invalid 1
 #canon http:///
 #scheme http
 #host 
@@ -115,20 +116,21 @@ http://foo?bar/baz
 
 #data
 http:///foo
-#canon http:///foo
+#canon http://foo/
 #scheme http
-#host 
-#path /foo
+#host foo
+#path /
 
 #data
 http:///foo/
-#canon http:///foo/
+#canon http://foo/
 #scheme http
-#host 
-#path /foo/
+#host foo
+#path /
 
 #data
 http:///?bar
+#invalid 1
 #scheme http
 #host
 #path /
@@ -136,6 +138,7 @@ http:///?bar
 
 #data
 http:///#bar
+#invalid 1
 #scheme http
 #host
 #path /
@@ -176,6 +179,7 @@ http://a@b@c:d@e
 
 #data
 http://@/
+#invalid 1
 #canon http:///
 #scheme http
 #host
@@ -183,6 +187,7 @@ http://@/
 
 #data
 http://@@@@@@@@
+#invalid 1
 #canon http://%40%40%40%40%40%40%40@/
 #scheme http
 #user %40%40%40%40%40%40%40
@@ -191,6 +196,7 @@ http://@@@@@@@@
 
 #data
 http://:@
+#invalid 1
 #canon http:///
 #scheme http
 #host
@@ -345,6 +351,7 @@ http://[1:2:3/4:5]
 
 #data
 http://:080
+#invalid 1
 #canon http:///
 #scheme http
 #host
@@ -376,6 +383,7 @@ http://:@bar
 
 #data
 http://abc:@
+#invalid 1
 #canon http://abc@/
 #scheme http
 #user abc
@@ -384,6 +392,7 @@ http://abc:@
 
 #data
 http://ab:c:de@
+#invalid 1
 #canon http://ab:c%3Ade@/
 #scheme http
 #user ab
@@ -393,6 +402,7 @@ http://ab:c:de@
 
 #data
 http://:::::@
+#invalid 1
 #canon http://:%3A%3A%3A%3A@/
 #scheme http
 #user

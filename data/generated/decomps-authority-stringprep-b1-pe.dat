@@ -36,6 +36,7 @@ a%cd%8fb
 
 #data escaped
 http://a%E1%A0%86b/
+#invalid 1
 #canon escaped
 http://ab/
 #scheme http

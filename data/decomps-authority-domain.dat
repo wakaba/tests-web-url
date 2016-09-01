@@ -308,6 +308,7 @@ http://a\uFF0Db.test/
 
 #data escaped
 http://ab\uFF0D.test/
+#invalid 1
 #canon http://ab-.test/
 #scheme http
 #host ab-.test
@@ -316,6 +317,7 @@ http://ab\uFF0D.test/
 
 #data escaped
 http://\uFF0Dab.test/
+#invalid 1
 #canon http://-ab.test/
 #scheme http
 #host -ab.test
@@ -2974,6 +2976,7 @@ http://%C3%AF%C2%BD%C2%98%C3%AF%C2%BD%C2%8E--4kq.net/
 
 #data escaped
 http://%E4%B8%80%E4%BA%8C--4kq.net/
+#invalid 1
 #canon http://xn----4kq-fg1hu6a.net/
 #scheme http
 #host xn----4kq-fg1hu6a.net
@@ -4565,6 +4568,7 @@ http://a\u034Fb/
 
 #data escaped
 http://a\u1806b/
+#invalid 1
 #canon http://ab/
 #scheme http
 #host ab
@@ -4645,6 +4649,7 @@ http://\u00E5/
 
 #data escaped
 http://\u0329/
+#invalid 1
 #canon escaped
 http://xn--qta/
 #scheme http
@@ -4885,6 +4890,7 @@ http://\u964B/
 
 #data escaped
 http://\U0002F868/
+#invalid 1
 #canon http://xn--snl/
 #scheme http
 #host xn--snl
@@ -4928,6 +4934,7 @@ http://\U000036FC/
 
 #data escaped
 http://\U0002F874/
+#invalid 1
 #canon http://xn--u2t/
 #scheme http
 #host xn--u2t
@@ -4963,6 +4970,7 @@ http://\U00005F53/
 
 #data escaped
 http://\U0002F91F/
+#invalid 1
 #canon http://xn--hb5j/
 #scheme http
 #host xn--hb5j
@@ -5000,6 +5008,7 @@ http://\U000243AB/
 
 #data escaped
 http://\U0002F95F/
+#invalid 1
 #canon http://xn--ruz/
 #scheme http
 #host xn--ruz
@@ -5035,6 +5044,7 @@ http://\U00007AEE/
 
 #data escaped
 http://\U0002F9BF/
+#invalid 1
 #canon http://xn--gro/
 #scheme http
 #host xn--gro
@@ -5070,6 +5080,7 @@ http://\U000045D7/
 
 #data escaped
 http://\u09C7\u0301\u09BE/
+#invalid 1
 #canon http://xn--lsa465aza/
 #scheme http
 #host xn--lsa465aza
@@ -5083,6 +5094,7 @@ http://\u09C7\u0301\u09BE/
 
 #data escaped
 http://\uAC00\u0301\u11A8/
+#invalid 1
 #canon http://xn--lsa616eyw0j/
 #scheme http
 #host xn--lsa616eyw0j
@@ -5096,6 +5108,7 @@ http://\uAC00\u0301\u11A8/
 
 #data escaped
 http://\u1100\u1175\u0301\u11A8/
+#invalid 1
 #canon http://xn--lsa616eym2j/
 #scheme http
 #host xn--lsa616eym2j
@@ -5109,6 +5122,7 @@ http://\uAE30\u0301\u11A8/
 
 #data escaped
 http://\u1100\u0300\u1161\u0323/
+#invalid 1
 #canon http://xn--ksa4ez54cela/
 #scheme http
 #host xn--ksa4ez54cela
@@ -5159,6 +5173,7 @@ fa\u03C3.de
 
 #data escaped
 http://a\u094D\u200Db/
+#invalid 1
 #canon http://xn--ab-fsf/
 #scheme http
 #host xn--ab-fsf
@@ -5177,6 +5192,7 @@ http://a\u200Db/
 
 #data escaped
 http://\u0DC1\u0DCA\u200D\u0DBB\u0DD3.com/
+#invalid 1
 #canon escaped
 http://xn--10cl1a0b.com/
 #scheme http
@@ -5213,6 +5229,7 @@ http://\u0DC1\u0DCA\u0DBB\u0DD3.com/
 
 #data escaped
 http://\u0DC1\u0DCA\u200D\u0DBB\u0DD3.com/
+#invalid 1
 #canon escaped
 http://xn--10cl1a0b.com/
 #scheme http
@@ -5261,6 +5278,7 @@ xn--mgba3gch31f060k.com
 
 #data escaped
 http://a\u094D\u200Cb/
+#invalid 1
 #canon http://xn--ab-fsf/
 #scheme http
 #host xn--ab-fsf
@@ -5281,6 +5299,7 @@ http://a\u200Cb/
 bidi
 #data escaped
 http://\u0308\u200C\u0308\u0628b/
+#invalid 1
 #canon http://xn--b-bcba413a/
 #scheme http
 #host xn--b-bcba413a
@@ -5297,6 +5316,7 @@ http://\u0308\u200C\u0308\u0628b/
 bidi
 #data escaped
 http://a\u0628\u0308\u200C\u0308/
+#invalid 1
 #canon http://xn--a-ccba213a/
 #host xn--a-ccba213a
 #scheme http
@@ -5313,6 +5333,7 @@ a\u0628\u0308\u200C\u0308
 bidi
 #data escaped
 http://a\u0628\u0308\u200C\u0308\u0628b/
+#invalid 1
 #canon http://xn--ab-uuba211bca/
 #scheme http
 #host xn--ab-uuba211bca
@@ -5329,6 +5350,7 @@ a\u0628\u0308\u200C\u0308\u0628b
 bidi
 #data escaped
 http://A\u0628\u0308\u200C\u0308\u0628b/
+#invalid 1
 #canon http://xn--ab-uuba211bca/
 #scheme http
 #host xn--ab-uuba211bca
@@ -5345,6 +5367,7 @@ a\u0628\u0308\u200C\u0308\u0628b
 bidi
 #data escaped
 http://\u0308\u200D\u0308\u0628b/
+#invalid 1
 #canon http://xn--b-bcba413a/
 #scheme http
 #host xn--b-bcba413a
@@ -5361,6 +5384,7 @@ http://\u0308\u200D\u0308\u0628b/
 bidi
 #data escaped
 http://A\u0308\u200D\u0308\u0628/
+#invalid 1
 #canon http://xn--4ca01iu3d/
 #scheme http
 #host xn--4ca01iu3d
@@ -5377,6 +5401,7 @@ a\u0308\u200D\u0308\u0628
 bidi
 #data escaped
 http://A\u0308\u200D\u0308\u0628b/
+#invalid 1
 #canon http://xn--b-zfa85np1e/
 #scheme http
 #host xn--b-zfa85np1e
@@ -5489,6 +5514,7 @@ http://.com/
 
 #data escaped
 http://a\u04C0b/
+#invalid 1
 #canon escaped
 http://xn--ab-kxc/
 #scheme http
@@ -5501,6 +5527,7 @@ a\u04C0b
 
 #data escaped
 http://a\u10A0b/
+#invalid 1
 #canon escaped
 http://xn--ab-4dk/
 #scheme http
@@ -5513,6 +5540,7 @@ a\u10A0b
 
 #data escaped
 http://a\u2132b/
+#invalid 1
 #canon escaped
 http://xn--ab-qru/
 #scheme http
@@ -5525,6 +5553,7 @@ a\u2132b
 
 #data escaped
 http://a\u2183b/
+#invalid 1
 #canon escaped
 http://xn--ab-oyu/
 #scheme http
@@ -5895,6 +5924,7 @@ http://xn--ab-y82n/
 
 #data escaped
 http://\u33C2/
+#invalid 1
 #canon escaped
 http://a.m./
 #scheme http
@@ -5941,6 +5971,7 @@ http://a..b/
 
 #data escaped
 http://a\uFE12b/
+#invalid 1
 #canon escaped
 http://a.b/
 #scheme http
@@ -5952,6 +5983,7 @@ http://a.b/
 
 #data escaped
 http://a\uFE52b/
+#invalid 1
 #canon escaped
 http://a.b/
 #scheme http
@@ -5977,6 +6009,7 @@ http://xn--ab-yu3n/
 
 #data escaped
 http://a\U0001F100b/
+#invalid 1
 #canon escaped
 http://a0.b/
 #scheme http
@@ -6067,9 +6100,9 @@ http://xn--k1ai47bhi/
 #data escaped
 http://\u023Aab/
 #canon escaped
-http://xn--ab-5cb/
+http://xn--ab-gs1a/
 #scheme http
-#host xn--ab-5cb
+#host xn--ab-gs1a
 #path /
 #ie-invalid 1
 
@@ -6123,6 +6156,7 @@ http://a:b/
 
 #data escaped
 http://\u0300ab/
+#invalid 1
 #canon escaped
 http://xn--ab-4tb/
 #scheme http
@@ -6426,6 +6460,7 @@ a\U000E0001\u0306b
 
 #data escaped
 http://a(\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%28b-5dc/
 #scheme http
@@ -6440,6 +6475,7 @@ http://xn--a%28b-4fd/
 
 #data escaped
 http://a\uFF08\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%28b-5dc/
 #scheme http
@@ -6451,6 +6487,7 @@ http://xn--a%28b-5dc/
 
 #data escaped
 http://a%EF%BC%88\u0306b/
+#invalid 1
 #canon escaped
 http://xn--a%28b-5dc/
 #scheme http
@@ -6465,9 +6502,9 @@ xn--a%ef%bc%88b-1lg
 #data escaped
 http://a\uA654b/
 #canon escaped
-http://xn--ab-177h/
+http://xn--ab-477h/
 #scheme http
-#host xn--ab-177h
+#host xn--ab-477h
 #path /
 #ie-invalid 1
 
@@ -6692,6 +6729,7 @@ http://\u0640x\uFF61a/
 bidi
 #data escaped
 http://\u0590x/
+#invalid 1
 #canon http://xn--x-cec/
 #scheme http
 #host xn--x-cec
@@ -6720,6 +6758,7 @@ http://\u05C6x/
 bidi
 #data escaped
 http://\uFB3Fx/
+#invalid 1
 #canon http://xn--x-c28h/
 #scheme http
 #host xn--x-c28h
@@ -6762,6 +6801,7 @@ http://\U0001093Fx/
 bidi
 #data escaped
 http://\U0001091Cx/
+#invalid 1
 #canon http://xn--x-4u4i/
 #scheme http
 #host xn--x-4u4i
@@ -6819,6 +6859,7 @@ http://\u07B1.x/
 
 #data escaped
 http://\u07B1\u0590.x/
+#invalid 1
 #canon http://xn--bcb30i.x/
 #scheme http
 #host xn--bcb30i.x
@@ -6833,6 +6874,7 @@ http://\u07B1\u0590.x/
 bidi
 #data escaped
 http://\u07B1\u0301.x/
+#invalid 1
 #canon http://xn--lsa31v.x/
 #scheme http
 #host xn--lsa31v.x
@@ -6871,6 +6913,7 @@ http://\u07B1x\u07B1.x/
 
 #data escaped
 http://\u302Ex/
+#invalid 1
 #canon escaped
 http://xn--x-r6t/
 #scheme http
@@ -6883,6 +6926,7 @@ http://\u302Ex/
 
 #data escaped
 http://\u302Fx/
+#invalid 1
 #canon escaped
 http://xn--x-t6t/
 #scheme http
@@ -6997,6 +7041,7 @@ http://\u0627\u0031\u0628/
 bidi
 #data escaped
 http://\u0786\u07AE\u0782\u07B0\u0795\u07A9\u0793\u0783\u07AA.com/
+#invalid 1
 #canon http://xn--jqbch7cj4jj0at.com/
 #scheme http
 #host xn--jqbch7cj4jj0at.com
@@ -7011,6 +7056,7 @@ http://\u0786\u07AE\u0782\u07B0\u0795\u07A9\u0793\u0783\u07AA.com/
 
 #data escaped
 http://\u0786\u07AE\u0782\u07B0\u0795\u07A9\u0793\u0783.com/
+#invalid 1
 #canon escaped
 http://xn--jqbch7cj4j6ar.com/
 #scheme http
@@ -7025,6 +7071,7 @@ http://\u0786\u07AE\u0782\u07B0\u0795\u07A9\u0793\u0783.com/
 bidi
 #data escaped
 http://\u05D9\u05B4\u05D5\u05D0\u05B8.com/
+#invalid 1
 #canon http://xn--cdbi5etas.com/
 #scheme http
 #host xn--cdbi5etas.com
@@ -7039,6 +7086,7 @@ http://\u05D9\u05B4\u05D5\u05D0\u05B8.com/
 
 #data escaped
 http://\u05D9\u05B4\u05D5\u05D0.com/
+#invalid 1
 #canon escaped
 http://xn--cdb0doo.com/
 #scheme http
@@ -7094,6 +7142,7 @@ http://0\u00E0\u05D0.com/
 bidi
 #data escaped
 http://\u00C0.\u05D0\u0308/
+#invalid 1
 #canon http://xn--0ca.xn--ssa73l/
 #scheme http
 #host xn--0ca.xn--ssa73l
@@ -7132,6 +7181,7 @@ http://\u05D00\u0660\u05D0.com/
 
 #data escaped
 http://\u0308.\u05D0/
+#invalid 1
 #canon escaped
 http://xn--ssa.xn--4db/
 #scheme http
@@ -7172,6 +7222,7 @@ http://\u00E0\u02C7.\u05D0/
 
 #data escaped
 http://\u00E0\u0308.\u05D0/
+#invalid 1
 #canon escaped
 http://xn--0ca81i.xn--4db/
 #scheme http
@@ -7186,6 +7237,7 @@ http://\u00E0\u0308.\u05D0/
 bidi
 #data escaped
 http://\u05D0a\u05C7.com/
+#invalid 1
 #canon http://xn--a-ihcz.com/
 #scheme http
 #host xn--a-ihcz.com
@@ -7281,8 +7333,9 @@ http://\u02E3\u034F\u2115\u200B\uFE63\u00AD\uFF0D\u180C\u212C\uFE00\u017F\u2064\
 
 #data escaped
 http://\u02E3\u034F\u2115\u200B\uFE63\u00AD\uFF0D\u180C\u212C\uFE00\u017F\u2064\U0001D530\U000E01EF\uFB04.com/
-#invalid 1
+#canon http://xn--bssffl.com/
 #scheme http
+#host xn--bssffl.com
 #path /
 #chrome-invalid 1
 #gecko-not-invalid 1
@@ -7315,6 +7368,8 @@ http://a\u200Db..com/
 #gecko-canon http://ab..com/
 #gecko-host ab..com
 
+#name
+. prefix (ASCII only)
 #data
 http://.b.com/
 #canon http://.b.com/
@@ -7322,6 +7377,8 @@ http://.b.com/
 #host .b.com
 #path /
 
+#name
+.. (ASCII only)
 #data
 http://a..b.com/
 #canon http://a..b.com/
@@ -7340,6 +7397,8 @@ http://a.\u4E00.com./
 #ie-host escaped
 a.\u4E00.com.
 
+#name
+..
 #data escaped
 http://a.\u4E00.com../
 #invalid 1
@@ -7352,6 +7411,8 @@ http://a.\u4E00.com../
 #gecko-host a.xn--4gq.com..
 #ie-invalid 1
 
+#name
+..
 #data escaped
 http://a..\u4E00.com./
 #invalid 1
@@ -7364,6 +7425,8 @@ http://a..\u4E00.com./
 #gecko-host a..xn--4gq.com.
 #ie-invalid 1
 
+#name
+..
 #data escaped
 http://a..\u4E00.com/
 #invalid 1
@@ -7376,6 +7439,8 @@ http://a..\u4E00.com/
 #gecko-host a..xn--4gq.com
 #ie-invalid 1
 
+#name
+"-" at the end of label, ..
 #data escaped
 http://a.b..-q--\u00E4-.e/
 #invalid 1
@@ -7389,8 +7454,11 @@ http://a.b..-q--\u00E4-.e/
 http://a.b..xn---q----jra.e/
 #gecko-host a.b..xn---q----jra.e
 
+#name
+"-" at the end of label
 #data escaped
 http://a.b.-q--\u00E4-.e/
+#invalid 1
 #canon
 http://a.b.xn---q----jra.e/
 #scheme http
@@ -7398,8 +7466,11 @@ http://a.b.xn---q----jra.e/
 #path /
 #ie-invalid 1
 
+#name
+"-" at the end of label
 #data escaped
 http://a.b.-qa--\u00E4-.e/
+#invalid 1
 #canon
 http://a.b.xn---qa----fua.e/
 #scheme http
@@ -7407,8 +7478,11 @@ http://a.b.xn---qa----fua.e/
 #path /
 #ie-invalid 1
 
+#name
+"-" at the end of label
 #data escaped
 http://a.b.-q--\u00E4-.e/
+#invalid 1
 #canon
 http://a.b.xn---q----jra.e/
 #scheme http
@@ -7416,6 +7490,8 @@ http://a.b.xn---q----jra.e/
 #path /
 #ie-invalid 1
 
+#name
+"-" at the end of label
 #data escaped
 http://a.b.xn--\u00E4-.e/
 #invalid 1
@@ -7438,8 +7514,11 @@ http://a.b.xn--\u00E4.e/
 #gecko-host a.b.xn--xn---ooa.e
 #ie-invalid 1
 
+#name
+"-" at the end of label
 #data escaped
 http://a.b.xn-\u00E4-.e/
+#invalid 1
 #canon http://a.b.xn--xn---noa.e/
 #scheme http
 #host a.b.xn--xn---noa.e
@@ -7450,6 +7529,7 @@ http://a.b.xn-\u00E4-.e/
 bidi
 #data escaped
 http://\u03C2\u069C\u0772\u05BC\uFF61\U0001D7CE-\U00010A3F\u200C\u1BA3\uFD24\uFF61\u3013-\U0005E484\u0321/
+#invalid 1
 #canon http://xn--4xa42hgt5z.xn--0--nud4fx97ksg31a.xn----rdb0365an262i/
 #scheme http
 #host xn--4xa42hgt5z.xn--0--nud4fx97ksg31a.xn----rdb0365an262i
@@ -7466,6 +7546,7 @@ http://\u03C2\u069C\u0772\u05BC\uFF61\U0001D7CE-\U00010A3F\u200C\u1BA3\uFD24\uFF
 bidi
 #data escaped
 http://\u064A\u0BCD-\u2079\U0001DEFD\u06C5\U000E0163.\U00010E77\u200D\u0AC3\U000E013B-.\U000E04AD\u07ED\U000E0817\u0626\U0001D7D5/
+#invalid 1
 #canon http://xn---9-bwd80cf5r6o20fwh65l.xn----eke5650rv4o0i.xn--7-wmc87kr2595e5tda/
 #scheme http
 #host xn---9-bwd80cf5r6o20fwh65l.xn----eke5650rv4o0i.xn--7-wmc87kr2595e5tda
@@ -7480,6 +7561,7 @@ http://\u064A\u0BCD-\u2079\U0001DEFD\u06C5\U000E0163.\U00010E77\u200D\u0AC3\U000
 
 #name
 bidi
+#invalid 1
 #data escaped
 http://\U0001E946\u0315Ss\u200C\u24FD-\U0001EF9E/
 #canon http://xn--ss--tfc6154b0d19b7jja/
@@ -7495,6 +7577,7 @@ http://\U0001E946\u0315Ss\u200C\u24FD-\U0001EF9E/
 
 #data escaped
 http://x%CD%80b/
+#invalid 1
 #canon escaped
 http://xn--xb-5tb/
 #scheme http
@@ -7512,6 +7595,7 @@ x%cd%80b
 
 #data escaped
 http://x\u0340b/
+#invalid 1
 #canon escaped
 http://xn--xb-5tb/
 #scheme http
@@ -7529,6 +7613,7 @@ x\u0300b
 
 #data escaped
 http://x%CD%81b/
+#invalid 1
 #canon escaped
 http://xn--xb-8tb/
 #scheme http
@@ -7546,6 +7631,7 @@ x%cd%81b
 
 #data escaped
 http://\u0341/
+#invalid 1
 #canon escaped
 http://xn--lsa/
 #scheme http
@@ -7563,6 +7649,7 @@ http://\u0301/
 
 #data escaped
 http://x\u0341b/
+#invalid 1
 #canon escaped
 http://xn--xb-8tb/
 #scheme http
@@ -7580,6 +7667,7 @@ x\u0301b
 
 #data escaped
 http://x\u0341b.jp/
+#invalid 1
 #canon escaped
 http://xn--xb-8tb.jp/
 #scheme http
@@ -7631,6 +7719,7 @@ http://\u00E1b.jp/
 
 #data escaped
 http://\u4e00\u0341b/
+#invalid 1
 #canon escaped
 http://xn--b-wbb0178c/
 #scheme http
@@ -7648,6 +7737,7 @@ http://\u4e00\u0301b/
 
 #data escaped
 http://x\u0301b/
+#invalid 1
 #canon escaped
 http://xn--xb-8tb/
 #scheme http

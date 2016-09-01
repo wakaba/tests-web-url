@@ -212,27 +212,27 @@ http://foo?bar/baz
 #data
 http:///foo
 #scheme http
-#host 
-#path /foo
+#host foo
+#path 
 
 #data
 http:///foo/
 #scheme http
-#host 
-#path /foo/
+#host foo
+#path /
 
 #data
 http:///?bar
 #scheme http
 #host
-#path /
+#path 
 #query bar
 
 #data
 http:///#bar
 #scheme http
 #host
-#path /
+#path 
 #fragment bar
 
 #data

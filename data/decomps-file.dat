@@ -450,10 +450,10 @@ file:///hoge///somehost/someshare/afile.txt
 #base
 file:///c:/def
 #canon
-file:///somehost/hoge
+file://somehost/hoge
 #scheme file
-#host 
-#path /somehost/hoge
+#host somehost
+#path /hoge
 
 #data
 ////somehost/hoge
@@ -1707,6 +1707,7 @@ file:///?\c:\windows
 #data
 //?/c:/windows
 #base http://a/b/c
+#invalid 1
 #canon http:///?/c:/windows
 #scheme http
 #host 
@@ -1745,6 +1746,7 @@ file:///?\host\windows
 #data
 //?/host/windows
 #base http://a/b/c
+#invalid 1
 #canon http:///?/host/windows
 #scheme http
 #host
@@ -2344,40 +2346,40 @@ file:///abc
 #base
 file://a/b
 #canon
-file:///abc
+file://abc/
 #scheme file
-#host 
-#path /abc
+#host abc
+#path /
 
 #data
 \/\abc
 #base
 http://a/b
 #canon
-http:///abc
+http://abc/
 #scheme http
-#host 
-#path /abc
+#host abc
+#path /
 
 #data
 /\\abc
 #base
 file://a/b
 #canon
-file:///abc
+file://abc/
 #scheme file
-#host 
-#path /abc
+#host abc
+#path /
 
 #data
 /\\abc
 #base
 http://a/b
 #canon
-http:///abc
+http://abc/
 #scheme http
-#host 
-#path /abc
+#host abc
+#path /
 
 #data
 \\abc?def

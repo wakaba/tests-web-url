@@ -453,6 +453,7 @@ aa/%2E%2E/
 #data
 /foo?bar#baz
 #base http://
+#invalid 1
 #canon http:///foo?bar#baz
 #scheme http
 #host 

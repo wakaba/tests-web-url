@@ -1476,6 +1476,7 @@ a%c4%aeb
 
 #data escaped
 http://a%C4%B0b/
+#invalid 1
 #canon escaped
 http://xn--aib-9dc/
 #scheme http
@@ -15051,6 +15052,7 @@ a%e3%8f%86b
 
 #data escaped
 http://a%E3%8F%87b/
+#invalid 1
 #canon escaped
 http://aco.b/
 #scheme http
