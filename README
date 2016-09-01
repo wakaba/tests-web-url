@@ -1,6 +1,13 @@
 URL tests
 ~~~~~~~~~
 
+
+  THIS REPOSITORY IS OBSOLETE!
+  
+  Test data are merged into another repository:
+  <https://github.com/wakaba/tests-web/tree/master/url/parsing>.
+
+
 This repository contains a number of test data for URL parsing,
 resolution, and canonicalization as performed by Web browsers,
 developed in 2011 along with Perl Web::URL module.
