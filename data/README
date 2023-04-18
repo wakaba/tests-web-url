@@ -9,9 +9,9 @@ Test data are encoded in a custom format similar to HTML parser tests
 <http://wiki.whatwg.org/wiki/Parser_tests>.
 
 There are JavaScript implementation
-<http://suika.fam.cx/www/js/sami/script/sami-test.js> (SAMI.Test) and
-Perl implementation <https://github.com/wakaba/testdataparser> for the
-format.
+<https://suika.suikawiki.org/www/js/sami/script/sami-test.js>
+(SAMI.Test) and Perl implementation
+<https://github.com/wakaba/testdataparser> for the format.
 
 * Test harness for Web browsers
 
@@ -26,7 +26,7 @@ Perl implementation: Web::URL::Canonicalize.
 
 * Author
 
-Wakaba <w@suika.fam.cx>.
+Wakaba <wakaba@suikawiki.org>.
 
 * Acknowledgements
 
@@ -39,9 +39,9 @@ URLs in these test cases come from various sources, including:
 - <http://trac.webkit.org/browser/trunk/LayoutTests/fast/url/>
 - <http://www.mozilla.org/quality/networking/testing/datatests.html>
 - <http://commons.apache.org/vfs/filesystems.html>
-- <http://suika.fam.cx/gate/git/wi/manakai.git/blob/HEAD:/lib/Message/URI/Generic.dis>
-- <http://suika.fam.cx/~wakaba/-temp/test/uri/>
-- <http://suika.fam.cx/%7Ewakaba/wiki/sw/n/file%3A>
+- <http://suika.suikawiki.org/gate/git/wi/manakai.git/blob/HEAD:/lib/Message/URI/Generic.dis>
+- <https://suika.suikawiki.org/~wakaba/-temp/test/uri/>
+- <https://suika.suikawiki.org/%7Ewakaba/wiki/sw/n/file%3A>
 
 * License
 

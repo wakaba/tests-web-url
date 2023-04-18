@@ -26,11 +26,11 @@ developed in 2011 along with Perl Web::URL module.
 * Test results of browsers
 
 - URL canonicalization tests (about 5000)
--- <https://suika.fam.cx/gate/test-results/list/url-canon-20110731/all>
+-- <https://suika.suikawiki.org/gate/test-results/list/url-canon-20110731/all>
 - Query character encoding tests (28)
--- <https://suika.fam.cx/gate/test-results/list/url-canon-20110731-charsets/all>
+-- <https://suika.suikawiki.org/gate/test-results/list/url-canon-20110731-charsets/all>
 - IDN canonicalization tests (about 14000)
--- <https://suika.fam.cx/gate/test-results/list/url-canon-20110731-idn/all>
+-- <https://suika.suikawiki.org/gate/test-results/list/url-canon-20110731-idn/all>
 
 * Unicode version
 
@@ -52,7 +52,7 @@ different repositories.
 
 * Author
 
-Wakaba <w@suika.fam.cx>.
+Wakaba <wakaba@suikawiki.org>.
 
 * License
 

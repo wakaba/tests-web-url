@@ -33,7 +33,7 @@ as basis of this document:
 This document will be obsolete once a single Web-compatible URL
 parsing spec is published...
 
-See also: <http://suika.fam.cx/~wakaba/wiki/sw/n/URL5> (In Japanese).
+See also: <http://suika.suikawiki.org/~wakaba/wiki/sw/n/URL5> (In Japanese).
 
 * Character classes
 
